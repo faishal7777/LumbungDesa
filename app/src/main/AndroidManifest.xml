@@ -19,7 +19,7 @@
         </activity>
 
         <activity
-            android:name=".NavigationBar" >
+            android:name=".NavigationBar">
         </activity>
 
         <activity android:name=".OTPActivity" />

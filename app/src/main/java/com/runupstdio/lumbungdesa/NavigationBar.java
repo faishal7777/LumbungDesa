@@ -37,14 +37,17 @@ public class NavigationBar extends AppCompatActivity
         Fragment fragment = null;
         switch (item.getItemId()){
             case R.id.nav_beranda:
+                setTheme(R.style.AppTheme);
                 fragment = new BerandaFragment();
                 break;
 
             case R.id.nav_temukan:
+                setTheme(R.style.AppTheme);
                 fragment = new TemukanFragment();
                 break;
 
             case R.id.nav_akun:
+                setTheme(R.style.AkunPage);
                 fragment = new AkunFragment();
                 break;
         }
