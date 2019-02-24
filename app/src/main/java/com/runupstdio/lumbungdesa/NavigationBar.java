@@ -25,7 +25,6 @@ public class NavigationBar extends AppCompatActivity
                     .beginTransaction()
                     .replace(R.id.fragment_container, fragment)
                     .commit();
-
             return true;
         }
         return false;

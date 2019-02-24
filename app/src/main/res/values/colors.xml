@@ -9,4 +9,5 @@
     <color name="colorTitleText">#707070</color>
     <color name="colorLightGrey">#D1D3D4</color>
     <color name="colorBtnDisabled">#A2A2A2</color>
+    <color name="bg">#EBEBEB</color>
 </resources>

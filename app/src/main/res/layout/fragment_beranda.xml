@@ -1,13 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:gravity="center"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/bg"
+    android:orientation="vertical"
+    android:scrollbars="none">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Beranda"
-        android:textSize="50sp"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:gravity="center_vertical"
 
-</LinearLayout>
+            android:background="@color/colorWhite">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="Selamat datang, Raja Ghanie!"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <com.synnapps.carouselview.CarouselView
+            android:layout_marginTop="10dp"
+            android:id="@+id/carouselBeranda"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:fillColor="@color/colorWhite"
+            app:pageColor="#50FFFFFF"
+            app:slideInterval="3250"
+            app:radius="5dp">
+        </com.synnapps.carouselview.CarouselView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorWhite">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:text="Barang Hari Ini"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="15dp"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:text="Lihat Lainnya"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorBtnBlock"/>
+            </RelativeLayout>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="15dp">
+                <android.support.v7.widget.CardView
+                    android:layout_width="110dp"
+                    android:layout_height="136dp"
+                    app:cardBackgroundColor="@color/colorLightGrey">
+                    <Button
+                        android:layout_width="110dp"
+                        android:layout_height="136dp" />
+                </android.support.v7.widget.CardView>
+            </ScrollView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="254dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorWhite">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:text="Kategori Terkini"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="15dp"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:text="Lihat Lainnya"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorBtnBlock"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
