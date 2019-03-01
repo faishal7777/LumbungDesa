@@ -20,10 +20,17 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AkunPage" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorWhite</item>
+    <style name="hideActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#00ffffff</item>
+        <item name="colorPrimaryDark">@color/colorBlueDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorWhite</item>
+        <item name="homeAsUpIndicator">@drawable/back_btn</item>
+    </style>
+
+    <style name="fragmentClub" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorBtnBlock</item>
         <item name="colorPrimaryDark">@color/colorBlueDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
 </resources>

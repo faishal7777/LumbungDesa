@@ -46,7 +46,7 @@ public class NavigationBar extends AppCompatActivity
                 break;
 
             case R.id.nav_akun:
-                setTheme(R.style.AkunPage);
+                setTheme(R.style.AppTheme);
                 fragment = new AkunFragment();
                 break;
         }

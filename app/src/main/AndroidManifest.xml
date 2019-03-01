@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProductClickedActivity"></activity>
+        <activity android:name=".ProductClickedActivity"
+            android:parentActivityName=".NavigationBar"
+            android:theme="@style/hideActionBar"></activity>
         <activity
             android:name=".SplashActivity"
             android:theme="@style/FirstPage">
@@ -19,7 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NavigationBar"></activity>
+        <activity android:name=".NavigationBar"
+            android:theme="@style/fragmentClub"></activity>
         <activity android:name=".OTPActivity" />
         <activity
             android:name=".SigninActivity"
