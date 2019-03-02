@@ -8,7 +8,7 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="330dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,41 +24,59 @@
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:src="@drawable/login_image"
-                android:layout_margin="20dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="10dp"
                 android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="45sp"
+                android:layout_marginRight="45sp"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="Ayo Bergabung!"
+                android:textColor="@color/colorBtnBlock"
+                android:textSize="22sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans"
-                android:text="Ayo join dengan kami dan dapatkan kemudahan dalam berbelanja dan menjual hasil perkebunan dan pertenakan lokal."
+                android:text="Rasakan kemudahan jual beli hasil perkebunan dan pertenakan lokal."
                 android:textAlignment="center"
                 android:textSize="14sp"
-                android:layout_marginRight="15sp"
-                android:layout_marginLeft="15sp"/>
+                android:layout_marginRight="45sp"
+                android:layout_marginLeft="45sp"/>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp">
+
                 <Button
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="135dp"
                     android:layout_height="40dp"
+                    android:background="@drawable/btn_akun_login"
+                    android:fontFamily="@font/open_sans_semibold"
                     android:text="Login"
+                    android:textSize="16dp"
                     android:textAllCaps="false"
-                    android:fontFamily="@font/open_sans"
-                    android:textColor="#707070"
-                    android:background="@drawable/btn_akun_login"/>
+                    android:textColor="#707070" />
+
                 <Button
-                    android:layout_marginLeft="20dp"
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="135dp"
                     android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/btn_login"
+                    android:fontFamily="@font/open_sans_semibold"
                     android:text="Daftar Akun"
+                    android:textSize="16dp"
                     android:textAllCaps="false"
-                    android:fontFamily="@font/open_sans"
-                    android:textColor="@color/colorWhite"
-                    android:background="@drawable/btn_login"/>
+                    android:textColor="@color/colorWhite" />
             </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>

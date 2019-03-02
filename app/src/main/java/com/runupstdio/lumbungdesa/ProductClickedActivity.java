@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import com.github.ksoichiro.android.observablescrollview.ObservableScrollView;
 import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
@@ -20,6 +22,12 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
     private View mToolbarView;
     private ObservableScrollView mScrollView;
     private int mParallaxImageHeight;
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +52,24 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        Button mbtnOpenKeranjang = findViewById(R.id.btnOpenKeranjang);
+        mbtnOpenKeranjang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                KeranjangBottomSheetDialog bottomSheet = new KeranjangBottomSheetDialog();
+                bottomSheet.show(getSupportFragmentManager(), "Keranjang Bottom Sheet");
+            }
+        });
+
+
+
+        LinearLayout mbtnHome = findViewById(R.id.product_click_home);
+        mbtnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
