@@ -25,7 +25,7 @@
         <item name="colorPrimaryDark">@color/colorBlueDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/colorWhite</item>
-        <item name="homeAsUpIndicator">@drawable/back_btn</item>
+        <item name="homeAsUpIndicator">@drawable/ic_arrow_back_grey_24dp</item>
     </style>
 
     <style name="fragmentClub" parent="Theme.AppCompat.Light.NoActionBar">
@@ -34,6 +34,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="signUp" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/colorBtnBlock</item>
+        <item name="colorPrimary">@color/colorBtnBlock</item>
+        <item name="colorPrimaryDark">@color/colorBlueDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 
     <style name="AppThemes" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>

@@ -3,11 +3,14 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="colorBtnBlock">#44B1EB</color>
+    <color name="colorBtnBlock">#2196F3</color>
     <color name="colorWhite">#FFF</color>
-    <color name="colorBlueDark">#368DBC</color>
+    <color name="colorBlueDark">#1976D2</color>
     <color name="colorTitleText">#707070</color>
     <color name="colorLightGrey">#D1D3D4</color>
     <color name="colorBtnDisabled">#A2A2A2</color>
     <color name="bg">#EBEBEB</color>
+    <color name="transparent">#00000000</color>
+    <color name="textBlueDark">#0B0E3A</color>
+    <color name="form">#EFEFEF</color>
 </resources>

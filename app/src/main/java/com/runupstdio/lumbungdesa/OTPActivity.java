@@ -11,8 +11,8 @@ public class OTPActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp);
 
-        //ganti nama title
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Verifikasi");
+//        //ganti nama title
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.setTitle("Verifikasi");
     }
 }

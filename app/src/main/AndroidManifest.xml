@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.runupstdio.lumbungdesa">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,9 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProductClickedActivity"
+        <activity android:name=".KeranjangActivity"
+            android:label="Keranjang">
+        </activity>
+        <activity
+            android:name=".ProductClickedActivity"
             android:parentActivityName=".NavigationBar"
-            android:theme="@style/hideActionBar"></activity>
+            android:theme="@style/hideActionBar" />
         <activity
             android:name=".SplashActivity"
             android:theme="@style/FirstPage">
@@ -21,21 +25,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NavigationBar"
-            android:theme="@style/fragmentClub"></activity>
-        <activity android:name=".OTPActivity" />
+        <activity
+            android:name=".NavigationBar"
+            android:theme="@style/fragmentClub" />
+        <activity
+            android:name=".OTPActivity"
+            android:theme="@style/signUp"/>
         <activity
             android:name=".SigninActivity"
-            android:parentActivityName=".WelcomeActivity" />
+            android:theme="@style/hideActionBar" />
         <activity
             android:name=".Signup2Activity"
-            android:parentActivityName=".SignupActivity" />
-        <activity
-            android:name=".SignupActivity"
-            android:parentActivityName=".WelcomeActivity" />
-        <activity
-            android:name=".WelcomeActivity"
-            android:theme="@style/FirstPage"></activity>
+            android:parentActivityName=".SignupActivity"
+            android:theme="@style/signUp"/>
+        <activity android:name=".SignupActivity"
+            android:theme="@style/signUp"/>
 
         <meta-data
             android:name="preloaded_fonts"

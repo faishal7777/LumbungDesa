@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -17,7 +18,7 @@ import org.w3c.dom.Text;
 public class SigninActivity extends AppCompatActivity {
 
     TextView mReg;
-    EditText telpon, pass;
+    EditText telpon;
 
     //TextWatcher
     private TextWatcher textWatcher = new TextWatcher() {
@@ -38,17 +39,17 @@ public class SigninActivity extends AppCompatActivity {
     };
 
     @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
 
-        //ganti nama title
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Login");
-
         mReg = findViewById(R.id.btnLoginReg);
-
-
         mReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,11 +59,9 @@ public class SigninActivity extends AppCompatActivity {
             }
         });
 
-        pass = findViewById(R.id.password);
-        telpon = findViewById(R.id.noTelpon);
+        telpon = findViewById(R.id.noTelpon2);
 
         //set listener
-        pass.addTextChangedListener(textWatcher);
         telpon.addTextChangedListener(textWatcher);
 
         // run once to disable if empty
@@ -71,10 +70,9 @@ public class SigninActivity extends AppCompatActivity {
 
     private  void checkFieldsForEmptyValues(){
         Button mLogin = findViewById(R.id.btnLogin);
-        String noTelpon = telpon.getText().toString();
-        final String mPassword = pass.getText().toString();
+        final String noTelpon = telpon.getText().toString();
 
-        if(noTelpon.equals("") || mPassword.equals(""))
+        if(noTelpon.equals(""))
         {
             mLogin.setEnabled(false);
             mLogin.setBackground(this.getResources().getDrawable(R.drawable.btn_login_disabled));
@@ -88,8 +86,8 @@ public class SigninActivity extends AppCompatActivity {
             mLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(SigninActivity.this, mPassword, Toast.LENGTH_LONG).show();
-                    Intent b = new Intent(SigninActivity.this, Signup2Activity.class);
+                    Toast.makeText(SigninActivity.this, noTelpon, Toast.LENGTH_LONG).show();
+                    Intent b = new Intent(SigninActivity.this, NavigationBar.class);
                     startActivity(b);
                 }
             });

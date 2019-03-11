@@ -11,8 +11,8 @@ public class Signup2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup2);
 
-        //ganti nama title
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Membuat Akun");
+//        //ganti nama title
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.setTitle("Membuat Akun");
     }
 }
