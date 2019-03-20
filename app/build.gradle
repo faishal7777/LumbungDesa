@@ -41,4 +41,7 @@ dependencies {
     //piccaso
     implementation 'com.squareup.picasso:picasso:2.4.0'
 
+    //PinView
+    implementation 'com.github.GoodieBag:Pinview:v1.3'
+
 }

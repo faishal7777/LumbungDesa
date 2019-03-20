@@ -13,120 +13,367 @@
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:title="Lumbung Desa"
-            app:titleTextColor="@color/colorWhite">
+            android:background="?attr/colorPrimary">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lumbung Desa"
+                android:textSize="22sp"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/after_night"
+                android:layout_gravity="center"/>
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
-    <android.support.v4.widget.NestedScrollView
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refreshBeranda"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/bg"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:scrollbars="none">
-        <LinearLayout
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:gravity="center_vertical"
-                android:background="@color/colorWhite">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:text="Selamat datang, Raja Ghanie!"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <com.synnapps.carouselview.CarouselView
-                android:layout_marginTop="10dp"
-                android:id="@+id/carouselBeranda"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                app:fillColor="@color/colorWhite"
-                app:pageColor="#50FFFFFF"
-                app:slideInterval="3250"
-                app:radius="5dp">
-            </com.synnapps.carouselview.CarouselView>
-
+            android:layout_height="match_parent"
+            android:background="@color/bg"
+            android:orientation="vertical"
+            android:scrollbars="none">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorWhite">
-                <RelativeLayout
+                android:orientation="vertical">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="15dp"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
-                        android:fontFamily="@font/open_sans_semibold"
-                        android:text="Barang Hari Ini"
-                        android:textSize="14sp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_margin="15dp"
-                        android:fontFamily="@font/open_sans_semibold"
-                        android:text="Lihat Lainnya"
-                        android:textSize="14sp"
-                        android:textColor="@color/colorBtnBlock"/>
-                </RelativeLayout>
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/BarangHariIni"
-                    android:layout_width="match_parent"
-                    android:layout_height="165dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:orientation="horizontal">
+                    android:layout_height="54dp"
+                    android:gravity="center_vertical"
+                    android:background="@color/colorWhite">
 
-                </android.support.v7.widget.RecyclerView>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="254dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorWhite">
-                <RelativeLayout
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:fontFamily="@font/titillium_web_semibold"
+                        android:text="Selamat datang, Raja Ghanie!"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <com.synnapps.carouselview.CarouselView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/carouselBeranda"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    app:fillColor="@color/colorWhite"
+                    app:pageColor="#50FFFFFF"
+                    app:slideInterval="3250"
+                    app:radius="5dp">
+                </com.synnapps.carouselview.CarouselView>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorWhite">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:fontFamily="@font/titillium_web_semibold"
+                            android:text="Barang Hari Ini"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="15dp"
+                            android:fontFamily="@font/titillium_web_semibold"
+                            android:text="Lihat Lainnya"
+                            android:textSize="14sp"
+                            android:textColor="@color/colorBtnBlock"/>
+                    </RelativeLayout>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/BarangHariIni"
+                        android:layout_width="match_parent"
+                        android:layout_height="165dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:orientation="horizontal">
+
+                    </android.support.v7.widget.RecyclerView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="15dp"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
-                        android:fontFamily="@font/open_sans_semibold"
+                        android:fontFamily="@font/titillium_web_semibold"
                         android:text="Kategori Terkini"
                         android:textSize="14sp" />
-
-                    <TextView
+                    <GridLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_margin="15dp"
-                        android:fontFamily="@font/open_sans_semibold"
-                        android:text="Lihat Lainnya"
-                        android:textSize="14sp"
-                        android:textColor="@color/colorBtnBlock"/>
-                </RelativeLayout>
+                        android:layout_height="match_parent"
+                        android:columnCount="3"
+                        android:rowCount="2"
+                        android:alignmentMode="alignMargins"
+                        android:columnOrderPreserved="false"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_gravity="center">
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginBottom="15dp">
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/image_2"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:riv_corner_radius="6dp" />
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/black_transpatent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:riv_corner_radius="6dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="15dp"
+                                app:layout_constraintVertical_bias="1"
+                                android:fontFamily="@font/titillium_web_semibold"
+                                android:text="Beras dan Biji"
+                                android:textColor="@color/colorWhite"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:textSize="14sp"/>
+                        </android.support.constraint.ConstraintLayout>
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginBottom="15dp">
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/image_2"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:riv_corner_radius="6dp" />
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/black_transpatent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:riv_corner_radius="6dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="15dp"
+                                app:layout_constraintVertical_bias="1"
+                                android:fontFamily="@font/titillium_web_semibold"
+                                android:text="Buah"
+                                android:textColor="@color/colorWhite"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:textSize="14sp"/>
+                        </android.support.constraint.ConstraintLayout>
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginBottom="15dp">
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/image_2"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:riv_corner_radius="6dp" />
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/black_transpatent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:riv_corner_radius="6dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="15dp"
+                                app:layout_constraintVertical_bias="1"
+                                android:fontFamily="@font/titillium_web_semibold"
+                                android:text="Daging"
+                                android:textColor="@color/colorWhite"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:textSize="14sp"/>
+                        </android.support.constraint.ConstraintLayout>
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginBottom="15dp">
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/image_2"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:riv_corner_radius="6dp" />
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/black_transpatent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:riv_corner_radius="6dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="15dp"
+                                app:layout_constraintVertical_bias="1"
+                                android:fontFamily="@font/titillium_web_semibold"
+                                android:text="Olahan"
+                                android:textColor="@color/colorWhite"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:textSize="14sp"/>
+                        </android.support.constraint.ConstraintLayout>
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginBottom="15dp">
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/image_2"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:riv_corner_radius="6dp" />
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/black_transpatent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:riv_corner_radius="6dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="15dp"
+                                app:layout_constraintVertical_bias="1"
+                                android:fontFamily="@font/titillium_web_semibold"
+                                android:text="Sayur"
+                                android:textColor="@color/colorWhite"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:textSize="14sp"/>
+                        </android.support.constraint.ConstraintLayout>
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginBottom="15dp">
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/image_2"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:riv_corner_radius="6dp" />
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/black_transpatent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:riv_corner_radius="6dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="15dp"
+                                app:layout_constraintVertical_bias="1"
+                                android:fontFamily="@font/titillium_web_semibold"
+                                android:text="Telur"
+                                android:textColor="@color/colorWhite"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:textSize="14sp"/>
+                        </android.support.constraint.ConstraintLayout>
+                    </GridLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical">
+
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 </android.support.design.widget.CoordinatorLayout>

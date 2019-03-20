@@ -7,6 +7,7 @@
     tools:context=".SignupActivity"
     android:background="@color/bg">
     <LinearLayout
+        android:id="@+id/bgOtp"
         android:layout_width="match_parent"
         android:layout_height="320dp"
         android:background="@drawable/splash_gradient"
@@ -14,9 +15,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0"/>
+        app:layout_constraintVertical_bias="0"
+        android:orientation="vertical"/>
     <android.support.v7.widget.CardView
-        android:id="@+id/cardView2"
+        android:id="@+id/cardViewToolbarOtp"
         android:layout_width="match_parent"
         android:layout_height="58dp"
         android:layout_marginStart="15dp"
@@ -50,6 +52,7 @@
         </LinearLayout>
     </android.support.v7.widget.CardView>
     <LinearLayout
+        android:id="@+id/txtOtp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -58,10 +61,10 @@
         app:layout_constraintVertical_bias="1"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/cardView3"
+        app:layout_constraintBottom_toTopOf="@+id/cardOtp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2">
+        app:layout_constraintTop_toBottomOf="@+id/cardViewToolbarOtp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -90,7 +93,7 @@
     </LinearLayout>
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cardView3"
+        android:id="@+id/cardOtp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -113,58 +116,26 @@
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_gravity="center">
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <com.goodiebag.pinview.Pinview
+                    android:id="@+id/otpPinview"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <EditText
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/form"
-                        android:fontFamily="@font/open_sans"
-                        android:inputType="number"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:textCursorDrawable="@null"
-                        android:textSize="16dp" />
-                    <EditText
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/form"
-                        android:fontFamily="@font/open_sans"
-                        android:inputType="number"
-                        android:layout_marginLeft="10dp"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:textCursorDrawable="@null"
-                        android:textSize="16dp" />
-                    <EditText
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/form"
-                        android:fontFamily="@font/open_sans"
-                        android:inputType="number"
-                        android:layout_marginLeft="10dp"
-                        android:paddingLeft="10dp"
-                        android:textCursorDrawable="@null"
-                        android:textSize="16dp" />
-                    <EditText
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/form"
-                        android:fontFamily="@font/open_sans"
-                        android:inputType="number"
-                        android:layout_marginLeft="10dp"
-                        android:paddingLeft="10dp"
-                        android:textCursorDrawable="@null"
-                        android:textSize="16dp" />
-                </LinearLayout>
+                    app:pinWidth="40dp"
+                    app:pinHeight="40dp"
+                    app:pinLength="4"
+                    app:pinBackground="@drawable/form_otp"
+                    app:inputType="number"
+                    app:cursorVisible="false"
+                    app:forceKeyboard="true"
+                    app:splitWidth="10dp"/>
                 <Button
-                    android:id="@+id/otp"
+                    android:id="@+id/btnVerifOtp"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_gravity="center"
                     android:background="@drawable/btn_login"
                     android:fontFamily="@font/titillium_web_semibold"

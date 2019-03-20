@@ -128,7 +128,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="62"
-                            android:textSize="16dp" />
+                            android:textSize="16dp"
+                            android:fontFamily="@font/open_sans"
+                            android:textColor="#000"/>
                     </LinearLayout>
                     <EditText
                         android:id="@+id/noTelponSignUp"
@@ -141,7 +143,8 @@
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:textCursorDrawable="@null"
-                        android:textSize="16dp" />
+                        android:textSize="16dp"
+                        android:textColor="#000"/>
                 </LinearLayout>
             </LinearLayout>
 

@@ -13,7 +13,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:fontFamily="@font/open_sans_semibold"
+            android:fontFamily="@font/titillium_web_semibold"
             android:text="Selamat datang, Raja Ghanie!"
             android:textSize="16sp" />
         <LinearLayout
@@ -46,7 +46,7 @@
                 android:layout_margin="15dp"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:fontFamily="@font/open_sans_semibold"
+                android:fontFamily="@font/titillium_web_semibold"
                 android:text="Tetdekat Denganmu"
                 android:textSize="14sp" />
         </LinearLayout>

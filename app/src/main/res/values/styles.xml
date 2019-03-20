@@ -34,6 +34,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="toolbarFont" parent="fragmentClub">
+        <item name="android:fontFamily">@font/after_night</item>
+    </style>
+    
     <style name="signUp" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:statusBarColor">@color/colorBtnBlock</item>
         <item name="colorPrimary">@color/colorBtnBlock</item>

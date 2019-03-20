@@ -83,7 +83,7 @@ public class SignupActivity extends AppCompatActivity {
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent b = new Intent(SignupActivity.this, OTPActivity.class);
+                Intent b = new Intent(SignupActivity.this, SigninActivity.class);
                 startActivity(b);
                 finish();
             }
@@ -116,9 +116,16 @@ public class SignupActivity extends AppCompatActivity {
             btnRegLanjut.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Intent tipeMasuk = new Intent(SignupActivity.this, OTPActivity.class);
+
+                    if (noTelpon.equals("82229240146")){
+                        Toast.makeText(SignupActivity.this, "Nomor Sudah Terdaftar", Toast.LENGTH_LONG).show();
+                    }
+                    else{
                         Toast.makeText(SignupActivity.this, "62" + noTelpon, Toast.LENGTH_LONG).show();
-                        Intent a = new Intent(SignupActivity.this, OTPActivity.class);
-                        startActivity(a);
+                        tipeMasuk.putExtra("tipe", "daftar");
+                        startActivity(tipeMasuk);
+                    }
                 }
             });
 

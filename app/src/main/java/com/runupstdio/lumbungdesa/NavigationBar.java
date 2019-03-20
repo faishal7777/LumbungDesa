@@ -45,6 +45,11 @@ public class NavigationBar extends AppCompatActivity
                 fragment = new TemukanFragment();
                 break;
 
+            case R.id.nav_transaksi:
+                setTheme(R.style.AppTheme);
+                fragment = new TransaksiFragment();
+                break;
+
             case R.id.nav_akun:
                 setTheme(R.style.AppTheme);
                 fragment = new AkunFragment();

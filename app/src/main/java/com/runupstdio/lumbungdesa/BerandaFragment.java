@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -39,6 +40,15 @@ public class BerandaFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_beranda, null);
+
+        final SwipeRefreshLayout refreshBeranda = view.findViewById(R.id.refreshBeranda);
+        refreshBeranda.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //refreshData();
+                refreshBeranda.setRefreshing(false);
+            }
+        });
 
         carouselView = view.findViewById(R.id.carouselBeranda);
         carouselView.setPageCount(sampleImages.length);

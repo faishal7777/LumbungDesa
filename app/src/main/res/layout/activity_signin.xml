@@ -7,6 +7,7 @@
     tools:context=".SignupActivity"
     android:background="@color/bg">
     <LinearLayout
+        android:id="@+id/bgSignIn"
         android:layout_width="match_parent"
         android:layout_height="320dp"
         android:background="@drawable/splash_gradient"
@@ -14,10 +15,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0"/>
+        app:layout_constraintVertical_bias="0"
+        android:orientation="vertical"/>
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cardView5"
+        android:id="@+id/cardViewToolbarSignIn"
         android:layout_width="match_parent"
         android:layout_height="58dp"
         android:layout_marginStart="15dp"
@@ -55,6 +57,7 @@
     </android.support.v7.widget.CardView>
 
     <LinearLayout
+        android:id="@+id/welcomeTxtSignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -62,10 +65,10 @@
         android:layout_marginBottom="15dp"
         app:layout_constraintVertical_bias="1"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/cardView6"
+        app:layout_constraintBottom_toTopOf="@+id/cardNumberSignIn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView5">
+        app:layout_constraintTop_toBottomOf="@+id/cardViewToolbarSignIn">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -83,7 +86,7 @@
     </LinearLayout>
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cardView6"
+        android:id="@+id/cardNumberSignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -129,7 +132,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="62"
-                            android:textSize="16dp" />
+                            android:textSize="16dp"
+                            android:fontFamily="@font/open_sans"
+                            android:textColor="#000"/>
                     </LinearLayout>
                     <EditText
                         android:id="@+id/noTelpon2"
@@ -142,7 +147,8 @@
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:textCursorDrawable="@null"
-                        android:textSize="16dp" />
+                        android:textSize="16dp"
+                        android:textColor="#000"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -161,6 +167,7 @@
     </android.support.v7.widget.CardView>
 
     <LinearLayout
+        android:id="@+id/bottomTxtSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -168,7 +175,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView6"
+        app:layout_constraintTop_toBottomOf="@+id/cardNumberSignIn"
         app:layout_constraintVertical_bias="1">
 
         <TextView
