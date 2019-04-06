@@ -51,7 +51,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:fontFamily="@font/titillium_web_semibold"
-                        android:text="Selamat datang, Raja Ghanie!"
+                        android:text="Selamat datang."
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -63,7 +63,8 @@
                     app:fillColor="@color/colorWhite"
                     app:pageColor="#50FFFFFF"
                     app:slideInterval="3250"
-                    app:radius="5dp">
+                    app:radius="5dp"
+                    app:pageTransformer="flow">
                 </com.synnapps.carouselview.CarouselView>
 
                 <LinearLayout
@@ -131,6 +132,7 @@
                         android:layout_marginBottom="15dp"
                         android:layout_gravity="center">
                         <android.support.constraint.ConstraintLayout
+                            android:id="@+id/buahBiji"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_marginRight="15dp"

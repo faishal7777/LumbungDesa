@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.runupstdio.lumbungdesa">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".KeranjangActivity"
-            android:label="Keranjang">
-        </activity>
+        <activity android:name=".JualActivity"></activity>
+        <activity
+            android:name=".KeranjangActivity"
+            android:label="Keranjang"></activity>
         <activity
             android:name=".ProductClickedActivity"
             android:parentActivityName=".NavigationBar"
@@ -30,16 +33,17 @@
             android:theme="@style/fragmentClub" />
         <activity
             android:name=".OTPActivity"
-            android:theme="@style/signUp"/>
+            android:theme="@style/signUp" />
         <activity
             android:name=".SigninActivity"
             android:theme="@style/hideActionBar" />
         <activity
             android:name=".Signup2Activity"
             android:parentActivityName=".SignupActivity"
-            android:theme="@style/signUp"/>
-        <activity android:name=".SignupActivity"
-            android:theme="@style/signUp"/>
+            android:theme="@style/signUp" />
+        <activity
+            android:name=".SignupActivity"
+            android:theme="@style/signUp" />
 
         <meta-data
             android:name="preloaded_fonts"

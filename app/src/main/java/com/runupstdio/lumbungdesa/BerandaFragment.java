@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
@@ -25,8 +26,9 @@ import static com.makeramen.roundedimageview.RoundedImageView.TAG;
 
 public class BerandaFragment extends Fragment {
 
+    ConstraintLayout mbuahBiji;
     CarouselView carouselView;
-    int[] sampleImages = {R.drawable.image_1, R.drawable.image_2, R.drawable.image_3, R.drawable.image_4};
+    int[] sampleImages = {R.drawable.banner_img, R.drawable.image_2, R.drawable.image_3, R.drawable.image_4};
 
     RecyclerView barangHariIni;
 
@@ -39,7 +41,16 @@ public class BerandaFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_beranda, null);
+        final View view =  inflater.inflate(R.layout.fragment_beranda, null);
+
+        mbuahBiji = view.findViewById(R.id.buahBiji);
+        mbuahBiji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent productClicked = new Intent(view.getContext(), ProductClickedActivity.class);
+                startActivity(productClicked);
+            }
+        });
 
         final SwipeRefreshLayout refreshBeranda = view.findViewById(R.id.refreshBeranda);
         refreshBeranda.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
