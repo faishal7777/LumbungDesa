@@ -32,17 +32,17 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MacBook Pro 12 inch tahun 2017"
+        android:text="Telur Ayam Broiler"
         android:textSize="16sp"
-        android:fontFamily="@font/open_sans"
-        android:textColor="#000"/>
+        android:fontFamily="@font/titillium_web_bold"
+        android:textColor="@color/textBlueDark"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rp 20.700.000"
+        android:text="Rp 12.000"
         android:textSize="16sp"
         android:fontFamily="@font/open_sans_bold"
-        android:textColor="@color/colorBlueDark"/>
+        android:textColor="@color/colorBtnBlock"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="38dp"
@@ -93,19 +93,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center">
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Subtotal"
             android:textColor="#000"
             android:textSize="14sp"
             android:fontFamily="@font/open_sans"/>
         <TextView
             android:layout_marginLeft="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Rp 20.700.000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp 12.000"
             android:textColor="#000"
             android:textSize="16sp"
             android:fontFamily="@font/open_sans_semibold"/>
@@ -121,7 +121,7 @@
         android:background="@drawable/btn_login"
         android:fontFamily="@font/open_sans_semibold"
         android:text="Lanjutkan ke Pembayaran"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite" />
 
@@ -133,7 +133,7 @@
         android:background="@drawable/btn_akun_login"
         android:fontFamily="@font/open_sans_semibold"
         android:text="Tambah Produk Lain"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textAllCaps="false"
         android:textColor="#707070" />
 </LinearLayout>

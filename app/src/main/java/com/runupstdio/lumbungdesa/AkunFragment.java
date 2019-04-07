@@ -15,7 +15,7 @@ public class AkunFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_akun_notlogin, null);
+        View v = inflater.inflate(R.layout.fragment_akun, null);
 
         Button mLogin = v.findViewById(R.id.btn_login);
         Button mDaftar = v.findViewById(R.id.btn_daftar);
@@ -32,6 +32,15 @@ public class AkunFragment extends Fragment {
             public void onClick(View v) {
                 Intent daftar = new Intent(v.getContext(), SignupActivity.class);
                 startActivity(daftar);
+            }
+        });
+
+        Button mJualProduk = v.findViewById(R.id.btnJualProduk);
+        mJualProduk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mJual = new Intent(v.getContext(), JualActivity.class);
+                startActivity(mJual);
             }
         });
 
