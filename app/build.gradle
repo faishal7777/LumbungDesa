@@ -44,4 +44,13 @@ dependencies {
     //PinView
     implementation 'com.github.GoodieBag:Pinview:v1.3'
 
+    implementation 'com.jakewharton:butterknife:8.8.1'
+
+    //firebase
+    implementation 'com.google.firebase:firebase-core:16.0.8'
+
+    //chat
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
+
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
 }

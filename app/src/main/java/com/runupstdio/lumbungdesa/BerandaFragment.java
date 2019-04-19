@@ -17,10 +17,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.runupstdio.lumbungdesa.Model.BarangHariIni;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.makeramen.roundedimageview.RoundedImageView.TAG;
 
@@ -28,15 +30,16 @@ public class BerandaFragment extends Fragment {
 
     ConstraintLayout mbuahBiji;
     CarouselView carouselView;
-    int[] sampleImages = {R.drawable.banner_img, R.drawable.image_2, R.drawable.image_3, R.drawable.image_4};
+    int[] sampleImages = {R.drawable.banner_img, R.drawable.banner_img, R.drawable.banner_img, R.drawable.banner_img};
 
     RecyclerView barangHariIni;
 
+    List<BarangHariIni> barangHariIniArrayList;
 
     //array-list
-    private ArrayList<String> mImgProductUrl = new ArrayList<>();
-    private ArrayList<String> mProductName = new ArrayList<>();
-    private ArrayList<String> mProductPrice = new ArrayList<>();
+//    private ArrayList<String> mImgProductUrl = new ArrayList<>();
+//    private ArrayList<String> mProductName = new ArrayList<>();
+//    private ArrayList<String> mProductPrice = new ArrayList<>();
 
     @Nullable
     @Override
@@ -66,6 +69,7 @@ public class BerandaFragment extends Fragment {
 
         carouselView.setImageListener(imageListener);
         barangHariIni = view.findViewById(R.id.BarangHariIni);
+
 //        testing = view.findViewById(R.id.testing);
 //        testing.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -74,7 +78,13 @@ public class BerandaFragment extends Fragment {
 //                startActivity(gobuy);
 //            }
 //        });
-        getImageBitmaps();
+
+        barangHariIniArrayList = new ArrayList<>();
+        barangHariIniArrayList.add(new BarangHariIni("Telur Ayam Broiler", "Rp 12.000","https://i.redd.it/tpsnoz5bzo501.jpg"));
+        barangHariIniArrayList.add(new BarangHariIni("Jeruk Manis", "Rp 10.000","https://i.redd.it/qn7f9oqu7o501.jpg"));
+        barangHariIniArrayList.add(new BarangHariIni("Sayur Kubis", "Rp 4.000","https://i.redd.it/obx4zydshg601.jpg"));
+
+        initRecyclerView();
         return view;
     }
 
@@ -85,53 +95,51 @@ public class BerandaFragment extends Fragment {
         }
     };
 
-    private void getImageBitmaps(){
-        Log.d(TAG, "initImageBitmaps: preparing image");
-
-        mImgProductUrl.add("https://pbs.twimg.com/profile_images/500471438155841537/JqaBWfYK.jpeg");
-        mProductName.add("Havasu Falls");
-        mProductPrice.add("Rp 100000");
-
-        mImgProductUrl.add("https://i.redd.it/tpsnoz5bzo501.jpg");
-        mProductName.add("Trondheim");
-        mProductPrice.add("Rp 200000");
-
-        mImgProductUrl.add("https://i.redd.it/qn7f9oqu7o501.jpg");
-        mProductName.add("Portugal");
-        mProductPrice.add("Rp 300000");
-
-        mImgProductUrl.add("https://i.redd.it/j6myfqglup501.jpg");
-        mProductName.add("Rocky Mountain National Park");
-        mProductPrice.add("Rp 400000");
-
-        mImgProductUrl.add("https://i.redd.it/0h2gm1ix6p501.jpg");
-        mProductName.add("Mahahual");
-        mProductPrice.add("Rp 500000");
-
-        mImgProductUrl.add("https://i.redd.it/k98uzl68eh501.jpg");
-        mProductName.add("Frozen Lake");
-        mProductPrice.add("Rp 600000");
-
-        mImgProductUrl.add("https://i.redd.it/glin0nwndo501.jpg");
-        mProductName.add("White Sands Desert");
-        mProductPrice.add("Rp 700000");
-
-        mImgProductUrl.add("https://i.redd.it/obx4zydshg601.jpg");
-        mProductName.add("Austrailia");
-        mProductPrice.add("Rp 800000");
-
-        mImgProductUrl.add("https://i.imgur.com/ZcLLrkY.jpg");
-        mProductName.add("Washington");
-        mProductPrice.add("Rp 900000");
-
-        initRecyclerView();
-    }
+//    private void getImageBitmaps(){
+//
+//        mImgProductUrl.add("https://pbs.twimg.com/profile_images/500471438155841537/JqaBWfYK.jpeg");
+//        mProductName.add("Havasu Falls");
+//        mProductPrice.add("Rp 100000");
+//
+//        mImgProductUrl.add("https://i.redd.it/tpsnoz5bzo501.jpg");
+//        mProductName.add("Trondheim");
+//        mProductPrice.add("Rp 200000");
+//
+//        mImgProductUrl.add("https://i.redd.it/qn7f9oqu7o501.jpg");
+//        mProductName.add("Portugal");
+//        mProductPrice.add("Rp 300000");
+//
+//        mImgProductUrl.add("https://i.redd.it/j6myfqglup501.jpg");
+//        mProductName.add("Rocky Mountain National Park");
+//        mProductPrice.add("Rp 400000");
+//
+//        mImgProductUrl.add("https://i.redd.it/0h2gm1ix6p501.jpg");
+//        mProductName.add("Mahahual");
+//        mProductPrice.add("Rp 500000");
+//
+//        mImgProductUrl.add("https://i.redd.it/k98uzl68eh501.jpg");
+//        mProductName.add("Frozen Lake");
+//        mProductPrice.add("Rp 600000");
+//
+//        mImgProductUrl.add("https://i.redd.it/glin0nwndo501.jpg");
+//        mProductName.add("White Sands Desert");
+//        mProductPrice.add("Rp 700000");
+//
+//        mImgProductUrl.add("https://i.redd.it/obx4zydshg601.jpg");
+//        mProductName.add("Austrailia");
+//        mProductPrice.add("Rp 800000");
+//
+//        mImgProductUrl.add("https://i.imgur.com/ZcLLrkY.jpg");
+//        mProductName.add("Washington");
+//        mProductPrice.add("Rp 900000");
+//
+//        initRecyclerView();
+//    }
 
     private void initRecyclerView(){
-        Log.d(TAG, "initRecyclerView: init the recycler view");
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        BarangHariIniAdapter adapter = new BarangHariIniAdapter(barangHariIniArrayList, getContext());
         barangHariIni.setLayoutManager(layoutManager);
-        BarangHariIniAdapter adapter = new BarangHariIniAdapter(getContext(), mProductName, mImgProductUrl, mProductPrice);
         barangHariIni.setAdapter(adapter);
     }
 }

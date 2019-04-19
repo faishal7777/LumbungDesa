@@ -13,57 +13,58 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.makeramen.roundedimageview.RoundedImageView;
+import com.runupstdio.lumbungdesa.Model.BarangHariIni;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BarangHariIniAdapter extends RecyclerView.Adapter<BarangHariIniAdapter.ViewHolder> {
 
     private static final String TAG = "BarangHariIniAdapter";
 
     //array-list
-    private ArrayList<String> mImgProductUrl = new ArrayList<>();
-    private ArrayList<String> mProductName = new ArrayList<>();
-    private ArrayList<String> mProductPrice = new ArrayList<>();
+//    private ArrayList<String> mImgProductUrl = new ArrayList<>();
+//    private ArrayList<String> mProductName = new ArrayList<>();
+//    private ArrayList<String> mProductPrice = new ArrayList<>();
+    private List<BarangHariIni> listBarangHariIni;
     private Context mContext;
 
-    public BarangHariIniAdapter(Context mContext, ArrayList<String> mImgProductUrl, ArrayList<String> mProductName, ArrayList<String> mProductPrice) {
-        this.mImgProductUrl = mImgProductUrl;
-        this.mProductName = mProductName;
-        this.mProductPrice = mProductPrice;
+    public BarangHariIniAdapter(List<BarangHariIni> listBarangHariIni, Context mContext) {
+        this.listBarangHariIni = listBarangHariIni;
         this.mContext = mContext;
     }
 
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Log.d(TAG, "onCreateViewHolder: called");
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_layout_beranda, parent, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.list_item_layout_beranda, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        Log.d(TAG, "onBindViewHolder: called");
+        final BarangHariIni list = listBarangHariIni.get(position);
+
+        String currentUrlProduct = list.getImageProductUrl();
 
         Glide.with(mContext)
                 .asBitmap()
-                .load(mImgProductUrl.get(position))
+                .load(currentUrlProduct)
                 .into(holder.ImgProduct);
-        holder.ProductName.setText(mProductName.get(position));
-        holder.ProductPrice.setText(mProductPrice.get(position));
+
+        holder.ProductName.setText(list.getProductName());
+        holder.ProductPrice.setText(list.getProductPrice());
         holder.ImgProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: clicked on image" + mProductName.get(position));
-
-                Toast.makeText(mContext, mProductName.get(position), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, list.getProductName(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return mImgProductUrl.size();
+        return listBarangHariIni.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

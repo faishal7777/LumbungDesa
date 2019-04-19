@@ -9,33 +9,34 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
-public class AkunFragment extends Fragment {
+import com.runupstdio.lumbungdesa.Adapter.UserChatListAdapter;
+
+public class AkunLoginFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_akun_notlogin, null);
+        View v = inflater.inflate(R.layout.fragment_akun, null);
 
-        Button mLogin = v.findViewById(R.id.btn_login);
-        Button mDaftar = v.findViewById(R.id.btn_daftar);
-
-        mLogin.setOnClickListener(new View.OnClickListener() {
+        Button mJualProduk = v.findViewById(R.id.btnJualProduk);
+        mJualProduk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent login = new Intent(v.getContext(), SigninActivity.class);
-                startActivity(login);
-            }
-        });
-        mDaftar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent daftar = new Intent(v.getContext(), SignupActivity.class);
-                startActivity(daftar);
+                Intent mJual = new Intent(v.getContext(), JualActivity.class);
+                startActivity(mJual);
             }
         });
 
-
+        LinearLayout mChat = v.findViewById(R.id.listChat);
+        mChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chat = new Intent(v.getContext(), ListChatActivity.class);
+                startActivity(chat);
+            }
+        });
 
         return v;
     }

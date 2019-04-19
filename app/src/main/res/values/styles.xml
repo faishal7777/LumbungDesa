@@ -31,7 +31,7 @@
     <style name="fragmentClub" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorBtnBlock</item>
         <item name="colorPrimaryDark">@color/colorBlueDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorBtnBlock</item>
     </style>
 
     <style name="toolbarFont" parent="fragmentClub">

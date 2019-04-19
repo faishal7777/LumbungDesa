@@ -1,5 +1,6 @@
 package com.runupstdio.lumbungdesa;
 
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -17,6 +18,8 @@ public class NavigationBar extends AppCompatActivity
 
         BottomNavigationView navigation = findViewById(R.id.bottom_nav);
         navigation.setOnNavigationItemSelectedListener(this);
+
+        loadFragment(new BerandaFragment());
     }
 
     private boolean loadFragment (Fragment fragment){
@@ -52,7 +55,15 @@ public class NavigationBar extends AppCompatActivity
 
             case R.id.nav_akun:
                 setTheme(R.style.AppTheme);
-                fragment = new AkunFragment();
+
+                SharedPreferences prefs = getSharedPreferences("Login", MODE_PRIVATE);
+                Boolean restoredText = prefs.getBoolean("isLogin", false);
+
+                if (restoredText) {
+                    fragment = new AkunLoginFragment();
+                }
+                else fragment = new AkunFragment();
+
                 break;
         }
         return loadFragment(fragment);

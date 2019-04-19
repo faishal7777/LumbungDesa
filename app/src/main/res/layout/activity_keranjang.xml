@@ -41,66 +41,77 @@
         app:layout_constraintTop_toBottomOf="@+id/totalPesanan"
         app:layout_constraintVertical_bias="0"
         android:orientation="horizontal">
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            app:riv_corner_radius="6dp"
-            android:src="@drawable/img_barang"
-            android:layout_margin="15dp"
-            />
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:layout_marginRight="80dp"
-            android:orientation="vertical">
-            <TextView
+            android:orientation="horizontal">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/gambarProdukPengiriman1"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/img_barang"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:riv_corner_radius="6dp" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Telur Ayam Broiler"
-                android:fontFamily="@font/titillium_web_bold"
-                android:textSize="16sp"
-                android:textColor="@color/textBlueDark"
-                />
-            <TextView
+                app:layout_constraintHorizontal_bias="0"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnHapusKeranjang"
+                app:layout_constraintStart_toEndOf="@+id/gambarProdukPengiriman1"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/titillium_web_bold"
+                    android:text="Telur Ayam Broiler"
+                    android:textColor="@color/textBlueDark"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:text="Rp 12.000"
+                    android:textColor="@color/colorBtnBlock"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:text="QTY 1 Pcs"
+                    android:textColor="@color/textBlueDark"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btnHapusKeranjang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rp 12.000"
-                android:fontFamily="@font/open_sans_semibold"
-                android:textSize="14sp"
-                android:textColor="@color/colorBtnBlock"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="QTY 1 Pcs"
-                android:fontFamily="@font/open_sans_semibold"
-                android:textSize="12sp"
-                android:textColor="@color/textBlueDark"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="right"
-            android:layout_margin="15dp"
-            android:layout_gravity="center_vertical">
-            <ImageButton
-                android:layout_width="64dp"
-                android:layout_height="36dp"
-                android:background="@drawable/btn_delete"
-                android:src="@drawable/ic_delete_gray_24dp"/>
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edit Detail"
-                android:fontFamily="@font/open_sans_semibold"
-                android:textSize="12sp"
-                android:textColor="@color/colorBtnBlock"/>
-        </LinearLayout>
+                android:layout_gravity="center_vertical"
+                android:layout_margin="15dp"
+                android:gravity="right"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:layout_width="36dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/btn_delete"
+                    android:src="@drawable/ic_delete_gray_24dp" />
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -156,10 +167,10 @@
                 android:layout_height="36dp"
                 android:layout_gravity="right"
                 android:background="@drawable/btn_beli"
-                android:text="Beli Sekarang"
-                android:textAllCaps="false"
+                android:text="Lanjut"
+                android:fontFamily="@font/titillium_web_bold"
                 android:textColor="@color/colorWhite"
-                android:textSize="12dp"
+                android:textSize="14dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginRight="15dp"
