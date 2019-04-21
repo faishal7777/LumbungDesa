@@ -30,6 +30,7 @@
                 android:src="@drawable/ic_arrow_back_grey_24dp" />
 
             <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/img_User"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 app:riv_corner_radius="6dp"
@@ -41,17 +42,11 @@
                 android:orientation="vertical"
                 android:layout_marginLeft="15dp">
                 <TextView
+                    android:id="@+id/nama_User"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/open_sans_semibold"
                     android:text="Login Akun"
-                    android:textColor="@color/textBlueDark"
-                    android:textSize="14dp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans"
-                    android:text="Penjual, Sidoarjo"
                     android:textColor="@color/textBlueDark"
                     android:textSize="14dp" />
             </LinearLayout>

@@ -38,12 +38,5 @@ public class ListChatActivity extends AppCompatActivity {
 
         mRVListChat.setAdapter(adapter);
     }
-/*
-    void addData(){
-        userArrayList = new ArrayList<>();
-        userArrayList.add(new User("Dimas Maulana", ""));
-        userArrayList.add(new User("Fadly Yonk", ""));
-        userArrayList.add(new User("Ariyandi Nugraha", ""));
-        userArrayList.add(new User("Aham Siswana", ""));
-    }*/
+
 }
