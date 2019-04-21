@@ -7,24 +7,20 @@ import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 
+import com.runupstdio.lumbungdesa.Adapter.BarangHariIniAdapter;
 import com.runupstdio.lumbungdesa.Model.BarangHariIni;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.makeramen.roundedimageview.RoundedImageView.TAG;
 
 public class BerandaFragment extends Fragment {
 

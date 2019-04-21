@@ -1,6 +1,7 @@
 package com.runupstdio.lumbungdesa.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +11,15 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.makeramen.roundedimageview.RoundedImageView;
+import com.runupstdio.lumbungdesa.ChatActivity;
 import com.runupstdio.lumbungdesa.Model.User;
 import com.runupstdio.lumbungdesa.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.support.v4.content.ContextCompat.startActivity;
 
 public class UserChatListAdapter extends RecyclerView.Adapter<UserChatListAdapter.UserViewHolder> {
 
@@ -41,7 +45,7 @@ public class UserChatListAdapter extends RecyclerView.Adapter<UserChatListAdapte
     @Override
     public void onBindViewHolder(UserViewHolder holder, int position) {
 
-        User list = mData.get(position);
+        final User list = mData.get(position);
 
         String currentUrl = list.getImageUrl();
 
@@ -51,10 +55,16 @@ public class UserChatListAdapter extends RecyclerView.Adapter<UserChatListAdapte
                 .into(holder.imgUrlUser);
 
         //holder.namaUser.setText(mNamaUser.get(position));
-            holder.namaUser.setText(list.getUsername());
+        holder.namaUser.setText(list.getUsername());
 
-        //String currentUrl = mImgUrlUser.get(position);
-
+        holder.imgUrlUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chat = new Intent(mContext, ChatActivity.class);
+                chat.putExtra("Username", list.getUsername());
+                mContext.startActivity(chat);
+            }
+        });
 
     }
 
