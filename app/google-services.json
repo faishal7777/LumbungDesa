@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1090195919721",
+    "firebase_url": "https://lumbung-desa-b1131.firebaseio.com",
+    "project_id": "lumbung-desa-b1131",
+    "storage_bucket": "lumbung-desa-b1131.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090195919721:android:5a8df0d9f8a3bdd2",
+        "android_client_info": {
+          "package_name": "com.runupstdio.lumbungdesa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090195919721-u459kk9e6bfkgq1gims8peiptf0c41ds.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.runupstdio.lumbungdesa",
+            "certificate_hash": "d7a3e19baf062b657126f518780d930253c3213f"
+          }
+        },
+        {
+          "client_id": "1090195919721-aso3g8esn5adbu8i1lkies7rq1o934vh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDw6Hlbp8Y2pbtshCRJTk7FFtNYxxvYiyw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090195919721-aso3g8esn5adbu8i1lkies7rq1o934vh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
