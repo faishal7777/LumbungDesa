@@ -47,6 +47,7 @@ public class PembelianAdapter extends RecyclerView.Adapter<PembelianAdapter.View
     @Override
     public void onBindViewHolder(PembelianAdapter.ViewHolder holder, final int position) {
         final Tagihan listPembelian = mPembelian.get(position);
+        /*
         String currentUrlProduct1 = listPembelian.getImageProductUrl1();
         String currentUrlProduct2 = listPembelian.getImageProductUrl2();
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
@@ -79,7 +80,7 @@ public class PembelianAdapter extends RecyclerView.Adapter<PembelianAdapter.View
             public void onClick(View v) {
 
             }
-        });
+        });*/
     }
 
     @Override
@@ -105,10 +106,10 @@ public class PembelianAdapter extends RecyclerView.Adapter<PembelianAdapter.View
 
     @Override
     public int getItemViewType(int position) {
-        if (mPembelian.get(position).getStatus().equals("0")){
+        if (mPembelian.get(position).getProductStatus().equals("0")){
             return BELUM_DIBAYAR;
         }
-        else if (mPembelian.get(position).getStatus().equals("1")){
+        else if (mPembelian.get(position).getProductStatus().equals("1")){
             return DIBAYAR;
         }
         else {

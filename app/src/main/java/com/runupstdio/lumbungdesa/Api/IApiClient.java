@@ -6,6 +6,7 @@ import com.runupstdio.lumbungdesa.Model.Address;
 import com.runupstdio.lumbungdesa.Model.Cart;
 import com.runupstdio.lumbungdesa.Model.Checkout;
 import com.runupstdio.lumbungdesa.Model.Feed;
+import com.runupstdio.lumbungdesa.Model.History;
 import com.runupstdio.lumbungdesa.Model.Product;
 import com.runupstdio.lumbungdesa.Model.Profile;
 import com.runupstdio.lumbungdesa.Model.Register;
@@ -93,4 +94,9 @@ public interface IApiClient {
                                  @Part("product_cat") int product_cat,
                                  @Part("expired_at") int expired_at,
                                  @Part MultipartBody.Part[] product_image);
+
+
+    @GET("v1/history")
+    Observable<History> get_history(@Header("Authorization") String token,
+                                    @Query("status") String status);
 }

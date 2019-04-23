@@ -32,12 +32,12 @@ public class PenjualanFragment extends Fragment {
 
         ShimmerFrameLayout mShimmerPenjualan = v.findViewById(R.id.shimmerPenjualan);
         mShimmerPenjualan.startShimmerAnimation();
-
+/*
         mPenjualan = new ArrayList<>();
         mPenjualan.add(new Tagihan("Lentho Bakar", "Rp 12.000", "https://picsum.photos/50/?random", "0"));
         mPenjualan.add(new Tagihan("Ayam Goreng", "Rp 36.000", "https://picsum.photos/50/?random", "1"));
         mPenjualan.add(new Tagihan("Buah Khuldi", "Rp 6.000", "https://picsum.photos/50/?random", "2"));
-
+*/
         mRVListPenjualan = v.findViewById(R.id.rvPenjualan);
 
         initRecyclerView();

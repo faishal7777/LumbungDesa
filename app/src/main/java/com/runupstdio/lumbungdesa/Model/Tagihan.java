@@ -1,13 +1,24 @@
 package com.runupstdio.lumbungdesa.Model;
 
-public class Tagihan {
-    private String totalPrice, imageProductUrl1, imageProductUrl2, status;
+import java.util.List;
 
-    public Tagihan(String productPrice, String imageProductUrl1, String imageProductUrl2, String status) {
+public class Tagihan {
+    private String productName, totalPrice, productStatus;
+    private List<String> imageProductUrl;
+
+    public Tagihan(String prodName, String productPrice, List<String> prodUrl, String stats){
+        this.productName = prodName;
         this.totalPrice = productPrice;
-        this.imageProductUrl1 = imageProductUrl1;
-        this.imageProductUrl2 = imageProductUrl2;
-        this.status = status;
+        this.imageProductUrl = prodUrl;
+        this.productStatus = stats;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = totalPrice;
     }
 
     public String getTotalPrice() {
@@ -18,27 +29,19 @@ public class Tagihan {
         this.totalPrice = totalPrice;
     }
 
-    public String getImageProductUrl1() {
-        return imageProductUrl1;
+    public List<String> getProductUrl() {
+        return imageProductUrl;
     }
 
-    public void setImageProductUrl1(String imageProductUrl1) {
-        this.imageProductUrl1 = imageProductUrl1;
+    public void setProductUrl(List<String> prodUrl) {
+        this.imageProductUrl = prodUrl;
     }
 
-    public String getImageProductUrl2() {
-        return imageProductUrl2;
+    public String getProductStatus() {
+        return productStatus;
     }
 
-    public void setImageProductUrl2(String imageProductUrl2) {
-        this.imageProductUrl2 = imageProductUrl2;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public void setProductStatus(String stats) {
+        this.productStatus = stats;
     }
 }

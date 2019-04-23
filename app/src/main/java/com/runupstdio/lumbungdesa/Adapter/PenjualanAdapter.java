@@ -45,7 +45,7 @@ public class PenjualanAdapter extends RecyclerView.Adapter<PenjualanAdapter.View
     @Override
     public void onBindViewHolder(PenjualanAdapter.ViewHolder holder, final int position) {
         final Tagihan listPenjualan = mPenjualan.get(position);
-
+/*
         String currentUrlProduct1 = listPenjualan.getImageProductUrl1();
         String currentUrlProduct2 = listPenjualan.getImageProductUrl2();
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
@@ -87,7 +87,7 @@ public class PenjualanAdapter extends RecyclerView.Adapter<PenjualanAdapter.View
             public void onClick(View v) {
 
             }
-        });
+        });*/
     }
 
     @Override
@@ -114,10 +114,10 @@ public class PenjualanAdapter extends RecyclerView.Adapter<PenjualanAdapter.View
 
     @Override
     public int getItemViewType(int position) {
-        if (mPenjualan.get(position).getStatus().equals("0")){
+        if (mPenjualan.get(position).getProductStatus().equals("0")){
             return BELUM_DIBAYAR;
         }
-        else if (mPenjualan.get(position).getStatus().equals("1")){
+        else if (mPenjualan.get(position).getProductStatus().equals("1")){
             return DIBAYAR;
         }
         else {

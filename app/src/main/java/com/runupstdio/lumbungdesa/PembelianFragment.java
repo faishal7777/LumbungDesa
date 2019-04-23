@@ -29,12 +29,12 @@ public class PembelianFragment extends Fragment {
 
         ShimmerFrameLayout mShimmerCuy = v.findViewById(R.id.shimmerPembelian);
         //mShimmerCuy.startShimmer();
-
+/*
         mPembelian = new ArrayList<>();
         mPembelian.add(new Tagihan("Lentho Bakar", "Rp 12.000", "https://picsum.photos/50/?random", "0"));
         mPembelian.add(new Tagihan("Ayam Goreng", "Rp 36.000", "https://picsum.photos/50/?random", "1"));
         mPembelian.add(new Tagihan("Buah Khuldi", "Rp 6.000", "https://picsum.photos/50/?random", "1"));
-
+*/
         mRVListPembelian = v.findViewById(R.id.rvPembelian);
 
         initRecyclerView();

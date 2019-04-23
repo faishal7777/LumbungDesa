@@ -3,6 +3,7 @@ package com.runupstdio.lumbungdesa.Adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,32 +36,34 @@ public class TagihanAdapter extends RecyclerView.Adapter<TagihanAdapter.ViewHold
     public void onBindViewHolder(TagihanAdapter.ViewHolder holder, final int position) {
         final Tagihan listTagihan = mTagihan.get(position);
 
-        String currentUrlProduct1 = listTagihan.getImageProductUrl1();
-        String currentUrlProduct2 = listTagihan.getImageProductUrl2();
-
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
         params.setMargins(0, 0, 0, 0);
 
-        Glide.with(mContext)
-                .asBitmap()
-                .load(currentUrlProduct1)
-                .into(holder.ImgProduct1);
+        if(listTagihan.getProductUrl() != null) {
+            List<String> imgProductUrl = listTagihan.getProductUrl();
+            Glide.with(mContext)
+                    .asBitmap()
+                    .load(imgProductUrl.get(0))
+                    .into(holder.ImgProduct1);
 
-        Glide.with(mContext)
-                .asBitmap()
-                .load(currentUrlProduct2)
-                .into(holder.ImgProduct2);
-
+            if (imgProductUrl.size() > 1) {
+                Glide.with(mContext)
+                        .asBitmap()
+                        .load(imgProductUrl.get(1))
+                        .into(holder.ImgProduct2);
+                holder.ImgProduct2.setVisibility(View.VISIBLE);
+                holder.ProductName.setVisibility(View.GONE);
+            } else {
+                holder.ProductName.setVisibility(View.VISIBLE);
+                holder.ProductName.setText(listTagihan.getProductName());
+            }
+        }
+        holder.ProductName.setText(listTagihan.getProductName());
         holder.ProductPrice.setText(listTagihan.getTotalPrice());
-        holder.ProductPrice.setLayoutParams(params);
-        holder.ProductPrice.setBackgroundResource(0);
-
-        holder.Status.setText(listTagihan.getStatus());
-        holder.Status.setLayoutParams(params);
-        holder.Status.setBackgroundResource(0);
+        holder.mTagihanStatus.setText(listTagihan.getProductStatus());
     }
 
     @Override
@@ -70,15 +73,16 @@ public class TagihanAdapter extends RecyclerView.Adapter<TagihanAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView ImgProduct1, ImgProduct2;
-        TextView ProductPrice, Status;
+        TextView ProductName, ProductPrice, mTagihanStatus;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             ImgProduct1 = itemView.findViewById(R.id.imgProduct1);
             ImgProduct2 = itemView.findViewById(R.id.imgProduct2);
-            ProductPrice = itemView.findViewById(R.id.totalHargaProduct);
-            Status = itemView.findViewById(R.id.status);
+            ProductName = itemView.findViewById(R.id.tagihan_productName);
+            ProductPrice = itemView.findViewById(R.id.tagihan_ProductPrice);
+            mTagihanStatus = itemView.findViewById(R.id.tagihan_status);
         }
     }
 }
