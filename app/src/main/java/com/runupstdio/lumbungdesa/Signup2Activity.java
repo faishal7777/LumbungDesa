@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,6 +30,7 @@ public class Signup2Activity extends AppCompatActivity {
     Button mbtnBuatAkun;
     EditText mName, mState, mCity, mKecamatan, mRoad;
     IApiClient mApiClient;
+    ImageButton mBackSignup2;
 
     private String idToken = null;
     private String msisdn = null;
@@ -44,6 +46,15 @@ public class Signup2Activity extends AppCompatActivity {
         mCity = findViewById(R.id.signup_city);
         mKecamatan = findViewById(R.id.signup_kecamatan);
         mRoad = findViewById(R.id.signup_road);
+
+        //back
+        mBackSignup2 = findViewById(R.id.back_signup2);
+        mBackSignup2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         mApiClient = ApiClient.getClient().create(IApiClient.class);
 

@@ -29,7 +29,6 @@ public class TagihanAdapter extends RecyclerView.Adapter<TagihanAdapter.ViewHold
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_tagihan, parent, false);
         return new TagihanAdapter.ViewHolder(v);
-
     }
 
     @Override

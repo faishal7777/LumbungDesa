@@ -103,7 +103,6 @@ public class PenjualanAdapter extends RecyclerView.Adapter<PenjualanAdapter.View
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-
             ImgProduct1 = itemView.findViewById(R.id.imgProduct1);
             ImgProduct2 = itemView.findViewById(R.id.imgProduct2);
             ProductPrice = itemView.findViewById(R.id.totalHargaProduct);

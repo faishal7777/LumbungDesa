@@ -1,6 +1,7 @@
 package com.runupstdio.lumbungdesa;
 
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +26,7 @@ public class SignupActivity extends AppCompatActivity {
     TextView mLogin;
     LinearLayout mBottomTxt, mBg, mWelcomeTxt;
     CardView mCardViewToolbar, mCardNumber;
+    ImageButton mBackSignup;
 
     Animation fromBottom, fromTop, bgAnim;
 
@@ -78,6 +81,15 @@ public class SignupActivity extends AppCompatActivity {
 
         mCardViewToolbar = findViewById(R.id.cardViewToolbarSignUp);
         mCardViewToolbar.startAnimation(fromTop);
+
+        //back
+        mBackSignup = findViewById(R.id.back_signup);
+        mBackSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         mLogin = findViewById(R.id.loginReg);
         mLogin.setOnClickListener(new View.OnClickListener() {
