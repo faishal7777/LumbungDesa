@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "1090195919721-hmgjmsfjmhpc0d20n4hejcbp1dl12k36.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.runupstdio.lumbungdesa",
+            "certificate_hash": "aac7db75cd1ed57c3a7e7f866b4631c9a3dcd486"
+          }
+        },
+        {
           "client_id": "1090195919721-aso3g8esn5adbu8i1lkies7rq1o934vh.apps.googleusercontent.com",
           "client_type": 3
         }

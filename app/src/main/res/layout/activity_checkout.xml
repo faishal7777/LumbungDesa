@@ -231,6 +231,7 @@
 
             <Button
                 style="?android:attr/borderlessButtonStyle"
+                android:id="@+id/btn_checkout"
                 android:layout_width="100dp"
                 android:layout_height="36dp"
                 android:layout_gravity="right"

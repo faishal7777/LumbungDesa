@@ -26,9 +26,8 @@ public class PembelianFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_pembelian, null);
 
-
-        ShimmerFrameLayout mShimmerCuy = v.findViewById(R.id.shimmerCuy);
-        mShimmerCuy.startShimmer();
+        ShimmerFrameLayout mShimmerPembelian = v.findViewById(R.id.shimmerPembelian);
+        mShimmerPembelian.startShimmerAnimation();
 
         mPembelian = new ArrayList<>();
         mPembelian.add(new Tagihan("Lentho Bakar", "Rp 12.000", "https://picsum.photos/50/?random", "0"));

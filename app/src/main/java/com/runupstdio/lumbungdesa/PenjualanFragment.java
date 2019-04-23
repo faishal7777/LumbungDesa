@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.runupstdio.lumbungdesa.Adapter.PenjualanAdapter;
 import com.runupstdio.lumbungdesa.Model.Tagihan;
 
@@ -28,6 +29,9 @@ public class PenjualanFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_penjualan, null);
+
+        ShimmerFrameLayout mShimmerPenjualan = v.findViewById(R.id.shimmerPenjualan);
+        mShimmerPenjualan.startShimmerAnimation();
 
         mPenjualan = new ArrayList<>();
         mPenjualan.add(new Tagihan("Lentho Bakar", "Rp 12.000", "https://picsum.photos/50/?random", "0"));

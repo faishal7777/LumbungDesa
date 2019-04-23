@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.runupstdio.lumbungdesa.Model.Tagihan;
@@ -27,8 +28,6 @@ public class PenjualanAdapter extends RecyclerView.Adapter<PenjualanAdapter.View
         this.mContext = mContext;
     }
 
-
-
     @Override
     public PenjualanAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == BELUM_DIBAYAR) {
@@ -47,24 +46,42 @@ public class PenjualanAdapter extends RecyclerView.Adapter<PenjualanAdapter.View
     public void onBindViewHolder(PenjualanAdapter.ViewHolder holder, final int position) {
         final Tagihan listPenjualan = mPenjualan.get(position);
 
-        String currentUrlProduct = listPenjualan.getImageProductUrl();
+        String currentUrlProduct1 = listPenjualan.getImageProductUrl1();
+        String currentUrlProduct2 = listPenjualan.getImageProductUrl2();
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.setMargins(0, 0, 0, 0);
 
         Glide.with(mContext)
                 .asBitmap()
-                .load(currentUrlProduct)
-                .into(holder.ImgProduct);
+                .load(currentUrlProduct1)
+                .into(holder.ImgProduct1);
+        Glide.with(mContext)
+                .asBitmap()
+                .load(currentUrlProduct2)
+                .into(holder.ImgProduct2);
 
-        holder.ProductName.setText(listPenjualan.getProductName());
-        holder.ProductPrice.setText(listPenjualan.getProductPrice());
+        holder.ProductPrice.setText(listPenjualan.getTotalPrice());
+        holder.ProductPrice.setLayoutParams(params);
+        holder.ProductPrice.setBackgroundResource(0);
+
         holder.Status.setText(listPenjualan.getStatus());
+        holder.Status.setLayoutParams(params);
+        holder.Status.setBackgroundResource(0);
 
-        holder.Bayar.setOnClickListener(new View.OnClickListener() {
+        holder.Terima.setBackgroundResource(R.drawable.btn_login);
+        holder.Terima.setText("Terima Order");
+        holder.Terima.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
 
+        holder.Batal.setBackgroundResource(R.drawable.btn_akun_login );
+        holder.Batal.setText("Tolak Order");
         holder.Batal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,18 +96,19 @@ public class PenjualanAdapter extends RecyclerView.Adapter<PenjualanAdapter.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView ImgProduct;
-        TextView ProductName, ProductPrice, Status;
-        Button Bayar, Batal;
+        ImageView ImgProduct1, ImgProduct2;
+        TextView ProductPrice, Status;
+        Button Terima, Batal;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            ImgProduct = itemView.findViewById(R.id.imgProductTagihan);
-            ProductName = itemView.findViewById(R.id.namaProductTagihan);
-            ProductPrice = itemView.findViewById(R.id.hargaProductTagihan);
-            Status = itemView.findViewById(R.id.statusProductTagihan);
-            Bayar = itemView.findViewById(R.id.btn_terima);
+
+            ImgProduct1 = itemView.findViewById(R.id.imgProduct1);
+            ImgProduct2 = itemView.findViewById(R.id.imgProduct2);
+            ProductPrice = itemView.findViewById(R.id.totalHargaProduct);
+            Status = itemView.findViewById(R.id.status);
+            Terima = itemView.findViewById(R.id.btn_terima);
             Batal = itemView.findViewById(R.id.btn_batal);
         }
     }

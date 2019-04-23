@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.runupstdio.lumbungdesa.Model.Tagihan;
@@ -23,8 +24,6 @@ public class TagihanAdapter extends RecyclerView.Adapter<TagihanAdapter.ViewHold
         this.mContext = mContext;
     }
 
-
-
     @Override
     public TagihanAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
@@ -37,16 +36,32 @@ public class TagihanAdapter extends RecyclerView.Adapter<TagihanAdapter.ViewHold
     public void onBindViewHolder(TagihanAdapter.ViewHolder holder, final int position) {
         final Tagihan listTagihan = mTagihan.get(position);
 
-        String currentUrlProduct = listTagihan.getImageProductUrl();
+        String currentUrlProduct1 = listTagihan.getImageProductUrl1();
+        String currentUrlProduct2 = listTagihan.getImageProductUrl2();
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.setMargins(0, 0, 0, 0);
 
         Glide.with(mContext)
                 .asBitmap()
-                .load(currentUrlProduct)
-                .into(holder.ImgProduct);
+                .load(currentUrlProduct1)
+                .into(holder.ImgProduct1);
 
-        holder.ProductName.setText(listTagihan.getProductName());
-        holder.ProductPrice.setText(listTagihan.getProductPrice());
+        Glide.with(mContext)
+                .asBitmap()
+                .load(currentUrlProduct2)
+                .into(holder.ImgProduct2);
+
+        holder.ProductPrice.setText(listTagihan.getTotalPrice());
+        holder.ProductPrice.setLayoutParams(params);
+        holder.ProductPrice.setBackgroundResource(0);
+
         holder.Status.setText(listTagihan.getStatus());
+        holder.Status.setLayoutParams(params);
+        holder.Status.setBackgroundResource(0);
     }
 
     @Override
@@ -55,16 +70,16 @@ public class TagihanAdapter extends RecyclerView.Adapter<TagihanAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView ImgProduct;
-        TextView ProductName, ProductPrice, Status;
+        ImageView ImgProduct1, ImgProduct2;
+        TextView ProductPrice, Status;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            ImgProduct = itemView.findViewById(R.id.imgProductTagihan);
-            ProductName = itemView.findViewById(R.id.namaProductTagihan);
-            ProductPrice = itemView.findViewById(R.id.hargaProductTagihan);
-            Status = itemView.findViewById(R.id.statusProductTagihan);
+            ImgProduct1 = itemView.findViewById(R.id.imgProduct1);
+            ImgProduct2 = itemView.findViewById(R.id.imgProduct2);
+            ProductPrice = itemView.findViewById(R.id.totalHargaProduct);
+            Status = itemView.findViewById(R.id.status);
         }
     }
 }

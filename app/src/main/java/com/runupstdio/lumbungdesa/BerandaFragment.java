@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -43,18 +44,13 @@ public class BerandaFragment extends Fragment {
     int[] sampleImages = {R.drawable.banner_img, R.drawable.banner_img, R.drawable.banner_img, R.drawable.banner_img};
 
     RecyclerView barangHariIni;
-
+//    ShimmerFrameLayout mShimmerPembelian;
     List<BarangHariIni> barangHariIniArrayList;
 
     private FirebaseAuth mAuth;
     IApiClient mApiClient;
     private String idToken = null;
     private Boolean isLoggedIn = false;
-
-    //array-list
-//    private ArrayList<String> mImgProductUrl = new ArrayList<>();
-//    private ArrayList<String> mProductName = new ArrayList<>();
-//    private ArrayList<String> mProductPrice = new ArrayList<>();
 
     @Nullable
     @Override
@@ -70,6 +66,7 @@ public class BerandaFragment extends Fragment {
             }
         });
 
+//        mShimmerPembelian = view.findViewById(R.id.shimmerPembelian);
         final SwipeRefreshLayout refreshBeranda = view.findViewById(R.id.refreshBeranda);
         refreshBeranda.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -77,6 +74,10 @@ public class BerandaFragment extends Fragment {
                 //refreshData();
                 setFeedData();
                 refreshBeranda.setRefreshing(false);
+//
+//                barangHariIni.setVisibility(View.GONE);
+//                mShimmerPembelian.setVisibility(View.VISIBLE);
+//                mShimmerPembelian.startShimmerAnimation();
             }
         });
 
@@ -140,54 +141,12 @@ public class BerandaFragment extends Fragment {
                         for(int i=0; i<feedInfo.getData().size(); i++){
                             barangHariIniArrayList.add(new BarangHariIni(feedInfo.getData().get(i).getId(), feedInfo.getData().get(i).getProductName(), "Rp "+feedInfo.getData().get(i).getProductPrice(), feedInfo.getData().get(i).getAvaProduct()));
                         }
-
                         initRecyclerView();
                     } else {
 
                     }
                 });
     }
-
-//    private void getImageBitmaps(){
-//
-//        mImgProductUrl.add("https://pbs.twimg.com/profile_images/500471438155841537/JqaBWfYK.jpeg");
-//        mProductName.add("Havasu Falls");
-//        mProductPrice.add("Rp 100000");
-//
-//        mImgProductUrl.add("https://i.redd.it/tpsnoz5bzo501.jpg");
-//        mProductName.add("Trondheim");
-//        mProductPrice.add("Rp 200000");
-//
-//        mImgProductUrl.add("https://i.redd.it/qn7f9oqu7o501.jpg");
-//        mProductName.add("Portugal");
-//        mProductPrice.add("Rp 300000");
-//
-//        mImgProductUrl.add("https://i.redd.it/j6myfqglup501.jpg");
-//        mProductName.add("Rocky Mountain National Park");
-//        mProductPrice.add("Rp 400000");
-//
-//        mImgProductUrl.add("https://i.redd.it/0h2gm1ix6p501.jpg");
-//        mProductName.add("Mahahual");
-//        mProductPrice.add("Rp 500000");
-//
-//        mImgProductUrl.add("https://i.redd.it/k98uzl68eh501.jpg");
-//        mProductName.add("Frozen Lake");
-//        mProductPrice.add("Rp 600000");
-//
-//        mImgProductUrl.add("https://i.redd.it/glin0nwndo501.jpg");
-//        mProductName.add("White Sands Desert");
-//        mProductPrice.add("Rp 700000");
-//
-//        mImgProductUrl.add("https://i.redd.it/obx4zydshg601.jpg");
-//        mProductName.add("Austrailia");
-//        mProductPrice.add("Rp 800000");
-//
-//        mImgProductUrl.add("https://i.imgur.com/ZcLLrkY.jpg");
-//        mProductName.add("Washington");
-//        mProductPrice.add("Rp 900000");
-//
-//        initRecyclerView();
-//    }
 
     private void initRecyclerView(){
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);

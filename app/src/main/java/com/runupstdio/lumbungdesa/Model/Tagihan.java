@@ -1,40 +1,37 @@
 package com.runupstdio.lumbungdesa.Model;
 
 public class Tagihan {
-    private String productName;
-    private String productPrice;
-    private String imageProductUrl;
-    private String status;
+    private String totalPrice, imageProductUrl1, imageProductUrl2, status;
 
-    public Tagihan(String productName, String productPrice, String imageProductUrl, String status) {
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.imageProductUrl = imageProductUrl;
+    public Tagihan(String productPrice, String imageProductUrl1, String imageProductUrl2, String status) {
+        this.totalPrice = productPrice;
+        this.imageProductUrl1 = imageProductUrl1;
+        this.imageProductUrl2 = imageProductUrl2;
         this.status = status;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setTotalPrice(String totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
-    public String getProductPrice() {
-        return productPrice;
+    public String getImageProductUrl1() {
+        return imageProductUrl1;
     }
 
-    public void setProductPrice(String productPrice) {
-        this.productPrice = productPrice;
+    public void setImageProductUrl1(String imageProductUrl1) {
+        this.imageProductUrl1 = imageProductUrl1;
     }
 
-    public String getImageProductUrl() {
-        return imageProductUrl;
+    public String getImageProductUrl2() {
+        return imageProductUrl2;
     }
 
-    public void setImageProductUrl(String imageProductUrl) {
-        this.imageProductUrl = imageProductUrl;
+    public void setImageProductUrl2(String imageProductUrl2) {
+        this.imageProductUrl2 = imageProductUrl2;
     }
 
     public String getStatus() {

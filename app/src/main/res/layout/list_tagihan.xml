@@ -15,49 +15,66 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:orientation="horizontal">
+
                 <com.makeramen.roundedimageview.RoundedImageView
-                    android:id="@+id/imgProductTagihan"
+                    android:id="@+id/imgProduct1"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@mipmap/ic_launcher"
                     android:layout_gravity="center"
-                    app:riv_corner_radius="6dp"/>
+                    android:background="@color/shimmer"
+                    android:src="@color/shimmer"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:riv_corner_radius="6dp" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/imgProduct2"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
+                    android:background="@color/shimmer"
+                    android:src="@color/shimmer"
+                    android:layout_marginLeft="15dp"
+                    app:layout_constraintStart_toEndOf="@+id/imgProduct1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:riv_corner_radius="6dp" />
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginLeft="15dp">
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
                     <TextView
-                        android:id="@+id/namaProductTagihan"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/totalHargaProduct"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
-                        android:text="Telur Ayam"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/open_sans_bold"
-                        android:textColor="@color/textBlueDark"/>
-                    <TextView
-                        android:id="@+id/hargaProductTagihan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rp 12.000"
-                        android:textSize="16sp"
                         android:fontFamily="@font/open_sans_semibold"
-                        android:textColor="@color/colorBtnBlock"/>
+                        android:maxLines="1"
+                        android:text="Rp229.100"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/textBlueDark"
+                        android:textSize="16sp" />
                     <TextView
-                        android:id="@+id/statusProductTagihan"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/status"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
-                        android:text="Belum Dibayar."
-                        android:textSize="12sp"
                         android:fontFamily="@font/open_sans"
-                        android:textColor="@color/textBlueDark"/>
+                        android:maxLines="1"
+                        android:text="DIBAYAR"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/textBlueDark"
+                        android:textSize="16sp" />
                 </LinearLayout>
-            </LinearLayout>
+            </android.support.constraint.ConstraintLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -74,16 +91,15 @@
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@drawable/btn_login"
+                    android:background="@drawable/bg_btn_shimmer"
                     android:fontFamily="@font/titillium_web_semibold"
-                    android:text="Terima Barang"
                     android:textAllCaps="false"
                     android:textColor="@color/colorWhite"
                     android:textSize="16dp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:gravity="center"
@@ -98,9 +114,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btn_akun_login"
+                    android:background="@drawable/bg_btn_shimmer"
                     android:fontFamily="@font/titillium_web_semibold"
-                    android:text="Batalkan"
                     android:textAllCaps="false"
                     android:textColor="#707070"
                     android:textSize="16dp"
@@ -111,11 +126,10 @@
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_weight="1"
                     android:layout_marginLeft="8dp"
-                    android:background="@drawable/btn_login"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_btn_shimmer"
                     android:fontFamily="@font/titillium_web_semibold"
-                    android:text="Terima Uang"
                     android:textAllCaps="false"
                     android:textColor="@color/colorWhite"
                     android:textSize="16dp" />

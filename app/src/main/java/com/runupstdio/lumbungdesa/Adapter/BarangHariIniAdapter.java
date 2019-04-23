@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,12 +23,6 @@ import java.util.List;
 
 public class BarangHariIniAdapter extends RecyclerView.Adapter<BarangHariIniAdapter.ViewHolder> {
 
-    private static final String TAG = "BarangHariIniAdapter";
-
-    //array-list
-//    private ArrayList<String> mImgProductUrl = new ArrayList<>();
-//    private ArrayList<String> mProductName = new ArrayList<>();
-//    private ArrayList<String> mProductPrice = new ArrayList<>();
     private List<BarangHariIni> listBarangHariIni;
     private Context mContext;
 
@@ -46,8 +41,12 @@ public class BarangHariIniAdapter extends RecyclerView.Adapter<BarangHariIniAdap
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final BarangHariIni list = listBarangHariIni.get(position);
-
         String currentUrlProduct = list.getImageProductUrl();
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.setMargins(0, 0, 0, 0);
 
         Glide.with(mContext)
                 .asBitmap()
@@ -55,7 +54,12 @@ public class BarangHariIniAdapter extends RecyclerView.Adapter<BarangHariIniAdap
                 .into(holder.ImgProduct);
 
         holder.ProductName.setText(list.getProductName());
+        holder.ProductName.setLayoutParams(params);
+        holder.ProductName.setBackgroundResource(0);
+
         holder.ProductPrice.setText(list.getProductPrice());
+        holder.ProductPrice.setLayoutParams(params);
+        holder.ProductPrice.setBackgroundResource(0);
         holder.ImgProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

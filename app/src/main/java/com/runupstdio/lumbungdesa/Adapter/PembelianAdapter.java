@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.runupstdio.lumbungdesa.Model.Tagihan;
@@ -46,18 +47,33 @@ public class PembelianAdapter extends RecyclerView.Adapter<PembelianAdapter.View
     @Override
     public void onBindViewHolder(PembelianAdapter.ViewHolder holder, final int position) {
         final Tagihan listPembelian = mPembelian.get(position);
-
-        String currentUrlProduct = listPembelian.getImageProductUrl();
+        String currentUrlProduct1 = listPembelian.getImageProductUrl1();
+        String currentUrlProduct2 = listPembelian.getImageProductUrl2();
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.setMargins(0, 0, 0, 0);
 
         Glide.with(mContext)
                 .asBitmap()
-                .load(currentUrlProduct)
-                .into(holder.ImgProduct);
+                .load(currentUrlProduct1)
+                .into(holder.ImgProduct1);
+        Glide.with(mContext)
+                .asBitmap()
+                .load(currentUrlProduct2)
+                .into(holder.ImgProduct2);
 
-        holder.ProductName.setText(listPembelian.getProductName());
-        holder.ProductPrice.setText(listPembelian.getProductPrice());
+        holder.ProductPrice.setText(listPembelian.getTotalPrice());
+        holder.ProductPrice.setLayoutParams(params);
+        holder.ProductPrice.setBackgroundResource(0);
+
         holder.Status.setText(listPembelian.getStatus());
+        holder.Status.setLayoutParams(params);
+        holder.Status.setBackgroundResource(0);
 
+        holder.TerimaBarang.setBackgroundResource(R.drawable.btn_login);
+        holder.TerimaBarang.setText("Terima Barang");
         holder.TerimaBarang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,17 +88,17 @@ public class PembelianAdapter extends RecyclerView.Adapter<PembelianAdapter.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView ImgProduct;
-        TextView ProductName, ProductPrice, Status;
+        ImageView ImgProduct1, ImgProduct2;
+        TextView ProductPrice, Status;
         Button TerimaBarang;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            ImgProduct = itemView.findViewById(R.id.imgProductTagihan);
-            ProductName = itemView.findViewById(R.id.namaProductTagihan);
-            ProductPrice = itemView.findViewById(R.id.hargaProductTagihan);
-            Status = itemView.findViewById(R.id.statusProductTagihan);
+            ImgProduct1 = itemView.findViewById(R.id.imgProduct1);
+            ImgProduct2 = itemView.findViewById(R.id.imgProduct2);
+            ProductPrice = itemView.findViewById(R.id.totalHargaProduct);
+            Status = itemView.findViewById(R.id.status);
             TerimaBarang = itemView.findViewById(R.id.btn_pickUps);
         }
     }

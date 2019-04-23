@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.runupstdio.lumbungdesa.Adapter.TagihanAdapter;
 import com.runupstdio.lumbungdesa.Model.Tagihan;
 import java.util.ArrayList;
@@ -22,6 +24,9 @@ public class TagihanFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_tagihan, null);
+
+        ShimmerFrameLayout mShimmerTagihan = v.findViewById(R.id.shimmerTagihan);
+        mShimmerTagihan.startShimmerAnimation();
 
         mTagihan = new ArrayList<>();
         mTagihan.add(new Tagihan("Telur Ayam Broiler", "Rp 12.000", "https://picsum.photos/50/?random", "0"));
