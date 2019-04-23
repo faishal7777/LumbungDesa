@@ -13,4 +13,5 @@
     <color name="transparent">#00000000</color>
     <color name="textBlueDark">#0B0E3A</color>
     <color name="form">#EFEFEF</color>
+    <color name="shimmer">#D1D1D1</color>
 </resources>

@@ -3,12 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PembelianFragment">
+    tools:context=".PembelianFragment"
+    android:background="@color/bg">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerCuy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvPembelian"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </FrameLayout>

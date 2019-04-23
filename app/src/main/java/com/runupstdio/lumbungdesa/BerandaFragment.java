@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.runupstdio.lumbungdesa.Adapter.BarangHariIniAdapter;
 import com.runupstdio.lumbungdesa.Model.BarangHariIni;
 import com.synnapps.carouselview.CarouselView;
@@ -31,11 +32,6 @@ public class BerandaFragment extends Fragment {
     RecyclerView barangHariIni;
 
     List<BarangHariIni> barangHariIniArrayList;
-
-    //array-list
-//    private ArrayList<String> mImgProductUrl = new ArrayList<>();
-//    private ArrayList<String> mProductName = new ArrayList<>();
-//    private ArrayList<String> mProductPrice = new ArrayList<>();
 
     @Nullable
     @Override
@@ -90,47 +86,6 @@ public class BerandaFragment extends Fragment {
             imageView.setImageResource(sampleImages[position]);
         }
     };
-
-//    private void getImageBitmaps(){
-//
-//        mImgProductUrl.add("https://pbs.twimg.com/profile_images/500471438155841537/JqaBWfYK.jpeg");
-//        mProductName.add("Havasu Falls");
-//        mProductPrice.add("Rp 100000");
-//
-//        mImgProductUrl.add("https://i.redd.it/tpsnoz5bzo501.jpg");
-//        mProductName.add("Trondheim");
-//        mProductPrice.add("Rp 200000");
-//
-//        mImgProductUrl.add("https://i.redd.it/qn7f9oqu7o501.jpg");
-//        mProductName.add("Portugal");
-//        mProductPrice.add("Rp 300000");
-//
-//        mImgProductUrl.add("https://i.redd.it/j6myfqglup501.jpg");
-//        mProductName.add("Rocky Mountain National Park");
-//        mProductPrice.add("Rp 400000");
-//
-//        mImgProductUrl.add("https://i.redd.it/0h2gm1ix6p501.jpg");
-//        mProductName.add("Mahahual");
-//        mProductPrice.add("Rp 500000");
-//
-//        mImgProductUrl.add("https://i.redd.it/k98uzl68eh501.jpg");
-//        mProductName.add("Frozen Lake");
-//        mProductPrice.add("Rp 600000");
-//
-//        mImgProductUrl.add("https://i.redd.it/glin0nwndo501.jpg");
-//        mProductName.add("White Sands Desert");
-//        mProductPrice.add("Rp 700000");
-//
-//        mImgProductUrl.add("https://i.redd.it/obx4zydshg601.jpg");
-//        mProductName.add("Austrailia");
-//        mProductPrice.add("Rp 800000");
-//
-//        mImgProductUrl.add("https://i.imgur.com/ZcLLrkY.jpg");
-//        mProductName.add("Washington");
-//        mProductPrice.add("Rp 900000");
-//
-//        initRecyclerView();
-//    }
 
     private void initRecyclerView(){
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);

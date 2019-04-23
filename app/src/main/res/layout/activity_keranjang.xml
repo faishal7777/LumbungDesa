@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,15 +9,10 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/totalPesanan"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginBottom="8dp"
         android:background="@color/colorWhite"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,101 +24,21 @@
             android:textSize="14sp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/keranjang"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvKeranjang"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/colorWhite"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         android:layout_marginTop="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/totalPesanan"
-        app:layout_constraintVertical_bias="0"
-        android:orientation="horizontal">
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        android:layout_marginBottom="8dp"
+        android:background="@color/bg">
 
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/gambarProdukPengiriman1"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_margin="15dp"
-                android:src="@drawable/img_barang"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:riv_corner_radius="6dp" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintHorizontal_bias="0"
-                android:layout_marginStart="10dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btnHapusKeranjang"
-                app:layout_constraintStart_toEndOf="@+id/gambarProdukPengiriman1"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/titillium_web_bold"
-                    android:text="Telur Ayam Broiler"
-                    android:textColor="@color/textBlueDark"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:text="Rp 12.000"
-                    android:textColor="@color/colorBtnBlock"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:text="QTY 1 Pcs"
-                    android:textColor="@color/textBlueDark"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/btnHapusKeranjang"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="15dp"
-                android:gravity="right"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageButton
-                    android:layout_width="36dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/btn_delete"
-                    android:src="@drawable/ic_delete_gray_24dp" />
-            </LinearLayout>
-        </android.support.constraint.ConstraintLayout>
-    </LinearLayout>
+    </android.support.v7.widget.RecyclerView>
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_gravity="bottom"
-        android:background="#DEDEDE"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
+        android:background="#DEDEDE">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -179,4 +94,4 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </android.support.constraint.ConstraintLayout>
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
