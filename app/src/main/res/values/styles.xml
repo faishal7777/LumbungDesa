@@ -59,7 +59,7 @@
         <item name="android:background">@drawable/rounded_dialogue</item>
     </style>
 
-    <style name="popupCheckout">
+    <style name="testing">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
     </style>

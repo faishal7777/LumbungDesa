@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".PopupActivity"
-            android:theme="@style/popupCheckout">
+            android:theme="@style/testing">
         </activity>
         <activity android:name=".KategoriActivity" />
         <activity
