@@ -6,12 +6,22 @@ public class Keranjang {
             harga_Produk_Keranjang,
             kuantitas_produk_Keranjang,
             img_Url_Keranjang;
+    int iProductId;
 
-    public Keranjang(String nama_Produk_Keranjang, String harga_Produk_Keranjang, String kuantitas_produk_Keranjang, String img_Url_Keranjang) {
+    public Keranjang(int productId, String nama_Produk_Keranjang, String harga_Produk_Keranjang, String kuantitas_produk_Keranjang, String img_Url_Keranjang) {
+        this.iProductId = productId;
         this.nama_Produk_Keranjang = nama_Produk_Keranjang;
         this.harga_Produk_Keranjang = harga_Produk_Keranjang;
         this.kuantitas_produk_Keranjang = kuantitas_produk_Keranjang;
         this.img_Url_Keranjang = img_Url_Keranjang;
+    }
+
+    public int getiProductId() {
+        return iProductId;
+    }
+
+    public void setiProductId(int productId) {
+        this.iProductId = productId;
     }
 
     public String getNama_Produk_Keranjang() {

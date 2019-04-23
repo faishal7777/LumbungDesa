@@ -50,7 +50,7 @@ public class KeranjangBottomSheetDialog extends BottomSheetDialogFragment {
         idToken = data.getString("idToken");
         mProductId = data.getInt("productId");
         mProductName.setText(data.getString("productName"));
-        mProductPrice.setText("Rp "+data.getInt("productPrice"));
+        mProductPrice.setText("Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(data.getInt("productPrice")))));
         iProductPrice = data.getInt("productPrice");
         Glide.with(getContext())
                 .asBitmap()
@@ -58,7 +58,7 @@ public class KeranjangBottomSheetDialog extends BottomSheetDialogFragment {
                 .into(mProductAva);
 
         int subtotal = data.getInt("productPrice")*Integer.parseInt(mProductQty.getText().toString());
-        mProductSubtotal.setText("Rp "+subtotal);
+        mProductSubtotal.setText("Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(subtotal))));
 
         mApiClient = ApiClient.getClient().create(IApiClient.class);
 
