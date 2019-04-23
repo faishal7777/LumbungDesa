@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ public class SigninActivity extends AppCompatActivity {
     EditText telpon;
     LinearLayout mBottomTxt, mBg, mWelcomeTxt;
     CardView mCardNumber, mCardViewToolbar;
+    ImageButton mBackSignin;
 
     Animation fromBottom, fromTop, bgAnim;
 
@@ -78,6 +80,15 @@ public class SigninActivity extends AppCompatActivity {
 
         mCardViewToolbar = findViewById(R.id.cardViewToolbarSignIn);
         mCardViewToolbar.startAnimation(fromTop);
+
+        //back
+        mBackSignin = findViewById(R.id.back_signin);
+        mBackSignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         mReg = findViewById(R.id.btnLoginReg);
         mReg.setOnClickListener(new View.OnClickListener() {

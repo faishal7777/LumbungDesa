@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -41,6 +42,7 @@ public class OTPActivity extends AppCompatActivity {
     LinearLayout mBg, mWelcomeTxt;
     CardView mCardOtp, mCardViewToolbar;
     Pinview mOtpPinview;
+    ImageButton mBackOtp;
 
     Animation fromBottom, fromTop, bgAnim;
 
@@ -75,6 +77,15 @@ public class OTPActivity extends AppCompatActivity {
 
         mCardViewToolbar = findViewById(R.id.cardViewToolbarOtp);
         mCardViewToolbar.startAnimation(fromTop);
+
+        //back
+        mBackOtp = findViewById(R.id.back_otp);
+        mBackOtp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         mOtpPinview = findViewById(R.id.otpPinview);
         mOtpPinview.setPinViewEventListener(new Pinview.PinViewEventListener() {
