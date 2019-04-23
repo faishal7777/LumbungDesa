@@ -1,7 +1,9 @@
 package com.runupstdio.lumbungdesa.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.runupstdio.lumbungdesa.ListChatActivity;
 import com.runupstdio.lumbungdesa.Model.BarangHariIni;
+import com.runupstdio.lumbungdesa.ProductClickedActivity;
 import com.runupstdio.lumbungdesa.R;
 
 import java.util.List;
@@ -55,7 +59,9 @@ public class BarangHariIniAdapter extends RecyclerView.Adapter<BarangHariIniAdap
         holder.ImgProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, list.getProductName(), Toast.LENGTH_SHORT).show();
+                Intent productDetails = new Intent(mContext, ProductClickedActivity.class);
+                productDetails.putExtra("prodId", list.getProductId());
+                mContext.startActivity(productDetails);
             }
         });
     }
@@ -68,6 +74,7 @@ public class BarangHariIniAdapter extends RecyclerView.Adapter<BarangHariIniAdap
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView ImgProduct;
         TextView ProductName, ProductPrice;
+        CardView mItemBeranda;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -75,6 +82,7 @@ public class BarangHariIniAdapter extends RecyclerView.Adapter<BarangHariIniAdap
             ImgProduct = itemView.findViewById(R.id.imgProductRecycle);
             ProductName = itemView.findViewById(R.id.productNameRecycle);
             ProductPrice = itemView.findViewById(R.id.productPriceRecycle);
+            mItemBeranda = itemView.findViewById(R.id.item_beranda);
         }
     }
 }

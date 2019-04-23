@@ -11,12 +11,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/sheetproduct_ava"
             android:layout_width="126dp"
             android:layout_height="80dp"
-            android:src="@drawable/img_barang"
             android:scaleType="centerCrop"
-            app:riv_corner_radius="6dp"/>
+            android:src="@drawable/img_barang"
+            app:riv_corner_radius="6dp" />
         <LinearLayout
             android:layout_marginLeft="10dp"
             android:layout_width="36dp"
@@ -29,20 +31,24 @@
                 android:src="@drawable/ic_delete_black_24dp"/>
         </LinearLayout>
     </LinearLayout>
+
     <TextView
+        android:id="@+id/sheetproduct_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Telur Ayam Broiler"
-        android:textSize="16sp"
         android:fontFamily="@font/titillium_web_bold"
-        android:textColor="@color/textBlueDark"/>
+        android:text="Telur Ayam Broiler"
+        android:textColor="@color/textBlueDark"
+        android:textSize="16sp" />
+
     <TextView
+        android:id="@+id/sheetproduct_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rp 12.000"
-        android:textSize="16sp"
         android:fontFamily="@font/open_sans_bold"
-        android:textColor="@color/colorBtnBlock"/>
+        android:text="Rp 12.000"
+        android:textColor="@color/colorBtnBlock"
+        android:textSize="16sp" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="38dp"
@@ -66,13 +72,15 @@
             android:background="@drawable/edittext_keranjang"
             android:gravity="center"
             android:layout_gravity="center_vertical">
+
             <TextView
+                android:id="@+id/sheetproduct_qty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans"
                 android:text="1"
-                android:textSize="16dp"
                 android:textColor="#000"
-                android:fontFamily="@font/open_sans"/>
+                android:textSize="16dp" />
         </LinearLayout>
         <Button
             style="?android:attr/borderlessButtonStyle"
@@ -101,14 +109,16 @@
             android:textColor="#000"
             android:textSize="14sp"
             android:fontFamily="@font/open_sans"/>
+
         <TextView
-            android:layout_marginLeft="10dp"
+            android:id="@+id/sheetproduct_subtotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/open_sans_semibold"
             android:text="Rp 12.000"
             android:textColor="#000"
-            android:textSize="16sp"
-            android:fontFamily="@font/open_sans_semibold"/>
+            android:textSize="16sp" />
     </LinearLayout>
     <Button
         android:id="@+id/popup_lanjutKeranjang"

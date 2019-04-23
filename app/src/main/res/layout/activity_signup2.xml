@@ -84,16 +84,17 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/signup_name"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/form"
+                    android:fontFamily="@font/open_sans"
                     android:hint="Masukkan nama lengkapmu"
                     android:inputType="textPersonName"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:fontFamily="@font/open_sans"
-                    android:textSize="16sp"
-                    android:textCursorDrawable="@null"/>
+                    android:textCursorDrawable="@null"
+                    android:textSize="16sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -111,6 +112,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/signup_state"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/form"
@@ -136,6 +138,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/signup_city"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/form"
@@ -161,6 +164,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/signup_kecamatan"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/form"
@@ -185,15 +189,16 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/signup_road"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/form"
+                    android:fontFamily="@font/open_sans"
                     android:hint="Masukkan alamatmu"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:fontFamily="@font/open_sans"
-                    android:textSize="16sp"
-                    android:textCursorDrawable="@null"/>
+                    android:textCursorDrawable="@null"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <Button

@@ -13,6 +13,15 @@
         android:theme="@style/AppTheme">
         <activity android:name=".KategoriActivity"></activity>
         <activity
+            android:name=".SplashActivity"
+            android:theme="@style/FirstPage">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ChatActivity"
             android:theme="@style/fragmentClub"></activity>
         <activity android:name=".ListChatActivity" />
@@ -29,15 +38,6 @@
             android:name=".ProductClickedActivity"
             android:parentActivityName=".NavigationBar"
             android:theme="@style/hideActionBar" />
-        <activity
-            android:name=".SplashActivity"
-            android:theme="@style/FirstPage">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".NavigationBar"
             android:theme="@style/fragmentClub" />

@@ -102,7 +102,7 @@ public class SigninActivity extends AppCompatActivity {
         Button mLogin = findViewById(R.id.btnLogin);
         final String noTelpon = telpon.getText().toString();
 
-        if(noTelpon.equals(""))
+        if(noTelpon.equals("") && noTelpon.length() < 10)
         {
             mLogin.setEnabled(false);
             mLogin.setBackground(this.getResources().getDrawable(R.drawable.btn_login_disabled));
@@ -117,17 +117,8 @@ public class SigninActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent tipeMasuk = new Intent(SigninActivity.this, OTPActivity.class);
-
-                    if (noTelpon.equals("82229240146")){
-                        Toast.makeText(SigninActivity.this, "+62" + noTelpon, Toast.LENGTH_SHORT).show();
-
-                        tipeMasuk.putExtra("tipe", "masuk");
-                        startActivity(tipeMasuk);
-                    }
-
-                    else {
-                        Toast.makeText(SigninActivity.this, "Belum Terdaftar", Toast.LENGTH_SHORT).show();
-                    }
+                    tipeMasuk.putExtra("msisdn", noTelpon);
+                    startActivity(tipeMasuk);
                 }
             });
         }

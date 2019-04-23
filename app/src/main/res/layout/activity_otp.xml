@@ -122,7 +122,7 @@
                     android:layout_height="wrap_content"
                     app:pinWidth="40dp"
                     app:pinHeight="40dp"
-                    app:pinLength="4"
+                    app:pinLength="6"
                     app:pinBackground="@drawable/form_otp"
                     app:inputType="number"
                     app:cursorVisible="false"

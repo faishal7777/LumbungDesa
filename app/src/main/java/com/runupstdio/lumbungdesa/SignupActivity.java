@@ -102,7 +102,7 @@ public class SignupActivity extends AppCompatActivity {
         Button btnRegLanjut = findViewById(R.id.btnRegLanjut);
         final String noTelpon = telpon.getText().toString();
 
-        if(noTelpon.equals(""))
+        if(noTelpon.equals("") && noTelpon.length() < 10)
         {
             btnRegLanjut.setEnabled(false);
             btnRegLanjut.setBackground(this.getResources().getDrawable(R.drawable.btn_login_disabled));
@@ -117,15 +117,8 @@ public class SignupActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent tipeMasuk = new Intent(SignupActivity.this, OTPActivity.class);
-
-                    if (noTelpon.equals("82229240146")){
-                        Toast.makeText(SignupActivity.this, "Nomor Sudah Terdaftar", Toast.LENGTH_LONG).show();
-                    }
-                    else{
-                        Toast.makeText(SignupActivity.this, "62" + noTelpon, Toast.LENGTH_LONG).show();
-                        tipeMasuk.putExtra("tipe", "daftar");
-                        startActivity(tipeMasuk);
-                    }
+                    tipeMasuk.putExtra("msisdn", noTelpon);
+                    startActivity(tipeMasuk);
                 }
             });
 
