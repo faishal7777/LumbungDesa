@@ -60,10 +60,16 @@ public class TagihanAdapter extends RecyclerView.Adapter<TagihanAdapter.ViewHold
                 holder.ProductName.setVisibility(View.VISIBLE);
                 holder.ProductName.setText(listTagihan.getProductName());
             }
+            holder.ProductPrice.setText(listTagihan.getTotalPrice());
+            holder.mTagihanStatus.setText(listTagihan.getProductStatus());
+        } else {
+            holder.ProductName.setText("");
+            holder.ProductName.setBackgroundColor(mContext.getResources().getColor(R.color.shimmer));
+            holder.ProductPrice.setText("      ");
+            holder.ProductPrice.setBackgroundColor(mContext.getResources().getColor(R.color.shimmer));
+            holder.mTagihanStatus.setText("      ");
+            holder.mTagihanStatus.setBackgroundColor(mContext.getResources().getColor(R.color.shimmer));
         }
-        holder.ProductName.setText(listTagihan.getProductName());
-        holder.ProductPrice.setText(listTagihan.getTotalPrice());
-        holder.mTagihanStatus.setText(listTagihan.getProductStatus());
     }
 
     @Override

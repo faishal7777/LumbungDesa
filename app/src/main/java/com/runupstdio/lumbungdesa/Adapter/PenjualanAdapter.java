@@ -105,8 +105,8 @@ public class PenjualanAdapter extends RecyclerView.Adapter<PenjualanAdapter.View
 
             ImgProduct1 = itemView.findViewById(R.id.imgProduct1);
             ImgProduct2 = itemView.findViewById(R.id.imgProduct2);
-            ProductPrice = itemView.findViewById(R.id.totalHargaProduct);
-            Status = itemView.findViewById(R.id.status);
+            //ProductPrice = itemView.findViewById(R.id.totalHargaProduct);
+            //Status = itemView.findViewById(R.id.status);
             Terima = itemView.findViewById(R.id.btn_terima);
             Batal = itemView.findViewById(R.id.btn_batal);
         }

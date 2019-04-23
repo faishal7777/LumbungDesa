@@ -16,10 +16,6 @@ import java.util.List;
 
 public class PembelianAdapter extends RecyclerView.Adapter<PembelianAdapter.ViewHolder>{
 
-    public static final int BELUM_DIBAYAR = 0;
-    public static final int DIBAYAR = 1;
-    public static final int DIBATALKAN = 2;
-
     private List<Tagihan> mPembelian;
     private Context mContext;
 
@@ -28,59 +24,54 @@ public class PembelianAdapter extends RecyclerView.Adapter<PembelianAdapter.View
         this.mContext = mContext;
     }
 
-
-
     @Override
     public PembelianAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (viewType == BELUM_DIBAYAR) {
-            View v = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.list_delivered, parent, false);
-            return new PembelianAdapter.ViewHolder(v);
-        }
-        else {
-            View v = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.list_tagihan, parent, false);
-            return new PembelianAdapter.ViewHolder(v);
-        }
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.list_tagihan, parent, false);
+        return new PembelianAdapter.ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(PembelianAdapter.ViewHolder holder, final int position) {
-        final Tagihan listPembelian = mPembelian.get(position);
-        /*
-        String currentUrlProduct1 = listPembelian.getImageProductUrl1();
-        String currentUrlProduct2 = listPembelian.getImageProductUrl2();
+        final Tagihan listTagihan = mPembelian.get(position);
+
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
         params.setMargins(0, 0, 0, 0);
 
-        Glide.with(mContext)
-                .asBitmap()
-                .load(currentUrlProduct1)
-                .into(holder.ImgProduct1);
-        Glide.with(mContext)
-                .asBitmap()
-                .load(currentUrlProduct2)
-                .into(holder.ImgProduct2);
+        if(listTagihan.getProductUrl() != null) {
+            List<String> imgProductUrl = listTagihan.getProductUrl();
+            Glide.with(mContext)
+                    .asBitmap()
+                    .load(imgProductUrl.get(0))
+                    .into(holder.ImgProduct1);
 
-        holder.ProductPrice.setText(listPembelian.getTotalPrice());
-        holder.ProductPrice.setLayoutParams(params);
-        holder.ProductPrice.setBackgroundResource(0);
-
-        holder.Status.setText(listPembelian.getStatus());
-        holder.Status.setLayoutParams(params);
-        holder.Status.setBackgroundResource(0);
-
-        holder.TerimaBarang.setBackgroundResource(R.drawable.btn_login);
-        holder.TerimaBarang.setText("Terima Barang");
-        holder.TerimaBarang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+            if (imgProductUrl.size() > 1) {
+                Glide.with(mContext)
+                        .asBitmap()
+                        .load(imgProductUrl.get(1))
+                        .into(holder.ImgProduct2);
+                holder.ImgProduct2.setVisibility(View.VISIBLE);
+                holder.ProductName.setVisibility(View.GONE);
+            } else {
+                holder.ProductName.setVisibility(View.VISIBLE);
+                holder.ProductName.setText(listTagihan.getProductName());
             }
-        });*/
+            holder.ProductPrice.setText(listTagihan.getTotalPrice());
+            holder.mTagihanStatus.setText(listTagihan.getProductStatus());
+            if(listTagihan.getProductStatus().toUpperCase() == "DIKIRIM"){
+                holder.mLnBtnPickup.setVisibility(View.VISIBLE);
+            }
+        } else {
+            holder.ProductName.setText("");
+            holder.ProductName.setBackgroundColor(mContext.getResources().getColor(R.color.shimmer));
+            holder.ProductPrice.setText("      ");
+            holder.ProductPrice.setBackgroundColor(mContext.getResources().getColor(R.color.shimmer));
+            holder.mTagihanStatus.setText("      ");
+            holder.mTagihanStatus.setBackgroundColor(mContext.getResources().getColor(R.color.shimmer));
+        }
     }
 
     @Override
@@ -90,30 +81,18 @@ public class PembelianAdapter extends RecyclerView.Adapter<PembelianAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView ImgProduct1, ImgProduct2;
-        TextView ProductPrice, Status;
-        Button TerimaBarang;
+        TextView ProductName, ProductPrice, mTagihanStatus;
+        LinearLayout mLnBtnPickup;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             ImgProduct1 = itemView.findViewById(R.id.imgProduct1);
             ImgProduct2 = itemView.findViewById(R.id.imgProduct2);
-            ProductPrice = itemView.findViewById(R.id.totalHargaProduct);
-            Status = itemView.findViewById(R.id.status);
-            TerimaBarang = itemView.findViewById(R.id.btn_pickUps);
-        }
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        if (mPembelian.get(position).getProductStatus().equals("0")){
-            return BELUM_DIBAYAR;
-        }
-        else if (mPembelian.get(position).getProductStatus().equals("1")){
-            return DIBAYAR;
-        }
-        else {
-            return DIBATALKAN;
+            ProductName = itemView.findViewById(R.id.tagihan_productName);
+            ProductPrice = itemView.findViewById(R.id.tagihan_ProductPrice);
+            mTagihanStatus = itemView.findViewById(R.id.tagihan_status);
+            mLnBtnPickup = itemView.findViewById(R.id.lnBtnPickup);
         }
     }
 }
