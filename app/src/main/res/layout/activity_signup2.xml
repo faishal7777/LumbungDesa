@@ -117,7 +117,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/form"
-                    android:hint="Masukkan nama kamu"
+                    android:hint="Masukkan provinsimu"
                     android:inputType="textPersonName"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp" />
@@ -143,7 +143,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/form"
-                    android:hint="Masukkan nomor telpon kamu"
+                    android:hint="Masukkan kota/kabupatenmu"
                     android:inputType="textPhonetic"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp" />
@@ -169,7 +169,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/form"
-                    android:hint="Masukkan password kamu"
+                    android:hint="Masukkan kecamatan"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp" />
             </LinearLayout>

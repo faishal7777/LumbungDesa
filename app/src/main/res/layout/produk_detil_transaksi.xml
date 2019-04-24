@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/bg"
+    android:paddingBottom="15dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="15dp">
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/imgDetilProduct"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_weight="0"
+                android:layout_gravity="center"
+                android:background="@color/shimmer"
+                android:src="@color/shimmer"
+                app:riv_corner_radius="6dp"
+                android:scaleType="centerCrop"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:orientation="vertical"
+                android:layout_marginLeft="15dp">
+
+                <TextView
+                    android:id="@+id/namaProductDetil"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/titillium_web_semibold"
+                    android:maxLines="1"
+                    android:text="Ndeogmu coy mantab jiwa asoy"
+                    android:textColor="@color/textBlueDark"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/jumlahProductDetil"
+                    android:maxLines="1"
+                    android:textColor="@color/textBlueDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jumlah barang : 1"
+                    android:fontFamily="@font/open_sans"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/hargaProductDetil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans"
+                    android:maxLines="1"
+                    android:text="Total harga : Rp 150.000"
+                    android:textColor="@color/colorBtnBlock"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
