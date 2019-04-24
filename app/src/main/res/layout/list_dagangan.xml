@@ -22,7 +22,7 @@
                 android:orientation="horizontal">
 
                 <com.makeramen.roundedimageview.RoundedImageView
-                    android:id="@+id/imgDagangan"
+                    android:id="@+id/imgProdukDagangan"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:layout_gravity="center"
@@ -40,18 +40,18 @@
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imgDagangan">
+                    app:layout_constraintStart_toEndOf="@id/imgProdukDagangan">
                     <TextView
-                        android:id="@+id/totalHargaProduct"
+                        android:id="@+id/namaProdukDagangan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/open_sans_semibold"
+                        android:fontFamily="@font/titillium_web_bold"
                         android:maxLines="1"
                         android:text="Pentol Bakar"
                         android:textColor="@color/textBlueDark"
                         android:textSize="16sp" />
                     <TextView
-                        android:id="@+id/status"
+                        android:id="@+id/hargaProdukDagangan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_semibold"
