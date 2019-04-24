@@ -147,7 +147,7 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
                     if(productDetails.getStatus()){
                         mProductName.setText(productDetails.getData().getProductName());
                         szProductName = productDetails.getData().getProductName();
-                        mProductPrice.setText("Rp "+productDetails.getData().getProductPrice());
+                        mProductPrice.setText("Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(productDetails.getData().getProductPrice()))));
                         iProductPrice = Integer.parseInt(productDetails.getData().getProductPrice());
 
                         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

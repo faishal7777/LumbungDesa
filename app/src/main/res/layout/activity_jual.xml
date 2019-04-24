@@ -1,240 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
     tools:context=".JualActivity"
     android:orientation="vertical">
-
-    <LinearLayout
-        android:id="@+id/namaProduk"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintVertical_bias="0"
-        android:background="#FFF"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:layout_margin="15dp"
-            android:background="@drawable/btn_jual"
-            android:fontFamily="@font/open_sans_semibold"
-            android:text="Tambahkan Foto Produk"
-            android:textAllCaps="false"
-            android:textColor="@color/colorBtnBlock"
-            android:textSize="14dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/titillium_web_semibold"
-                android:text="Nama Produk"
-                android:textColor="@color/textBlueDark"
-                android:textSize="16dp" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/form"
-                android:fontFamily="@font/open_sans"
-                android:hint="Masukkan nama produkmu"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:textColor="#000"
-                android:textCursorDrawable="@null"
-                android:textSize="16dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/titillium_web_semibold"
-                android:text="Harga"
-                android:textColor="@color/textBlueDark"
-                android:textSize="16sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/form"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:fontFamily="@font/open_sans"
-                        android:text="Rp. "
-                        android:textSize="16sp" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@null"
-                        android:fontFamily="@font/open_sans"
-                        android:inputType="number"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:textColor="#000"
-                        android:textCursorDrawable="@null"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:text="/"
-                    android:textColor="@color/textBlueDark"
-                    android:textSize="16sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginRight="100dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/form"
-                    android:fontFamily="@font/open_sans"
-                    android:inputType="number"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:textColor="#000"
-                    android:textCursorDrawable="@null"
-                    android:textSize="16sp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
-                        android:fontFamily="@font/open_sans"
-                        android:text="Kg"
-                        android:textSize="16sp" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/deskripsi"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:background="#FFF"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/namaProduk">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="@font/titillium_web_semibold"
-            android:text="Deskripsi"
-            android:textColor="@color/textBlueDark"
-            android:textSize="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
-            android:src="@drawable/ic_arrow_drop_down_grey_24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </android.support.constraint.ConstraintLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:background="#FFF"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deskripsi">
-
+        android:background="@color/bg">
         <LinearLayout
+            android:id="@+id/namaProduk"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            app:layout_constraintVertical_bias="0"
+            android:background="#FFF"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/sell_pic1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    app:riv_corner_radius="6dp"
+                    android:src="@color/shimmer"
+                    android:background="@drawable/bg_btn_shimmer"
+                    android:visibility="gone"
+                    android:scaleType="centerCrop"/>
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/sell_pic2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    app:riv_corner_radius="6dp"
+                    android:src="@color/shimmer"
+                    android:background="@drawable/bg_btn_shimmer"
+                    android:visibility="gone"
+                    android:scaleType="centerCrop"/>
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/sell_pic3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    app:riv_corner_radius="6dp"
+                    android:src="@color/shimmer"
+                    android:background="@drawable/bg_btn_shimmer"
+                    android:visibility="gone"
+                    android:scaleType="centerCrop"/>
+                <Button
+                    android:id="@+id/sell_addPict"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/btn_jual"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:text="Tambahkan Foto Produk"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorBtnBlock"
+                    android:textSize="14dp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="15dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/titillium_web_semibold"
-                    android:text="Masa Kadaluarsa"
+                    android:text="Nama Produk"
                     android:textColor="@color/textBlueDark"
                     android:textSize="16dp" />
 
+                <EditText
+                    android:id="@+id/sell_productName"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/form"
+                    android:fontFamily="@font/open_sans"
+                    android:hint="Masukkan nama produkmu"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="#000"
+                    android:textCursorDrawable="@null"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/titillium_web_semibold"
+                    android:text="Harga"
+                    android:textColor="@color/textBlueDark"
+                    android:textSize="16sp" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
                     android:orientation="horizontal">
 
-                    <EditText
-                        android:layout_width="60dp"
-                        android:layout_height="40dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/form"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/open_sans"
+                            android:text="Rp. "
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/sell_productPrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@null"
+                            android:fontFamily="@font/open_sans"
+                            android:inputType="number"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textColor="#000"
+                            android:textCursorDrawable="@null"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/open_sans_semibold"
+                        android:text="/"
+                        android:textColor="@color/textBlueDark"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="100dp"
+                        android:layout_weight="1"
                         android:background="@drawable/form"
                         android:fontFamily="@font/open_sans"
+                        android:inputType="number"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:textColor="#000"
                         android:textCursorDrawable="@null"
-                        android:textSize="16dp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="4dp"
-                        android:background="@drawable/form">
+                        android:textSize="16sp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -242,117 +178,194 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="10dp"
                             android:fontFamily="@font/open_sans"
-                            android:text="Hari"
+                            android:text="Kg"
                             android:textSize="16sp" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="28dp"
-                            android:src="@drawable/ic_arrow_drop_down_grey_24dp" />
                     </LinearLayout>
                 </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/deskripsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="#FFF"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/namaProduk">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/titillium_web_semibold"
+                android:text="Deskripsi"
+                android:textColor="@color/textBlueDark"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/sell_productDesc"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
+                android:padding="10dp"
+                android:background="@drawable/form"
+                android:textCursorDrawable="@null"
+                android:gravity="top"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="#FFF"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/deskripsi">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/titillium_web_semibold"
+                        android:text="Masa Kadaluarsa"
+                        android:textColor="@color/textBlueDark"
+                        android:textSize="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/form"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/sell_expAt"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:fontFamily="@font/open_sans"
+                            android:inputType="number"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textColor="#000"
+                            android:textCursorDrawable="@null"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:fontFamily="@font/open_sans"
+                            android:text="Hari"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/titillium_web_semibold"
+                        android:text="Stok Produk"
+                        android:textColor="@color/textBlueDark"
+                        android:textSize="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/form"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/sell_stock"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:fontFamily="@font/open_sans"
+                            android:inputType="number"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textColor="#000"
+                            android:textCursorDrawable="@null"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:fontFamily="@font/open_sans"
+                            android:text="Pcs"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="15dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_marginLeft="15dp"
+                android:orientation="vertical"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="60dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/titillium_web_semibold"
-                    android:text="Masa Kadaluarsa"
+                    android:text="Kategori Produk"
                     android:textColor="@color/textBlueDark"
                     android:textSize="16dp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/form"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:fontFamily="@font/open_sans"
-                        android:inputType="number"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:textColor="#000"
-                        android:textCursorDrawable="@null"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="4"
-                        android:fontFamily="@font/open_sans"
-                        android:text="Pcs"
-                        android:textSize="16sp" />
-                </LinearLayout>
+                <Spinner
+                    android:id="@+id/spinner_Kategori"
+                    android:layout_width="160dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="4dp"/>
             </LinearLayout>
-
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
-            android:orientation="vertical"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="60dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/titillium_web_semibold"
-                android:text="Kategori Produk"
-                android:textColor="@color/textBlueDark"
-                android:textSize="16dp" />
-
-            <LinearLayout
-                android:layout_width="160dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/form">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:fontFamily="@font/open_sans"
-                    android:text="Kategori"
-                    android:textSize="16sp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="56dp"
-                    android:src="@drawable/ic_arrow_drop_down_grey_24dp" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_gravity="bottom"
-        android:background="#FFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
+            android:layout_height="56dp"
+            android:layout_gravity="bottom"
+            android:background="#FFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent">
             <Button
-                android:id="@+id/button"
+                android:id="@+id/sell_button"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
@@ -365,5 +378,7 @@
                 android:textSize="14dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"/>
-    </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>

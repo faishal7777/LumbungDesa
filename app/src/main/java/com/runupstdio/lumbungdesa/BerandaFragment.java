@@ -139,7 +139,7 @@ public class BerandaFragment extends Fragment {
                 .subscribe(feedInfo -> {
                     if(feedInfo.getStatus()){
                         for(int i=0; i<feedInfo.getData().size(); i++){
-                            barangHariIniArrayList.add(new BarangHariIni(feedInfo.getData().get(i).getId(), feedInfo.getData().get(i).getProductName(), "Rp "+feedInfo.getData().get(i).getProductPrice(), feedInfo.getData().get(i).getAvaProduct()));
+                            barangHariIniArrayList.add(new BarangHariIni(feedInfo.getData().get(i).getId(), feedInfo.getData().get(i).getProductName(), "Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getProductPrice()))), feedInfo.getData().get(i).getAvaProduct()));
                         }
                         initRecyclerView();
                     } else {
