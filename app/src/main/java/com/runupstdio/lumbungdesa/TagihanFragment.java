@@ -1,5 +1,6 @@
 package com.runupstdio.lumbungdesa;
 import android.content.Intent;
+import android.database.Observable;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;

@@ -100,7 +100,7 @@ public class CheckoutActivity extends AppCompatActivity {
                     public void onResponse(Call<Checkout> call, Response<Checkout> response) {
                         if (response.isSuccessful()) {
                             if (response.body().getStatus()) {
-                                ShowPopup();
+                                ShowDialog();
                             } else {
                                 Toast.makeText(CheckoutActivity.this, response.body().getMessage(), Toast.LENGTH_LONG).show();
                             }
@@ -169,19 +169,8 @@ public class CheckoutActivity extends AppCompatActivity {
         mRVCheckout.setAdapter(adapter);
     }
 
-    public void ShowPopup(){
-        epicDialog.setContentView(R.layout.activity_popup);
-        mBtnOke = findViewById(R.id.btn_Oke_Checkout);
-
-
-        epicDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        epicDialog.show();
-
-        mBtnOke.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                epicDialog.dismiss();
-            }
-        });
+    public void ShowDialog(){
+        PopupActivity popupDialog = new PopupActivity();
+        popupDialog.show(getSupportFragmentManager(),"reserve dialog");
     }
 }
