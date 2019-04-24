@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.support.constraint.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
@@ -29,6 +29,7 @@
                     android:id="@+id/imgProduct1"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
+                    android:layout_weight="0"
                     android:layout_gravity="center"
                     android:background="@color/shimmer"
                     android:src="@color/shimmer"
@@ -48,36 +49,54 @@
                     app:layout_constraintStart_toEndOf="@+id/imgProduct1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:riv_corner_radius="6dp" />
+                    app:riv_corner_radius="6dp"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/titillium_web_semibold"
+                    android:lineSpacingExtra="-6sp"
+                    android:maxLines="2"
+                    android:layout_gravity="center_vertical"
+                    android:text="Ndeogmu coy mantab jiwa asoy"
+                    android:textColor="@color/textBlueDark"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgProduct1"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15dp"
                     android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    android:layout_weight="0">
+
                     <TextView
                         android:id="@+id/totalHargaProduct"
-                        android:layout_width="130dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/open_sans_semibold"
+                        android:fontFamily="@font/titillium_web_bold"
                         android:maxLines="1"
-                        android:text="Rp229.100"
-                        android:textAlignment="textEnd"
+                        android:text="Rp 12.000"
                         android:textColor="@color/textBlueDark"
                         android:textSize="16sp" />
+
                     <TextView
                         android:id="@+id/status"
-                        android:layout_width="130dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans"
                         android:maxLines="1"
-                        android:text="DIBAYAR"
-                        android:textAlignment="textEnd"
-                        android:textColor="@color/textBlueDark"
+                        android:text="Dikirim"
+                        android:textColor="@color/colorBtnBlock"
                         android:textSize="16sp" />
                 </LinearLayout>
-            </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
