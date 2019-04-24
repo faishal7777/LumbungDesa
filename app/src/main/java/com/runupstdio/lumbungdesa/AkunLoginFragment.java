@@ -41,15 +41,9 @@ import com.runupstdio.lumbungdesa.Model.UploadImage;
 import com.runupstdio.lumbungdesa.Model.UserExist;
 
 import java.io.File;
-import java.util.List;
-
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import pub.devrel.easypermissions.EasyPermissions;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -118,6 +112,15 @@ public class AkunLoginFragment extends Fragment {
             public void onClick(View v) {
                 Intent chat = new Intent(v.getContext(), ListChatActivity.class);
                 startActivity(chat);
+            }
+        });
+
+        LinearLayout mProdukDagangan = v.findViewById(R.id.produk_dagangan_saya);
+        mProdukDagangan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent dagangan = new Intent(v.getContext(), DaganganActivity.class);
+                startActivity(dagangan);
             }
         });
 
