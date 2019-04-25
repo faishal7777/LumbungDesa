@@ -60,7 +60,7 @@ public class BarangHariIniAdapter extends RecyclerView.Adapter<BarangHariIniAdap
         holder.ProductPrice.setText(list.getProductPrice());
         holder.ProductPrice.setLayoutParams(params);
         holder.ProductPrice.setBackgroundResource(0);
-        holder.ImgProduct.setOnClickListener(new View.OnClickListener() {
+        holder.mItemBeranda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent productDetails = new Intent(mContext, ProductClickedActivity.class);
