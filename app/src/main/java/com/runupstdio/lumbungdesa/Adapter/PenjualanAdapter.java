@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.runupstdio.lumbungdesa.DetilActivity;
 import com.runupstdio.lumbungdesa.Model.Tagihan;
+import com.runupstdio.lumbungdesa.PenjualanFragment;
 import com.runupstdio.lumbungdesa.R;
 import java.util.List;
 
@@ -21,9 +22,12 @@ public class PenjualanAdapter extends RecyclerView.Adapter<PenjualanAdapter.View
     private List<Tagihan> mPembelian;
     private Context mContext;
 
-    public PenjualanAdapter(List<Tagihan> mPembelian, Context mContext) {
+    PenjualanFragment mFragment;
+
+    public PenjualanAdapter(List<Tagihan> mPembelian, Context mContext, PenjualanFragment fragment) {
         this.mPembelian = mPembelian;
         this.mContext = mContext;
+        this.mFragment = fragment;
     }
 
     @Override
@@ -74,6 +78,12 @@ public class PenjualanAdapter extends RecyclerView.Adapter<PenjualanAdapter.View
                     mContext.startActivity(a);
                 }
             });
+            holder.mBtnTerima.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mFragment.complateTrx(listTagihan.getIdTrx());
+                }
+            });
         } else {
             holder.ProductName.setText("");
             holder.ProductName.setBackgroundColor(mContext.getResources().getColor(R.color.shimmer));
@@ -94,6 +104,7 @@ public class PenjualanAdapter extends RecyclerView.Adapter<PenjualanAdapter.View
         TextView ProductName, ProductPrice, mTagihanStatus;
         LinearLayout mLnBtnAction;
         LinearLayout mLnPenjualan;
+        Button mBtnBatal, mBtnTerima;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -105,6 +116,8 @@ public class PenjualanAdapter extends RecyclerView.Adapter<PenjualanAdapter.View
             mTagihanStatus = itemView.findViewById(R.id.tagihan_status);
             mLnBtnAction = itemView.findViewById(R.id.LnBtnAction);
             mLnPenjualan = itemView.findViewById(R.id.lnTagihan);
+            mBtnBatal = itemView.findViewById(R.id.btn_batal);
+            mBtnTerima = itemView.findViewById(R.id.btn_terima);
         }
     }
 }

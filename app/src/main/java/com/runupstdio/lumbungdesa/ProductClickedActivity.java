@@ -51,7 +51,7 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
     private int iProductPrice;
     private String szProductName;
     private String szProductAva;
-    TextView mProductName, mProductPrice, mProductExp, mProductDesc, mSellerName, mSellerCity;
+    TextView mProductName, mProductPrice, mProductExp, mProductDesc, mSellerName, mSellerCity, mProductStok;
     ImageView mProductAva, mSellerAva;
     Button mbtnOpenKeranjang;
 
@@ -76,6 +76,7 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
         mProductAva = findViewById(R.id.product_ava);
         mProductName = findViewById(R.id.product_name);
         mProductPrice = findViewById(R.id.product_price);
+        mProductStok = findViewById(R.id.product_stock);
         mProductExp = findViewById(R.id.product_exp);
         mProductDesc = findViewById(R.id.product_desc);
         mToolbarView = findViewById(R.id.toolbar);
@@ -155,6 +156,11 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
                         szProductName = productDetails.getData().getProductName();
                         mProductPrice.setText("Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(productDetails.getData().getProductPrice()))));
                         iProductPrice = Integer.parseInt(productDetails.getData().getProductPrice());
+                        mProductStok.setText(productDetails.getData().getProductStok()+" Pcs");
+                        if(Integer.parseInt(productDetails.getData().getProductStok()) <= 0) {
+                            mbtnOpenKeranjang.setEnabled(false);
+                            mbtnOpenKeranjang.setBackground(getDrawable(R.drawable.bg_btn_shimmer));
+                        }
 
                         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                         Date d1 = format.parse(productDetails.getData().getCreatedAt());

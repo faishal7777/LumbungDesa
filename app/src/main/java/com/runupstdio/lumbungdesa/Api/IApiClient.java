@@ -105,12 +105,18 @@ public interface IApiClient {
     Call<Done> done(@Header("Authorization") String token,
                     @Field("transaction_id") int trxId);
 
+    @FormUrlEncoded
+    @POST("v1/accept")
+    Call<Done> accept(@Header("Authorization") String token,
+                    @Field("transaction_id") int trxId);
+
     @Multipart
     @POST("v1/product")
     Call<AddProduct> add_product(@Header("Authorization") String token,
                                  @Part("product_name") RequestBody product_name,
                                  @Part("product_desc") RequestBody product_desc,
                                  @Part("product_price") int product_price,
+                                 @Part("product_stok") int product_stok,
                                  @Part("product_cat") int product_cat,
                                  @Part("expired_at") int expired_at,
                                  @Part MultipartBody.Part[] product_image);

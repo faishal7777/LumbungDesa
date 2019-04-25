@@ -21,6 +21,9 @@ public class HistoryData {
     @SerializedName("checked_out")
     @Expose
     private String checkedOut;
+    @SerializedName("shipped")
+    @Expose
+    private String shipped;
     @SerializedName("paid")
     @Expose
     private String paid;
@@ -75,6 +78,14 @@ public class HistoryData {
 
     public void setCheckedOut(String checkedOut) {
         this.checkedOut = checkedOut;
+    }
+
+    public String getShipped() {
+        return shipped;
+    }
+
+    public void setShipped(String shipped) {
+        this.shipped = shipped;
     }
 
     public String getPaid() {

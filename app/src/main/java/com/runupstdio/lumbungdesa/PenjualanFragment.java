@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -22,6 +23,7 @@ import com.google.firebase.auth.GetTokenResult;
 import com.runupstdio.lumbungdesa.Adapter.PenjualanAdapter;
 import com.runupstdio.lumbungdesa.Api.ApiClient;
 import com.runupstdio.lumbungdesa.Api.IApiClient;
+import com.runupstdio.lumbungdesa.Model.Done;
 import com.runupstdio.lumbungdesa.Model.History;
 import com.runupstdio.lumbungdesa.Model.Penjualan;
 import com.runupstdio.lumbungdesa.Model.Tagihan;
@@ -32,6 +34,9 @@ import java.util.List;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -85,6 +90,20 @@ public class PenjualanFragment extends Fragment {
 
         }
 
+        final SwipeRefreshLayout refreshBeranda = v.findViewById(R.id.refreshPenjualan);
+        refreshBeranda.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mShimmerPenjualan.startShimmerAnimation();
+                setFeedData();
+                refreshBeranda.setRefreshing(false);
+//
+//                barangHariIni.setVisibility(View.GONE);
+//                mShimmerPembelian.setVisibility(View.VISIBLE);
+//                mShimmerPembelian.startShimmerAnimation();
+            }
+        });
+
         return v;
     }
 
@@ -100,9 +119,10 @@ public class PenjualanFragment extends Fragment {
                             List<String> prodUrl = new ArrayList<>();
                             String tempStatus = null;
                             prodUrl.add(feedInfo.getData().get(i).getAvaProduct());
-                            if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getDelivered().equals("0")) tempStatus = "Dikirim";
-                            else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getDelivered().equals("1")) tempStatus = "Selesai";
-                            else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("0") && feedInfo.getData().get(i).getDelivered().equals("0")) tempStatus = "Belum Bayar";
+                            if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("0") && feedInfo.getData().get(i).getShipped().equals("0") && feedInfo.getData().get(i).getDelivered().equals("0")) tempStatus = "Belum Bayar";
+                            else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getShipped().equals("0") && feedInfo.getData().get(i).getDelivered().equals("0")) tempStatus = "Dibayar";
+                            else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getShipped().equals("1") && feedInfo.getData().get(i).getDelivered().equals("0")) tempStatus = "Dikirim";
+                            else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getShipped().equals("1") && feedInfo.getData().get(i).getDelivered().equals("1")) tempStatus = "Sukses";
                             Log.d("Pembelian", ""+tempStatus);
                             mPenjualan.add(new Tagihan(Integer.parseInt(feedInfo.getData().get(i).getIdTransaction()), feedInfo.getData().get(i).getProductName(), "Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getPriceTotals()))), prodUrl, tempStatus));
                         }
@@ -116,9 +136,35 @@ public class PenjualanFragment extends Fragment {
 
     private void initRecyclerView(){
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-        PenjualanAdapter adapter = new PenjualanAdapter(mPenjualan, getContext());
+        PenjualanAdapter adapter = new PenjualanAdapter(mPenjualan, getContext(), this);
         mRVListPenjualan.setLayoutManager(layoutManager);
         mRVListPenjualan.setAdapter(adapter);
     }
 
+    public void complateTrx(int idtrx){
+        Call<Done> addrCall = mApiClient.accept("Bearer "+idToken, idtrx);
+        addrCall.enqueue(new Callback<Done>() {
+            @Override
+            public void onResponse(Call<Done> call, Response<Done> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus()) {
+                        Intent a = new Intent(getContext(), DetilActivity.class);
+                        a.putExtra("idTrx", idtrx);
+                        startActivity(a);
+                    } else {
+                        Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                } else if (response.errorBody() != null) {
+                    // Get response errorBody
+                    String errorBody = response.errorBody().toString();
+                    Toast.makeText(getContext(), errorBody, Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Done> call, Throwable t) {
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 }
