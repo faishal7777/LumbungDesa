@@ -163,6 +163,7 @@
                                 app:riv_corner_radius="6dp" />
 
                             <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/berasnbiji"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:scaleType="centerCrop"
@@ -206,6 +207,7 @@
                                 app:riv_corner_radius="6dp" />
 
                             <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/buah"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:scaleType="centerCrop"
@@ -248,6 +250,7 @@
                                 app:riv_corner_radius="6dp" />
 
                             <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/daging"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:scaleType="centerCrop"
@@ -291,6 +294,7 @@
                                 app:riv_corner_radius="6dp" />
 
                             <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/olahan"
                                 android:layout_width="match_parent"
                                 android:layout_height="102dp"
                                 android:scaleType="centerCrop"
@@ -334,6 +338,7 @@
                                 app:riv_corner_radius="6dp" />
 
                             <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/sayur"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:scaleType="centerCrop"
@@ -376,6 +381,7 @@
                                 app:riv_corner_radius="6dp" />
 
                             <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/telur"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:scaleType="centerCrop"

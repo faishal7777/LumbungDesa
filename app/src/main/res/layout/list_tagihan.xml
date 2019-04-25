@@ -12,6 +12,7 @@
         android:layout_marginBottom="2dp"
         app:cardCornerRadius="10dp">
         <LinearLayout
+            android:id="@+id/lnTagihan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -123,13 +124,15 @@
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@drawable/bg_btn_shimmer"
+                    android:background="@drawable/btn_login"
+                    android:text="Terima Barang"
                     android:fontFamily="@font/titillium_web_semibold"
                     android:textAllCaps="false"
                     android:textColor="@color/colorWhite"
                     android:textSize="16dp" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/LnBtnAction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -149,6 +152,7 @@
                     android:background="@drawable/bg_btn_shimmer"
                     android:fontFamily="@font/titillium_web_semibold"
                     android:textAllCaps="false"
+                    android:text="Batal"
                     android:textColor="#707070"
                     android:textSize="16dp"
                     android:layout_marginRight="8dp"/>
@@ -160,7 +164,8 @@
                     android:layout_height="40dp"
                     android:layout_marginLeft="8dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_btn_shimmer"
+                    android:text="Terima Pesanan"
+                    android:background="@drawable/btn_login"
                     android:fontFamily="@font/titillium_web_semibold"
                     android:textAllCaps="false"
                     android:textColor="@color/colorWhite"

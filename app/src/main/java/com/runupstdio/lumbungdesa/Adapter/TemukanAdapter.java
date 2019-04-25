@@ -1,6 +1,7 @@
 package com.runupstdio.lumbungdesa.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.runupstdio.lumbungdesa.Model.BarangHariIni;
 import com.runupstdio.lumbungdesa.Model.Tagihan;
+import com.runupstdio.lumbungdesa.ProductClickedActivity;
 import com.runupstdio.lumbungdesa.R;
 
 import java.util.List;
@@ -52,7 +54,9 @@ public class TemukanAdapter extends RecyclerView.Adapter<TemukanAdapter.ViewHold
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent productDetails = new Intent(mContext, ProductClickedActivity.class);
+                productDetails.putExtra("prodId", list.getProductId());
+                mContext.startActivity(productDetails);
             }
         });
     }

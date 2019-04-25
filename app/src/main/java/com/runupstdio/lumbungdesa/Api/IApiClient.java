@@ -5,8 +5,11 @@ import com.runupstdio.lumbungdesa.Model.AddProduct;
 import com.runupstdio.lumbungdesa.Model.Address;
 import com.runupstdio.lumbungdesa.Model.Cart;
 import com.runupstdio.lumbungdesa.Model.Checkout;
+import com.runupstdio.lumbungdesa.Model.Detail;
+import com.runupstdio.lumbungdesa.Model.Done;
 import com.runupstdio.lumbungdesa.Model.Feed;
 import com.runupstdio.lumbungdesa.Model.History;
+import com.runupstdio.lumbungdesa.Model.Penjualan;
 import com.runupstdio.lumbungdesa.Model.Product;
 import com.runupstdio.lumbungdesa.Model.Profile;
 import com.runupstdio.lumbungdesa.Model.Register;
@@ -53,6 +56,10 @@ public interface IApiClient {
     @GET("v1/user-info")
     Observable<Profile> user_info(@Header("Authorization") String token);
 
+    @GET("v1/user-info")
+    Observable<Profile> user_info_prod(@Header("Authorization") String token,
+                                       @Query("product_id") int prodid);
+
     @GET("v1/user-address")
     Call<Address> user_address(@Header("Authorization") String token);
 
@@ -61,6 +68,14 @@ public interface IApiClient {
 
     @GET("v1/home")
     Observable<Feed> feed_home(@Header("Authorization") String token);
+
+    @GET("v1")
+    Observable<Feed> feed_index_cat(@Query("catID") int catid);
+
+    @GET("v1/home")
+    Observable<Feed> feed_home_cat(@Header("Authorization") String token,
+                                   @Query("catID") int catid);
+
 
     @GET("v1/product")
     Observable<Product> product_detail(@Query ("productId") int prodId,
@@ -85,6 +100,11 @@ public interface IApiClient {
     Call<Checkout> checkout(@Header("Authorization") String token,
                             @Field("id_payment") int id_payment);
 
+    @FormUrlEncoded
+    @POST("v1/done")
+    Call<Done> done(@Header("Authorization") String token,
+                    @Field("transaction_id") int trxId);
+
     @Multipart
     @POST("v1/product")
     Call<AddProduct> add_product(@Header("Authorization") String token,
@@ -99,4 +119,11 @@ public interface IApiClient {
     @GET("v1/history")
     Observable<History> get_history(@Header("Authorization") String token,
                                     @Query("status") String status);
+
+    @GET("v1/history")
+    Observable<Penjualan> get_history_penjualan(@Header("Authorization") String token,
+                                                @Query("status") String status);
+    @GET("v1/detail")
+    Observable<Detail> get_detail(@Header("Authorization") String token,
+                                  @Query("transaction_id") int trxId);
 }

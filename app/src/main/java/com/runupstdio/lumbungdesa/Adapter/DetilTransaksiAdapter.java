@@ -44,9 +44,7 @@ public class DetilTransaksiAdapter extends RecyclerView.Adapter<DetilTransaksiAd
                 .into(holder.ImgProduct);
 
         holder.ProductNama.setText(listDetilTransaksi.getNamaProduk());
-
         holder.ProductHarga.setText(listDetilTransaksi.getHargaProduk());
-
         holder.ProductQuantity.setText(listDetilTransaksi.getJumlahProduk());
     }
 

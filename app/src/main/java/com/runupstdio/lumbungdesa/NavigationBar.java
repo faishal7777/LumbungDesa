@@ -78,6 +78,7 @@ public class NavigationBar extends AppCompatActivity
                     if(userInfo.getStatus()){
                         editor = settings.edit();
                         editor.putString("ProfileName", userInfo.getData().getName());
+                        editor.putString("ProfilCity", userInfo.getData().getAddress().getCity());
                         if(userInfo.getData().getIsVerified().equals("1")) editor.putString("ProfileStatus", "Verified");
                         else editor.putString("ProfileStatus", "Unverified");
                         editor.putString("ProfileAva", userInfo.getData().getAvaUrl());

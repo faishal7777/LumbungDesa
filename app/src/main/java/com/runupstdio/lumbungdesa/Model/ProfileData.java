@@ -31,6 +31,9 @@ public class ProfileData {
     @SerializedName("updated_at")
     @Expose
     private String updatedAt;
+    @SerializedName("address")
+    @Expose
+    private ProfileDataAddress address;
 
     public String getId() {
         return id;
@@ -102,5 +105,13 @@ public class ProfileData {
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public ProfileDataAddress getAddress() {
+        return address;
+    }
+
+    public void setAddress(ProfileDataAddress address) {
+        this.address = address;
     }
 }

@@ -32,7 +32,7 @@ public class ProdukKategoriAdapter extends RecyclerView.Adapter<ProdukKategoriAd
     @Override
     public ProdukKategoriAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_tagihan, parent, false);
+                .inflate(R.layout.list_produk_kategori, parent, false);
         return new ProdukKategoriAdapter.ViewHolder(v);
     }
 

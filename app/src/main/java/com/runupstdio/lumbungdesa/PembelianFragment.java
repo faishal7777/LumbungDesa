@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,6 +22,8 @@ import com.google.firebase.auth.GetTokenResult;
 import com.runupstdio.lumbungdesa.Adapter.PembelianAdapter;
 import com.runupstdio.lumbungdesa.Api.ApiClient;
 import com.runupstdio.lumbungdesa.Api.IApiClient;
+import com.runupstdio.lumbungdesa.Model.Address;
+import com.runupstdio.lumbungdesa.Model.Done;
 import com.runupstdio.lumbungdesa.Model.History;
 import com.runupstdio.lumbungdesa.Model.Tagihan;
 import java.util.ArrayList;
@@ -29,6 +32,9 @@ import java.util.List;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PembelianFragment extends Fragment {
 
@@ -47,14 +53,14 @@ public class PembelianFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_pembelian, null);
 
         mRVListPembelian = v.findViewById(R.id.rvPembelian);
-        mShimmerPembelian = v.findViewById(R.id.shimmerTagihan);
+        mShimmerPembelian = v.findViewById(R.id.shimmerPembelian);
 
         mAuth = FirebaseAuth.getInstance();
         mApiClient = ApiClient.getClient().create(IApiClient.class);
 
         mPembelian = new ArrayList<>();
         for(int i=0; i<6; i++){
-            mPembelian.add(new Tagihan("Unknown", "Rp 0", null, "Unknown"));
+            mPembelian.add(new Tagihan(1,"Unknown", "Rp 0", null, "Unknown"));
         }
         initRecyclerView();
         mShimmerPembelian.startShimmerAnimation();
@@ -79,20 +85,21 @@ public class PembelianFragment extends Fragment {
 
         }
 
+        final SwipeRefreshLayout refreshBeranda = v.findViewById(R.id.refreshPembelian);
+        refreshBeranda.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mShimmerPembelian.startShimmerAnimation();
+                setFeedData();
+                refreshBeranda.setRefreshing(false);
+//
+//                barangHariIni.setVisibility(View.GONE);
+//                mShimmerPembelian.setVisibility(View.VISIBLE);
+//                mShimmerPembelian.startShimmerAnimation();
+            }
+        });
+
         return v;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mShimmerPembelian.startShimmerAnimation();
-        setFeedData();
-    }
-
-    @Override
-    public void onPause() {
-        mShimmerPembelian.stopShimmerAnimation();
-        super.onPause();
     }
 
     private void setFeedData(){
@@ -110,12 +117,12 @@ public class PembelianFragment extends Fragment {
                                 if(j>2) break;
                                 prodUrl.add(feedInfo.getData().get(i).getProducts().get(j).getAvaProduct());
                             }
-                            if(Boolean.parseBoolean(feedInfo.getData().get(i).getPaid())) tempStatus = "Dibayar";
-                            else if(Boolean.parseBoolean(feedInfo.getData().get(i).getDelivered())) tempStatus = "Selesai";
-                            mPembelian.add(new Tagihan(feedInfo.getData().get(i).getProducts().get(0).getProductName(), "Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getPriceTotal()))), prodUrl, tempStatus));
+                            if(feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getDelivered().equals("0")) tempStatus = "Dikirim";
+                            else if(feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getDelivered().equals("1")) tempStatus = "Selesai";
+                            Log.d("Pembelian", ""+feedInfo.getData().get(i).getPaid());
+                            mPembelian.add(new Tagihan(feedInfo.getData().get(i).getId(), feedInfo.getData().get(i).getProducts().get(0).getProductName(), "Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getPriceTotal()))), prodUrl, tempStatus));
                         }
                         initRecyclerView();
-                        Log.d("Tagihan", ""+mPembelian.get(0).getProductStatus());
                         mShimmerPembelian.stopShimmerAnimation();
                     } else {
 
@@ -125,8 +132,35 @@ public class PembelianFragment extends Fragment {
 
     private void initRecyclerView(){
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-        PembelianAdapter adapter = new PembelianAdapter(mPembelian, getContext());
+        PembelianAdapter adapter = new PembelianAdapter(mPembelian, getContext(), this);
         mRVListPembelian.setLayoutManager(layoutManager);
         mRVListPembelian.setAdapter(adapter);
+    }
+
+    public void complateTrx(int idtrx){
+        Call<Done> addrCall = mApiClient.done("Bearer "+idToken, idtrx);
+        addrCall.enqueue(new Callback<Done>() {
+            @Override
+            public void onResponse(Call<Done> call, Response<Done> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus()) {
+                        Intent a = new Intent(getContext(), DetilActivity.class);
+                        a.putExtra("idTrx", idtrx);
+                        startActivity(a);
+                    } else {
+                        Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                } else if (response.errorBody() != null) {
+                    // Get response errorBody
+                    String errorBody = response.errorBody().toString();
+                    Toast.makeText(getContext(), errorBody, Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Done> call, Throwable t) {
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

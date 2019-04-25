@@ -5,12 +5,22 @@ import java.util.List;
 public class Tagihan {
     private String productName, totalPrice, productStatus;
     private List<String> imageProductUrl;
+    private int idTrx;
 
-    public Tagihan(String prodName, String productPrice, List<String> prodUrl, String stats){
+    public Tagihan(int idtrx, String prodName, String productPrice, List<String> prodUrl, String stats){
+        this.idTrx = idtrx;
         this.productName = prodName;
         this.totalPrice = productPrice;
         this.imageProductUrl = prodUrl;
         this.productStatus = stats;
+    }
+
+    public int getIdTrx() {
+        return idTrx;
+    }
+
+    public void setIdTrx(int id) {
+        this.idTrx = id;
     }
 
     public String getProductName() {

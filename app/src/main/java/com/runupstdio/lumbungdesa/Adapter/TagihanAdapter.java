@@ -1,6 +1,7 @@
 package com.runupstdio.lumbungdesa.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,7 +12,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+import com.runupstdio.lumbungdesa.DetilActivity;
 import com.runupstdio.lumbungdesa.Model.Tagihan;
+import com.runupstdio.lumbungdesa.NavigationBar;
 import com.runupstdio.lumbungdesa.R;
 import java.util.List;
 
@@ -62,6 +65,14 @@ public class TagihanAdapter extends RecyclerView.Adapter<TagihanAdapter.ViewHold
             }
             holder.ProductPrice.setText(listTagihan.getTotalPrice());
             holder.mTagihanStatus.setText(listTagihan.getProductStatus());
+            holder.mLnTagihan.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent a = new Intent(mContext, DetilActivity.class);
+                    a.putExtra("idTrx", listTagihan.getIdTrx());
+                    mContext.startActivity(a);
+                }
+            });
         } else {
             holder.ProductName.setText("");
             holder.ProductName.setBackgroundColor(mContext.getResources().getColor(R.color.shimmer));
@@ -80,6 +91,7 @@ public class TagihanAdapter extends RecyclerView.Adapter<TagihanAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView ImgProduct1, ImgProduct2;
         TextView ProductName, ProductPrice, mTagihanStatus;
+        LinearLayout mLnTagihan;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -89,6 +101,7 @@ public class TagihanAdapter extends RecyclerView.Adapter<TagihanAdapter.ViewHold
             ProductName = itemView.findViewById(R.id.tagihan_productName);
             ProductPrice = itemView.findViewById(R.id.tagihan_ProductPrice);
             mTagihanStatus = itemView.findViewById(R.id.tagihan_status);
+            mLnTagihan = itemView.findViewById(R.id.lnTagihan);
         }
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -24,6 +25,7 @@
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
     <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refreshTemukan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
@@ -35,13 +37,14 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <TextView
+                    android:id="@+id/temukan_greeting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginBottom="0dp"
                     android:fontFamily="@font/titillium_web_semibold"
-                    android:text="Selamat datang, Raja Ghanie!"
+                    android:text="Selamat datang, "
                     android:textSize="16sp" />
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
@@ -63,17 +66,19 @@
                             android:src="@drawable/ic_location_on_pink_24dp" />
 
                         <TextView
+                            android:id="@+id/temukan_city"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:fontFamily="@font/open_sans"
-                            android:text="Sidoarjo"
+                            android:text="Kota"
                             android:textSize="14sp" />
                     </LinearLayout>
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/kota"
+                        android:layout_width="379dp"
+                        android:layout_height="207dp"
                         android:layout_gravity="center_horizontal"
                         android:src="@drawable/temukan_image"
                         app:layout_constraintBottom_toBottomOf="parent"

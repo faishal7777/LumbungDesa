@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -29,6 +30,7 @@ import com.runupstdio.lumbungdesa.Api.IApiClient;
 import com.runupstdio.lumbungdesa.Model.BarangHariIni;
 import com.runupstdio.lumbungdesa.Model.Feed;
 import com.runupstdio.lumbungdesa.Model.Product;
+import com.runupstdio.lumbungdesa.Model.Profile;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -49,8 +51,9 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
     private int iProductPrice;
     private String szProductName;
     private String szProductAva;
-    TextView mProductName, mProductPrice, mProductExp, mProductDesc;
-    ImageView mProductAva;
+    TextView mProductName, mProductPrice, mProductExp, mProductDesc, mSellerName, mSellerCity;
+    ImageView mProductAva, mSellerAva;
+    Button mbtnOpenKeranjang;
 
     private FirebaseAuth mAuth;
     IApiClient mApiClient;
@@ -76,6 +79,9 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
         mProductExp = findViewById(R.id.product_exp);
         mProductDesc = findViewById(R.id.product_desc);
         mToolbarView = findViewById(R.id.toolbar);
+        mSellerName = findViewById(R.id.prodClick_name);
+        mSellerCity = findViewById(R.id.prodClick_city);
+        mSellerAva = findViewById(R.id.prodClick_ava);
         setSupportActionBar((Toolbar) mToolbarView);
         mToolbarView.setBackgroundColor(ScrollUtils.getColorWithAlpha(0, getResources().getColor(R.color.colorBtnBlock)));
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn);
@@ -111,7 +117,7 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        Button mbtnOpenKeranjang = findViewById(R.id.btnOpenKeranjang);
+        mbtnOpenKeranjang = findViewById(R.id.btnOpenKeranjang);
         mbtnOpenKeranjang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,6 +169,28 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
                                 .asBitmap()
                                 .load(productDetails.getData().getAvaProduct())
                                 .into(mProductAva);
+                    } else {
+
+                    }
+                });
+
+        Observable<Profile> paris = mApiClient.user_info_prod("Bearer "+idToken, mProductID);
+
+        paris.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(userInfo -> {
+                    Log.e("Current Weather", idToken);
+                    if(userInfo.getStatus()){
+                        if(userInfo.getData().getId().equals(mAuth.getUid())) {
+                            mbtnOpenKeranjang.setEnabled(false);
+                            mbtnOpenKeranjang.setBackground(getDrawable(R.drawable.bg_btn_shimmer));
+                        }
+                        mSellerName.setText(userInfo.getData().getName());
+                        mSellerCity.setText(userInfo.getData().getAddress().getCity());
+                        Glide.with(getApplicationContext())
+                                .asBitmap()
+                                .load(userInfo.getData().getAvaUrl())
+                                .into(mSellerAva);
                     } else {
 
                     }

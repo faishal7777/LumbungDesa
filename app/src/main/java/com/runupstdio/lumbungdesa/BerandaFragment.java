@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GetTokenResult;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.runupstdio.lumbungdesa.Adapter.BarangHariIniAdapter;
 import com.runupstdio.lumbungdesa.Api.ApiClient;
 import com.runupstdio.lumbungdesa.Api.IApiClient;
@@ -51,6 +52,8 @@ public class BerandaFragment extends Fragment {
     IApiClient mApiClient;
     private String idToken = null;
     private Boolean isLoggedIn = false;
+
+    RoundedImageView mBerasNBiji, mBuah, mDaging, mOlahan, mSayur, mTelur;
 
     @Nullable
     @Override
@@ -86,6 +89,61 @@ public class BerandaFragment extends Fragment {
 
         carouselView.setImageListener(imageListener);
         barangHariIni = view.findViewById(R.id.BarangHariIni);
+        mBerasNBiji = view.findViewById(R.id.berasnbiji);
+        mBuah = view.findViewById(R.id.buah);
+        mDaging = view.findViewById(R.id.daging);
+        mOlahan = view.findViewById(R.id.olahan);
+        mSayur = view.findViewById(R.id.sayur);
+        mTelur = view.findViewById(R.id.telur);
+
+        mBerasNBiji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent productDetails = new Intent(getContext(), KategoriActivity.class);
+                productDetails.putExtra("catid", 1);
+                startActivity(productDetails);
+            }
+        });
+        mBuah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent productDetails = new Intent(getContext(), KategoriActivity.class);
+                productDetails.putExtra("catid", 2);
+                startActivity(productDetails);
+            }
+        });
+        mDaging.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent productDetails = new Intent(getContext(), KategoriActivity.class);
+                productDetails.putExtra("catid", 3);
+                startActivity(productDetails);
+            }
+        });
+        mOlahan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent productDetails = new Intent(getContext(), KategoriActivity.class);
+                productDetails.putExtra("catid", 4);
+                startActivity(productDetails);
+            }
+        });
+        mSayur.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent productDetails = new Intent(getContext(), KategoriActivity.class);
+                productDetails.putExtra("catid", 5);
+                startActivity(productDetails);
+            }
+        });
+        mTelur.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent productDetails = new Intent(getContext(), KategoriActivity.class);
+                productDetails.putExtra("catid", 6);
+                startActivity(productDetails);
+            }
+        });
 
         mAuth = FirebaseAuth.getInstance();
         mApiClient = ApiClient.getClient().create(IApiClient.class);

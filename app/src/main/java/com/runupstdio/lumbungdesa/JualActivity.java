@@ -46,7 +46,6 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import id.zelory.compressor.Compressor;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;

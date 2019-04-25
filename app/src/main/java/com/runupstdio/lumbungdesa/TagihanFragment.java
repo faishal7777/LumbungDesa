@@ -1,11 +1,11 @@
 package com.runupstdio.lumbungdesa;
 import android.content.Intent;
-import android.database.Observable;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -57,7 +57,7 @@ public class TagihanFragment extends Fragment {
 
         mTagihan = new ArrayList<>();
         for(int i=0; i<6; i++){
-            mTagihan.add(new Tagihan("Unknown", "Rp 0", null, "Unknown"));
+            mTagihan.add(new Tagihan(1,"Unknown", "Rp 0", null, "Unknown"));
         }
         initRecyclerView();
         mShimmerTagihan.startShimmerAnimation();
@@ -82,20 +82,21 @@ public class TagihanFragment extends Fragment {
 
         }
 
+        final SwipeRefreshLayout refreshBeranda = v.findViewById(R.id.refreshTagihan);
+        refreshBeranda.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mShimmerTagihan.startShimmerAnimation();
+                setFeedData();
+                refreshBeranda.setRefreshing(false);
+//
+//                barangHariIni.setVisibility(View.GONE);
+//                mShimmerPembelian.setVisibility(View.VISIBLE);
+//                mShimmerPembelian.startShimmerAnimation();
+            }
+        });
+
         return v;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mShimmerTagihan.startShimmerAnimation();
-        setFeedData();
-    }
-
-    @Override
-    public void onPause() {
-        mShimmerTagihan.stopShimmerAnimation();
-        super.onPause();
     }
 
     private void setFeedData(){
@@ -112,10 +113,9 @@ public class TagihanFragment extends Fragment {
                                 if(j>2) break;
                                 prodUrl.add(feedInfo.getData().get(i).getProducts().get(j).getAvaProduct());
                             }
-                            mTagihan.add(new Tagihan(feedInfo.getData().get(i).getProducts().get(0).getProductName(), "Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getPriceTotal()))), prodUrl, "Belum Bayar"));
+                            mTagihan.add(new Tagihan(feedInfo.getData().get(i).getId(), feedInfo.getData().get(i).getProducts().get(0).getProductName(), "Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getPriceTotal()))), prodUrl, "Belum Bayar"));
                         }
                         initRecyclerView();
-                        Log.d("Tagihan", ""+mTagihan.get(0).getProductStatus());
                         mShimmerTagihan.stopShimmerAnimation();
                     } else {
 
