@@ -31,6 +31,7 @@ public class KeranjangBottomSheetDialog extends BottomSheetDialogFragment {
     int mProductId = 0;
     int iProductPrice = 0;
     TextView mProductName, mProductPrice, mProductQty, mProductSubtotal;
+    Button mBtnCartDecrease, mBtnCartIncrease;
 
     IApiClient mApiClient;
     private String idToken = null;
@@ -45,6 +46,27 @@ public class KeranjangBottomSheetDialog extends BottomSheetDialogFragment {
         mProductPrice = v.findViewById(R.id.sheetproduct_price);
         mProductQty = v.findViewById(R.id.sheetproduct_qty);
         mProductSubtotal = v.findViewById(R.id.sheetproduct_subtotal);
+        mBtnCartIncrease = v.findViewById(R.id.cart_increase);
+        mBtnCartDecrease = v.findViewById(R.id.cart_decrease);
+
+        mBtnCartIncrease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int oldValue = Integer.parseInt(mProductQty.getText().toString());
+                int newValue = oldValue+1;
+                mProductQty.setText(String.valueOf(newValue));
+            }
+        });
+        mBtnCartDecrease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int oldValue = Integer.parseInt(mProductQty.getText().toString());
+                if(oldValue != 1 || oldValue < 1) {
+                    int newValue = oldValue - 1;
+                    mProductQty.setText(String.valueOf(newValue));
+                }
+            }
+        });
 
         Bundle data = getArguments();
         idToken = data.getString("idToken");

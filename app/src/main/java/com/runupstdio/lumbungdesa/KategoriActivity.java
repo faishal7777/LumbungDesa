@@ -4,11 +4,14 @@ import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -35,6 +38,7 @@ public class KategoriActivity extends AppCompatActivity {
     RecyclerView mRVKategori;
     ProdukKategoriAdapter adapter;
     List<BarangHariIni> mKategori;
+    CardView mLnEmptykategori;
 
     private FirebaseAuth mAuth;
     IApiClient mApiClient;
@@ -53,6 +57,7 @@ public class KategoriActivity extends AppCompatActivity {
         mApiClient = ApiClient.getClient().create(IApiClient.class);
 
         mRVKategori = findViewById(R.id.rvKategori);
+        mLnEmptykategori = findViewById(R.id.card_Kategori_Empty);
         category_id = getIntent().getIntExtra("catid", 1);
 
         if(FirebaseAuth.getInstance().getCurrentUser() != null) {
@@ -89,7 +94,8 @@ public class KategoriActivity extends AppCompatActivity {
                             mKategori.add(new BarangHariIni(feedInfo.getData().get(i).getId(), feedInfo.getData().get(i).getProductName(), "Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getProductPrice()))), feedInfo.getData().get(i).getAvaProduct()));
                         }
                         initRecyclerView();
-                        Log.d("Kategori", ""+category_id);
+                        mRVKategori.setVisibility(View.VISIBLE);
+                        mLnEmptykategori.setVisibility(View.GONE);
                     } else {
 
                     }

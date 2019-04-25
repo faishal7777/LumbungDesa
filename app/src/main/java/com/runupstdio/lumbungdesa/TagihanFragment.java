@@ -109,11 +109,16 @@ public class TagihanFragment extends Fragment {
                     if(feedInfo.getStatus()){
                         for(int i=0; i<feedInfo.getData().size(); i++){
                             List<String> prodUrl = new ArrayList<>();
+                            String tempStatus = "";
                             for(int j=0; j<feedInfo.getData().get(i).getProducts().size(); j++){
                                 if(j>2) break;
                                 prodUrl.add(feedInfo.getData().get(i).getProducts().get(j).getAvaProduct());
                             }
-                            mTagihan.add(new Tagihan(feedInfo.getData().get(i).getId(), feedInfo.getData().get(i).getProducts().get(0).getProductName(), "Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getPriceTotal()))), prodUrl, "Belum Bayar"));
+                            if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("0") && feedInfo.getData().get(i).getShipped().equals("0") && feedInfo.getData().get(i).getDelivered().equals("0")) tempStatus = "Belum Bayar";
+                            else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getShipped().equals("0") && feedInfo.getData().get(i).getDelivered().equals("0")) tempStatus = "Dibayar";
+                            else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getShipped().equals("1") && feedInfo.getData().get(i).getDelivered().equals("0")) tempStatus = "Dikirim";
+                            else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getShipped().equals("1") && feedInfo.getData().get(i).getDelivered().equals("1")) tempStatus = "Sukses";
+                            mTagihan.add(new Tagihan(feedInfo.getData().get(i).getId(), feedInfo.getData().get(i).getProducts().get(0).getProductName(), "Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getPriceTotal()))), prodUrl, tempStatus));
                         }
                         initRecyclerView();
                         mShimmerTagihan.stopShimmerAnimation();

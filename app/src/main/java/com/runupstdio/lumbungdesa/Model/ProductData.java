@@ -21,6 +21,9 @@ public class ProductData {
     @SerializedName("product_price")
     @Expose
     private String productPrice;
+    @SerializedName("product_stok")
+    @Expose
+    private String productStok;
     @SerializedName("ava_product")
     @Expose
     private String avaProduct;
@@ -80,6 +83,14 @@ public class ProductData {
 
     public void setProductPrice(String productPrice) {
         this.productPrice = productPrice;
+    }
+
+    public String getProductStok() {
+        return productStok;
+    }
+
+    public void setProductStok(String productStok) {
+        this.productStok = productStok;
     }
 
     public String getAvaProduct() {

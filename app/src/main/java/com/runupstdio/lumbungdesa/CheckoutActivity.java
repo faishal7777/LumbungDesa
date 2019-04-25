@@ -48,7 +48,7 @@ public class CheckoutActivity extends AppCompatActivity {
     RecyclerView mRVCheckout;
     KeranjangAdapter adapter;
     List<Keranjang> mCheckout;
-    TextView mCheckoutAddress, mCheckoutSellerName, mCheckoutTotalPrice;
+    TextView mCheckoutAddress, mCheckoutTotalPrice;
     Button mBtnPay, mBtnOke;
 
 
@@ -86,7 +86,6 @@ public class CheckoutActivity extends AppCompatActivity {
 
         mRVCheckout = findViewById(R.id.rvCheckout);
         mCheckoutAddress = findViewById(R.id.checkout_address);
-        mCheckoutSellerName = findViewById(R.id.checkout_sellername);
         mCheckoutTotalPrice = findViewById(R.id.checkout_totalPrice);
         mBtnPay = findViewById(R.id.btn_checkout);
         epicDialog = new Dialog(this);

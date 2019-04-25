@@ -26,7 +26,10 @@ import com.runupstdio.lumbungdesa.Model.Profile;
 import com.runupstdio.lumbungdesa.Model.Tagihan;
 import com.runupstdio.lumbungdesa.Model.User;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -95,7 +98,10 @@ public class DetilActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(feedInfo -> {
                     if(feedInfo.getStatus()){
-                        mDetailTrx.setText("LDRN"+feedInfo.getData().getId());
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        Date dt = sdf.parse(feedInfo.getData().getCreatedAt());
+                        long epoch = dt.getTime();
+                        mDetailTrx.setText("LDRN"+(int)(epoch/1000)+feedInfo.getData().getId());
 
                         String tempStatus = "";
                         if(feedInfo.getData().getCheckedOut().equals("1") && feedInfo.getData().getPaid().equals("1") && feedInfo.getData().getDelivered().equals("0")) tempStatus = "Dikirim";

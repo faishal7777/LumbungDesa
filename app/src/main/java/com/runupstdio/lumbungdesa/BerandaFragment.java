@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -54,6 +55,7 @@ public class BerandaFragment extends Fragment {
     private Boolean isLoggedIn = false;
 
     RoundedImageView mBerasNBiji, mBuah, mDaging, mOlahan, mSayur, mTelur;
+    LinearLayout mLnCart;
 
     @Nullable
     @Override
@@ -95,6 +97,15 @@ public class BerandaFragment extends Fragment {
         mOlahan = view.findViewById(R.id.olahan);
         mSayur = view.findViewById(R.id.sayur);
         mTelur = view.findViewById(R.id.telur);
+        mLnCart = view.findViewById(R.id.cart);
+
+        mLnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent productDetails = new Intent(getContext(), KeranjangActivity.class);
+                startActivity(productDetails);
+            }
+        });
 
         mBerasNBiji.setOnClickListener(new View.OnClickListener() {
             @Override

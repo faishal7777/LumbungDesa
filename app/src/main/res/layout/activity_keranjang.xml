@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="15dp"
-            android:text="Total Pesanan (1 item)"
+            android:text="Total Pesanan (0 item)"
             android:textColor="@color/colorTitleText"
             android:textSize="14sp" />
     </LinearLayout>
@@ -69,7 +69,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="15dp"
                 android:fontFamily="@font/open_sans_bold"
-                android:text="Rp 12.000"
+                android:text="Rp 0"
                 android:textColor="@color/colorBlueDark"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"

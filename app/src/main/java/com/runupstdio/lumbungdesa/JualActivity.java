@@ -260,6 +260,7 @@ public class JualActivity extends AppCompatActivity implements AdapterView.OnIte
                 szProductName,
                 szProductDesc,
                 Integer.parseInt(mSellProductPrice.getText().toString()),
+                Integer.parseInt(mSellStock.getText().toString()),
                 idCategory,
                 Integer.parseInt(mSellExpAt.getText().toString()),
                 product_image);
