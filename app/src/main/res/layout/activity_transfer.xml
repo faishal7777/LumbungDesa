@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TransferActivity"
+    android:background="@color/bg"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_warning_black_24dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selalu waspada terhadap pihak yang tidak bertanggung jawab."
+            android:fontFamily="@font/open_sans"
+            android:textSize="14sp"
+            android:textColor="@color/textBlueDark"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:orientation="vertical"
+        android:padding="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="METODE PEMBAYARAN"
+                android:fontFamily="@font/open_sans"
+                android:textSize="12sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transfer OVO"
+                android:fontFamily="@font/open_sans_bold"
+                android:textSize="16sp"
+                android:textColor="@color/textBlueDark"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BATAS WAKTU PEMBAYARAN"
+                android:fontFamily="@font/open_sans"
+                android:textSize="12sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jumat, 26 April 2019, 05:12 WIB"
+                android:fontFamily="@font/open_sans_bold"
+                android:textSize="16sp"
+                android:textColor="@color/textBlueDark"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="JUMLAH PEMBAYARAN"
+                android:fontFamily="@font/open_sans"
+                android:textSize="12sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp 229.124"
+                android:fontFamily="@font/open_sans_bold"
+                android:textSize="16sp"
+                android:textColor="@color/colorBlueDark"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NOMOR TAGIHAN"
+                android:fontFamily="@font/open_sans"
+                android:textSize="12sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ASVS234WJOE391"
+                android:fontFamily="@font/open_sans_bold"
+                android:textSize="16sp"
+                android:textColor="@color/textBlueDark"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NOMOR ALAMAT TRANSFER"
+                android:fontFamily="@font/open_sans"
+                android:textSize="12sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6282229241046"
+                android:fontFamily="@font/open_sans_bold"
+                android:textSize="16sp"
+                android:textColor="@color/textBlueDark"/>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ovo_logo"
+            android:layout_margin="15dp"
+            android:layout_gravity="center"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ketentuan pembayaran dengan ovo transfer :"
+                android:fontFamily="@font/open_sans_bold"
+                android:textSize="16sp"
+                android:textColor="@color/textBlueDark"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1. "
+                    android:fontFamily="@font/open_sans"
+                    android:textSize="16sp"
+                    android:textColor="@color/textBlueDark"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Transfer uang ke nomor telfon yang telah disediakan menggunakan transfer ovo."
+                    android:fontFamily="@font/open_sans"
+                    android:textSize="16sp"
+                    android:textColor="@color/textBlueDark"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2. "
+                    android:fontFamily="@font/open_sans"
+                    android:textSize="16sp"
+                    android:textColor="@color/textBlueDark"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Transfer ovo tidak dikenakan biaya tambahan."
+                    android:fontFamily="@font/open_sans"
+                    android:textSize="16sp"
+                    android:textColor="@color/textBlueDark"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3. "
+                    android:fontFamily="@font/open_sans"
+                    android:textSize="16sp"
+                    android:textColor="@color/textBlueDark"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Halaman ini bisa diakses pada halaman tagihan pada menu transaksi."
+                    android:fontFamily="@font/open_sans"
+                    android:textSize="16sp"
+                    android:textColor="@color/textBlueDark"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
