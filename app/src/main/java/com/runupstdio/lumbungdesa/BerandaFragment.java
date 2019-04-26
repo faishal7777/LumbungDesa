@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -54,6 +55,7 @@ public class BerandaFragment extends Fragment {
     private String idToken = null;
     private Boolean isLoggedIn = false;
 
+    TextView selamat;
     RoundedImageView mBerasNBiji, mBuah, mDaging, mOlahan, mSayur, mTelur;
     LinearLayout mLnCart;
 
@@ -83,6 +85,14 @@ public class BerandaFragment extends Fragment {
 //                barangHariIni.setVisibility(View.GONE);
 //                mShimmerPembelian.setVisibility(View.VISIBLE);
 //                mShimmerPembelian.startShimmerAnimation();
+            }
+        });
+
+        selamat = view.findViewById(R.id.selamat);
+        selamat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShowDialog();
             }
         });
 
@@ -215,6 +225,11 @@ public class BerandaFragment extends Fragment {
 
                     }
                 });
+    }
+
+    public void ShowDialog(){
+        PopupActivity popupDialog = new PopupActivity();
+        popupDialog.show(getFragmentManager(),"reserve dialog");
     }
 
     private void initRecyclerView(){

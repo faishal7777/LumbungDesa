@@ -8,15 +8,15 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
+        android:name=".LumbungDesa"
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name=".LumbungDesa">
-
-        <activity android:name=".DetilActivity"></activity>
+        android:theme="@style/AppTheme">
+        <activity android:name=".LoaddActivity"></activity>
+        <activity android:name=".DetilActivity" />
         <activity android:name=".KategoriActivity" />
         <activity
             android:name=".SplashActivity"
@@ -60,7 +60,6 @@
         <activity
             android:name=".SignupActivity"
             android:theme="@style/signUp" />
-
         <activity
             android:name=".TransferActivity"
             android:theme="@style/hideActionBar" />
