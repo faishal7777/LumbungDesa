@@ -13,6 +13,7 @@ import android.widget.Button;
 public class PopupActivity extends DialogFragment {
 
     Button mOke;
+    String szType = "COD";
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -24,11 +25,20 @@ public class PopupActivity extends DialogFragment {
         mOke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent a = new Intent(getActivity(), NavigationBar.class);
-                startActivity(a);
+                if(szType.equals("COD")) {
+                    Intent a = new Intent(getActivity(), NavigationBar.class);
+                    startActivity(a);
+                } else {
+                    Intent a = new Intent(getActivity(), TransferActivity.class);
+                    startActivity(a);
+                }
             }
         });
 
         return builder.create();
+    }
+
+    public void setType(String type){
+        this.szType = type;
     }
 }

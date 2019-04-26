@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GetTokenResult;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.runupstdio.lumbungdesa.Api.ApiClient;
 import com.runupstdio.lumbungdesa.Api.IApiClient;
 import com.runupstdio.lumbungdesa.Model.Register;
@@ -88,7 +89,7 @@ public class Signup2Activity extends AppCompatActivity {
                 String szDesa = "Village";
                 String szRoad = mRoad.getText().toString();
 
-                Call<Register> daftarCall = mApiClient.doRegister("Bearer "+idToken, szMsisdn, szName, szCountry, szState, szCity, szKecamatan, szDesa, szRoad);
+                Call<Register> daftarCall = mApiClient.doRegister("Bearer "+idToken, szMsisdn, szName, szCountry, szState, szCity, szKecamatan, szDesa, szRoad, FirebaseInstanceId.getInstance().getToken());
                 daftarCall.enqueue(new Callback<Register>() {
                     @Override
                     public void onResponse(Call<Register> call, Response<Register> response) {

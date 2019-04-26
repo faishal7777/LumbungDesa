@@ -13,15 +13,34 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GetTokenResult;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.runupstdio.lumbungdesa.Adapter.ChatAdapter;
+import com.runupstdio.lumbungdesa.Adapter.UserChatListAdapter;
+import com.runupstdio.lumbungdesa.Api.ApiClient;
+import com.runupstdio.lumbungdesa.Api.IApiClient;
 import com.runupstdio.lumbungdesa.Model.Chat;
+import com.runupstdio.lumbungdesa.Model.Chatting;
+import com.runupstdio.lumbungdesa.Model.Conversation;
+import com.runupstdio.lumbungdesa.Model.Done;
+import com.runupstdio.lumbungdesa.Model.SendChat;
 import com.runupstdio.lumbungdesa.Model.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -34,16 +53,26 @@ public class ChatActivity extends AppCompatActivity {
 
     Intent intent;
 
-    RoundedImageView imgProfile = findViewById(R.id.img_User);
-    TextView username = findViewById(R.id.nama_User);
+    private int conversationId;
+    private String destinationId = null;
+    private String destinationName = null;
+    private String destinationAva = null;
 
-//    FirebaseUser Fuser;
-//    DatabaseReference reference;
+    private FirebaseAuth mAuth;
+    IApiClient mApiClient;
+    private String idToken = null;
+    private String idUser = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+
+        mAuth = FirebaseAuth.getInstance();
+        mApiClient = ApiClient.getClient().create(IApiClient.class);
+
+        RoundedImageView imgProfile = findViewById(R.id.img_User);
+        TextView username = findViewById(R.id.nama_User);
 
         recyclerViewChat = findViewById(R.id.recycler_Chat);
         recyclerViewChat.setHasFixedSize(true);
@@ -52,33 +81,36 @@ public class ChatActivity extends AppCompatActivity {
         recyclerViewChat.setLayoutManager(linearLayoutManager);
 
         intent = getIntent();
-        final String userId = intent.getStringExtra("userId");
+        conversationId = intent.getIntExtra("conversationId", 0);
+        destinationId = intent.getStringExtra("destinationId");
+        destinationName = intent.getStringExtra("destinationName");
+        destinationAva = intent.getStringExtra("destinationAva");
 
-//        fuser = FirebaseAuth.getInstance().getCurrentUser;
-//        reference = FirebaseDatabase.getInstance.getReference("Users").child(userId);
+        Glide.with(getApplicationContext())
+                .load(destinationAva)
+                .into(imgProfile);
+        username.setText(destinationName);
 
-//        reference.addValueEventListener(new ValueEventListener(){
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot datasnapshot){
-//                User user = dataSnapshot.getValue(User.class);
-//                username.setText(user.getUsername());
-//                if (user.getImageUrl().equals("default")){
-//                    holder.imgProfile.setImageResource(R.mipmap.ic_launcher);
-//                }
-//                else{
-//                    Glide.with(ChatActivity.this)
-//                            .load(user.getImageUrl())
-//                            .into(imgProfile);
-//                }
-//
-//                readMessage(fuser.getUid(), userId, user.getImageUrl());
-//
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError){
-//
-//            }
-//        });
+        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+            FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+            mUser.getIdToken(true)
+                    .addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
+                        public void onComplete(@NonNull Task<GetTokenResult> task) {
+                            if (task.isSuccessful()) {
+                                idToken = task.getResult().getToken();
+                                if(conversationId != 0) setFeedData();
+                            } else {
+                                // Handle error -> task.getException();
+                            }
+                        }
+                    });
+            idUser = mAuth.getUid();
+        } else {
+            Intent a = new Intent(ChatActivity.this, NavigationBar.class);
+            startActivity(a);
+            Toast.makeText(ChatActivity.this, "Silahkan masuk terlebih dahulu", Toast.LENGTH_LONG).show();
+
+        }
 
         mText_Chat = findViewById(R.id.text_Chat);
         mBtnSend_Chat = findViewById(R.id.btn_Chat_Send);
@@ -88,24 +120,64 @@ public class ChatActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String message = mText_Chat.getText().toString();
                 if (!message.equals("")){
-
+                    sendMessage(mText_Chat.getText().toString());
                 }
                 else{
-                    Toast.makeText(ChatActivity.this, "Tidak bisa mengirim pesan kosong.", Toast.LENGTH_SHORT).show();
                 }
                 mText_Chat.setText("");
             }
         });
     }
 
-    private void sendMessage(String sender, String receiver, String message){
-//      DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("sender", sender);
-        hashMap.put("receiver", receiver);
-        hashMap.put("message", message);
+    private void setFeedData(){
+        mChat = new ArrayList<>();
+        Observable<Chatting> london = mApiClient.get_conversation_chat("Bearer "+idToken, conversationId);
 
-//      reference.child("Chats").push().setValue(hashMap);
+        london.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(feedInfo -> {
+                    if(feedInfo.getStatus()){
+                        for(int i=0; i<feedInfo.getData().size(); i++){
+                            mChat.add(new Chat(destinationAva, feedInfo.getData().get(i).getMessage(), feedInfo.getData().get(i).getSenderId(), idUser));
+                        }
+                        initRecyclerView();
+                    } else {
+
+                    }
+                });
+    }
+
+    private void sendMessage(String msg){
+        Call<SendChat> addrCall = mApiClient.send_chat("Bearer "+idToken, destinationId, msg);
+        addrCall.enqueue(new Callback<SendChat>() {
+            @Override
+            public void onResponse(Call<SendChat> call, Response<SendChat> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus()) {
+                        conversationId = response.body().getData().getConversationId();
+                        setFeedData();
+                    } else {
+                        Toast.makeText(ChatActivity.this, response.body().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                } else if (response.errorBody() != null) {
+                    // Get response errorBody
+                    String errorBody = response.errorBody().toString();
+                    Toast.makeText(ChatActivity.this, errorBody, Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SendChat> call, Throwable t) {
+                Toast.makeText(ChatActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void initRecyclerView(){
+        chatAdapter = new ChatAdapter(getApplicationContext(), mChat, destinationAva);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ChatActivity.this);
+        recyclerViewChat.setLayoutManager(layoutManager);
+        recyclerViewChat.setAdapter(chatAdapter);
     }
 
     private void readMessage(final String myId, final String userId, final String imgUrl){

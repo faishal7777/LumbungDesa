@@ -1,5 +1,6 @@
 package com.runupstdio.lumbungdesa;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
@@ -58,6 +59,8 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
     private FirebaseAuth mAuth;
     IApiClient mApiClient;
     private String idToken = null;
+
+    String szSellerId, szSellerAva;
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -136,11 +139,15 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
 
 
 
-        LinearLayout mbtnHome = findViewById(R.id.product_click_home);
+        LinearLayout mbtnHome = findViewById(R.id.productChat);
         mbtnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent chat = new Intent(ProductClickedActivity.this, ChatActivity.class);
+                chat.putExtra("destinationId", szSellerId);
+                chat.putExtra("destinationName", mSellerName.getText());
+                chat.putExtra("destinationAva", szSellerAva);
+                startActivity(chat);
             }
         });
     }
@@ -197,6 +204,8 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
                                 .asBitmap()
                                 .load(userInfo.getData().getAvaUrl())
                                 .into(mSellerAva);
+                        szSellerAva = userInfo.getData().getAvaUrl();
+                        szSellerId = userInfo.getData().getId();
                     } else {
 
                     }

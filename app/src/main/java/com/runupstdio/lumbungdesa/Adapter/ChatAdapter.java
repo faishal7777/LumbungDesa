@@ -85,7 +85,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
     @Override
     public int getItemViewType(int position) {
         //nentukno value sender/receiver gae bubbles message
-        if (mChat.get(position).getSender().equals("")){
+        if (mChat.get(position).getSender().equals(mChat.get(position).getMyID())){
             return MSG_TYPE_RIGHT;
         }
         else {
