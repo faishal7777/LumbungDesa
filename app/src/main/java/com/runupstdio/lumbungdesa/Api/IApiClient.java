@@ -4,7 +4,9 @@ import com.runupstdio.lumbungdesa.Model.AddCart;
 import com.runupstdio.lumbungdesa.Model.AddProduct;
 import com.runupstdio.lumbungdesa.Model.Address;
 import com.runupstdio.lumbungdesa.Model.Cart;
+import com.runupstdio.lumbungdesa.Model.Chatting;
 import com.runupstdio.lumbungdesa.Model.Checkout;
+import com.runupstdio.lumbungdesa.Model.Conversation;
 import com.runupstdio.lumbungdesa.Model.Detail;
 import com.runupstdio.lumbungdesa.Model.Done;
 import com.runupstdio.lumbungdesa.Model.Feed;
@@ -14,6 +16,7 @@ import com.runupstdio.lumbungdesa.Model.Product;
 import com.runupstdio.lumbungdesa.Model.Profile;
 import com.runupstdio.lumbungdesa.Model.Register;
 import com.runupstdio.lumbungdesa.Model.RemoveCart;
+import com.runupstdio.lumbungdesa.Model.SendChat;
 import com.runupstdio.lumbungdesa.Model.UploadImage;
 import com.runupstdio.lumbungdesa.Model.UserExist;
 
@@ -45,7 +48,8 @@ public interface IApiClient {
                               @Field("city") String city,
                               @Field("kecamatan") String kecamatan,
                               @Field("desa") String desa,
-                              @Field("road") String road);
+                              @Field("road") String road,
+                              @Field("notificationToken") String notifToken);
 
     @Multipart
     @POST("v1/user-ava")
@@ -132,4 +136,22 @@ public interface IApiClient {
     @GET("v1/detail")
     Observable<Detail> get_detail(@Header("Authorization") String token,
                                   @Query("transaction_id") int trxId);
+
+    @GET("v1/chat")
+    Observable<Conversation> get_conversation(@Header("Authorization") String token);
+
+    @GET("v1/chat")
+    Observable<Chatting> get_conversation_chat(@Header("Authorization") String token,
+                                               @Query("chat_id") int chat_id);
+
+    @FormUrlEncoded
+    @POST("v1/chat")
+    Call<SendChat> send_chat(@Header("Authorization") String token,
+                             @Field("destination_id") String destinationId,
+                             @Field("message") String message);
+
+    @FormUrlEncoded
+    @POST("v1/fcm")
+    Call<Done> fcm(@Header("Authorization") String token,
+                             @Field("fcmToken") String fcm);
 }

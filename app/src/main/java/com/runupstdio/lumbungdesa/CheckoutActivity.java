@@ -10,7 +10,10 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,8 +45,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CheckoutActivity extends AppCompatActivity {
+public class CheckoutActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    Spinner mSpinner;
     Dialog epicDialog;
     RecyclerView mRVCheckout;
     KeranjangAdapter adapter;
@@ -56,6 +60,7 @@ public class CheckoutActivity extends AppCompatActivity {
     IApiClient mApiClient;
     private String idToken = null;
     double tempPrice = 0.0;
+    private int idPayment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +89,19 @@ public class CheckoutActivity extends AppCompatActivity {
             Toast.makeText(CheckoutActivity.this, "Sesi anda telah berakhir", Toast.LENGTH_LONG).show();
         }
 
+        mSpinner = findViewById(R.id.spinner_Payment);
+        mSpinner.setOnItemSelectedListener(this);
+        // Spinner Drop down elements
+        List<String> kategori = new ArrayList<>();
+        kategori.add("OVO");
+        kategori.add("Cash On Delivery");
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, kategori);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinner.setAdapter(dataAdapter);
+
         mRVCheckout = findViewById(R.id.rvCheckout);
         mCheckoutAddress = findViewById(R.id.checkout_address);
         mCheckoutTotalPrice = findViewById(R.id.checkout_totalPrice);
@@ -93,7 +111,7 @@ public class CheckoutActivity extends AppCompatActivity {
         mBtnPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Call<Checkout> addrCall = mApiClient.checkout("Bearer "+idToken, 1);
+                Call<Checkout> addrCall = mApiClient.checkout("Bearer "+idToken, idPayment);
                 addrCall.enqueue(new Callback<Checkout>() {
                     @Override
                     public void onResponse(Call<Checkout> call, Response<Checkout> response) {
@@ -117,6 +135,15 @@ public class CheckoutActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        idPayment = position+1;
+    }
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
     }
 
     private void setData(){
@@ -170,6 +197,10 @@ public class CheckoutActivity extends AppCompatActivity {
 
     public void ShowDialog(){
         PopupActivity popupDialog = new PopupActivity();
+        if(idPayment==1)
+            popupDialog.setType("OVO");
+        else if(idPayment==2)
+            popupDialog.setType("COD");
         popupDialog.show(getSupportFragmentManager(),"reserve dialog");
     }
 }

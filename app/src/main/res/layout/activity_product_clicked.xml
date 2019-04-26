@@ -263,7 +263,7 @@
             android:background="@color/colorWhite"
             android:layout_gravity="bottom">
             <LinearLayout
-                android:id="@+id/product_click_home"
+                android:id="@+id/productChat"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_gravity="center_vertical"
