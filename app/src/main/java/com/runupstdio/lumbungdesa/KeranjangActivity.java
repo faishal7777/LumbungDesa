@@ -49,6 +49,9 @@ public class KeranjangActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_keranjang);
 
+        assert getSupportActionBar() != null;   //null check
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //show back button
+
         mAuth = FirebaseAuth.getInstance();
         mApiClient = ApiClient.getClient().create(IApiClient.class);
 
@@ -105,6 +108,12 @@ public class KeranjangActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 
     private void initRecyler(){

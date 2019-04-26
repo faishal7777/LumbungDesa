@@ -49,7 +49,7 @@ public class CheckoutActivity extends AppCompatActivity {
     KeranjangAdapter adapter;
     List<Keranjang> mCheckout;
     TextView mCheckoutAddress, mCheckoutTotalPrice;
-    Button mBtnPay, mBtnOke;
+    Button mBtnPay;
 
 
     private FirebaseAuth mAuth;
@@ -61,6 +61,9 @@ public class CheckoutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
+
+        assert getSupportActionBar() != null;   //null check
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //show back button
 
         mAuth = FirebaseAuth.getInstance();
         mApiClient = ApiClient.getClient().create(IApiClient.class);
@@ -159,6 +162,12 @@ public class CheckoutActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    @Override
+    public boolean onNavigateUp() {
+        finish();
+        return true;
     }
 
     public void initRecycle(){

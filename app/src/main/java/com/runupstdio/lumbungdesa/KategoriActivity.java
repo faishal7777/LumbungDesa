@@ -53,6 +53,9 @@ public class KategoriActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kategori);
 
+        assert getSupportActionBar() != null;   //null check
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //show back button
+
         mAuth = FirebaseAuth.getInstance();
         mApiClient = ApiClient.getClient().create(IApiClient.class);
 
@@ -100,6 +103,12 @@ public class KategoriActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    @Override
+    public boolean onNavigateUp() {
+        finish();
+        return true;
     }
 
     private void initRecyclerView(){
