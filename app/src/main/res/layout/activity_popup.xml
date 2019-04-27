@@ -13,7 +13,7 @@
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:lottie_fileName="succes.json"
+            app:lottie_fileName="papoylur.json"
             app:lottie_autoPlay="true"/>
         <TextView
             android:layout_marginTop="30dp"
