@@ -88,6 +88,7 @@ public class TemukanFragment extends Fragment {
             public void onRefresh() {
                 //refreshData();
                 setFeedData();
+                refreshBeranda.setRefreshing(false);
 //
 //                barangHariIni.setVisibility(View.GONE);
 //                mShimmerPembelian.setVisibility(View.VISIBLE);
@@ -122,7 +123,7 @@ public class TemukanFragment extends Fragment {
             mGreeting.setText("Selamat datang, " + settings.getString("ProfileName", "User"));
             mCity.setText(settings.getString("ProfilCity", "Kota"));
         }
-        refreshBeranda.setRefreshing(false);
+        //refreshBeranda.setRefreshing(false);
     }
 
     public void showCustomLoadingDialog() {

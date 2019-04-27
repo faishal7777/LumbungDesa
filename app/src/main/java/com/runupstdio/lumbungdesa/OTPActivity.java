@@ -14,6 +14,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.goodiebag.pinview.Pinview;
@@ -43,6 +44,7 @@ public class OTPActivity extends AppCompatActivity {
     CardView mCardOtp, mCardViewToolbar;
     Pinview mOtpPinview;
     ImageButton mBackOtp;
+    TextView mMsisdn, mResend;
 
     Animation fromBottom, fromTop, bgAnim;
 
@@ -66,6 +68,10 @@ public class OTPActivity extends AppCompatActivity {
 
         mCardOtp = findViewById(R.id.cardOtp);
         mCardOtp.startAnimation(fromBottom);
+
+        mMsisdn = findViewById(R.id.otpNomerTelpon);
+        mResend = findViewById(R.id.resend);
+
 
         //Animate bg
         mBg = findViewById(R.id.bgOtp);
@@ -96,15 +102,24 @@ public class OTPActivity extends AppCompatActivity {
         });
 
         String msisdn = getIntent().getStringExtra("msisdn");
+        mMsisdn.setText("0"+msisdn);
         checkUserExist(msisdn);
         sendVerificationCode(msisdn);
+
+        mResend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkUserExist(msisdn);
+                sendVerificationCode(msisdn);
+            }
+        });
 
         Button mBtnVerifOtp = findViewById(R.id.btnVerifOtp);
         mBtnVerifOtp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String code = mOtpPinview.getValue().trim();
-                Toast.makeText(OTPActivity.this, ""+code, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(OTPActivity.this, ""+code, Toast.LENGTH_SHORT).show();
                 verifyVerificationCode(code);
                 //Intent intent = new Intent(OTPActivity.this, NavigationBar.class);
                 //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -163,7 +178,13 @@ public class OTPActivity extends AppCompatActivity {
             //so user has to manually enter the code
             if (code != null) {
                 mOtpPinview.setValue(code);
-                //verifyVerificationCode(code);
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        verifyVerificationCode(code);
+                    }
+                }, 2000);
             }
         }
 
