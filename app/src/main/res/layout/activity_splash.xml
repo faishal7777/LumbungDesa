@@ -6,17 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".SplashActivity"
     android:background="@drawable/splash_gradient">
-    <TextView
+
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/after_night"
-        android:text="Lumbung Desa"
-        android:textColor="@color/colorWhite"
-        android:textSize="41dp"
+        android:src="@drawable/splash"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,6 +35,7 @@ import io.reactivex.schedulers.Schedulers;
 public class DaganganActivity extends AppCompatActivity {
 
     RecyclerView mRVDagangan;
+    CardView mDaganganKosong;
     DaganganAdapter adapter;
     List<Dagangan> mDagangan;
     ViewLoad viewLoad;
@@ -45,6 +48,8 @@ public class DaganganActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dagangan);
+
+        mDaganganKosong = findViewById(R.id.card_dagangan_Empty);
 
         mAuth = FirebaseAuth.getInstance();
         mApiClient = ApiClient.getClient().create(IApiClient.class);
@@ -86,6 +91,8 @@ public class DaganganActivity extends AppCompatActivity {
                             mDagangan.add(new Dagangan(feedInfo.getData().get(i).getId(), feedInfo.getData().get(i).getAvaProduct(), feedInfo.getData().get(i).getProductName(),"Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getProductPrice())))));
                         }
                         initRecyclerView();
+                        mRVDagangan.setVisibility(View.VISIBLE);
+                        mDaganganKosong.setVisibility(View.GONE);
                         viewLoad.hideDialog();
                     } else {
                         viewLoad.hideDialog();
