@@ -113,8 +113,8 @@ public class DetilActivity extends AppCompatActivity {
                         mDetailStatus.setText(tempStatus);
                         mDetailTotalPrice.setText("Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().getPriceTotal()))));
 
-                        if(feedInfo.getData().getIdPayment().equals("1")) mDetailPayment.setText("Cash On Delivery");
-                        else if(feedInfo.getData().getIdPayment().equals("2")) mDetailPayment.setText("OVO");
+                        if(feedInfo.getData().getIdPayment().equals("1")) mDetailPayment.setText("OVO");
+                        else if(feedInfo.getData().getIdPayment().equals("2")) mDetailPayment.setText("Cash On Delivery");
 
                         for(int i=0; i<feedInfo.getData().getProducts().size(); i++){
                             mDetilTransaksi.add(new DetilTransaksi(feedInfo.getData().getProducts().get(i).getProductName(), feedInfo.getData().getProducts().get(i).getQuantity(),"Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().getProducts().get(i).getProductPrice()))),feedInfo.getData().getProducts().get(i).getAvaProduct()));

@@ -175,8 +175,9 @@ public class ChatActivity extends AppCompatActivity implements OneSignal.Notific
                     if (response.body().getStatus()) {
                         conversationId = response.body().getData().getConversationId();
                         mChat.add(new Chat(destinationAva, response.body().getData().getMessage(), response.body().getData().getSenderId(), idUser));
+                        initRecyclerView();
                         chatAdapter.notifyDataSetChanged();
-                        recyclerViewChat.smoothScrollToPosition(mChat.size()-1);
+                        recyclerViewChat.smoothScrollToPosition(mChat.size() - 1);
                     } else {
                         Toast.makeText(ChatActivity.this, response.body().getMessage(), Toast.LENGTH_LONG).show();
                     }

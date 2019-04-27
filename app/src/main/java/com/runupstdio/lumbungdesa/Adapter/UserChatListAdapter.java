@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -53,7 +54,7 @@ public class UserChatListAdapter extends RecyclerView.Adapter<UserChatListAdapte
         //holder.namaUser.setText(mNamaUser.get(position));
         holder.namaUser.setText(list.getUsername());
 
-        holder.imgUrlUser.setOnClickListener(new View.OnClickListener() {
+        holder.mLnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent chat = new Intent(mContext, ChatActivity.class);
@@ -75,11 +76,13 @@ public class UserChatListAdapter extends RecyclerView.Adapter<UserChatListAdapte
     public class UserViewHolder extends RecyclerView.ViewHolder{
         public TextView namaUser;
         public RoundedImageView imgUrlUser;
+        public LinearLayout mLnChat;
 
         public UserViewHolder(View itemView) {
             super(itemView);
             namaUser = itemView.findViewById(R.id.username_List_Chat);
             imgUrlUser = itemView.findViewById(R.id.img_Profile_List_Chat);
+            mLnChat = itemView.findViewById(R.id.lnChat);
         }
     }
 }

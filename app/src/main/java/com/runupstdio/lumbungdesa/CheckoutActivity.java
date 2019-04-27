@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -147,6 +148,7 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterView.O
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // On selecting a spinner item
         idPayment = position+1;
+        Log.d("PAYMENT", ""+idPayment);
     }
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
