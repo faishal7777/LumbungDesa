@@ -104,9 +104,11 @@ public class DetilActivity extends AppCompatActivity {
                         mDetailTrx.setText("LDRN"+(int)(epoch/1000)+feedInfo.getData().getId());
 
                         String tempStatus = "";
-                        if(feedInfo.getData().getCheckedOut().equals("1") && feedInfo.getData().getPaid().equals("1") && feedInfo.getData().getDelivered().equals("0")) tempStatus = "Dikirim";
-                        else if(feedInfo.getData().getCheckedOut().equals("1") && feedInfo.getData().getPaid().equals("1") && feedInfo.getData().getDelivered().equals("1")) tempStatus = "Selesai";
-                        else if(feedInfo.getData().getCheckedOut().equals("1") && feedInfo.getData().getPaid().equals("0") && feedInfo.getData().getDelivered().equals("0")) tempStatus = "Belum Bayar";
+                        if(feedInfo.getData().getCencelled().equals("1")) tempStatus = "Dibatalkan";
+                        else if(feedInfo.getData().getCheckedOut().equals("1") && feedInfo.getData().getPaid().equals("0") && feedInfo.getData().getShipped().equals("0") && feedInfo.getData().getDelivered().equals("0")) tempStatus = "Belum Bayar";
+                        else if(feedInfo.getData().getCheckedOut().equals("1") && feedInfo.getData().getPaid().equals("1") && feedInfo.getData().getShipped().equals("0") && feedInfo.getData().getDelivered().equals("0")) tempStatus = "Dibayar";
+                        else if(feedInfo.getData().getCheckedOut().equals("1") && feedInfo.getData().getPaid().equals("1") && feedInfo.getData().getShipped().equals("1") && feedInfo.getData().getDelivered().equals("0")) tempStatus = "Dikirim";
+                        else if(feedInfo.getData().getCheckedOut().equals("1") && feedInfo.getData().getPaid().equals("1") && feedInfo.getData().getShipped().equals("1") && feedInfo.getData().getDelivered().equals("1")) tempStatus = "Sukses";
 
                         mDetailStatus.setText(tempStatus);
                         mDetailTotalPrice.setText("Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().getPriceTotal()))));

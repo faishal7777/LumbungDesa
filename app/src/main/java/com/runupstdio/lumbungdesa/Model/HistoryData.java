@@ -30,6 +30,9 @@ public class HistoryData {
     @SerializedName("delivered")
     @Expose
     private String delivered;
+    @SerializedName("cencelled")
+    @Expose
+    private String cencelled;
     @SerializedName("created_at")
     @Expose
     private String createdAt;
@@ -94,6 +97,14 @@ public class HistoryData {
 
     public void setPaid(String paid) {
         this.paid = paid;
+    }
+
+    public String getCencelled() {
+        return cencelled;
+    }
+
+    public void setCencelled(String cencelled) {
+        this.cencelled = cencelled;
     }
 
     public String getDelivered() {
