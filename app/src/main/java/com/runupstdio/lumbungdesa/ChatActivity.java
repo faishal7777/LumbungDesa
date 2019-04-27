@@ -52,13 +52,12 @@ import retrofit2.Response;
 
 public class ChatActivity extends AppCompatActivity implements OneSignal.NotificationReceivedHandler {
 
-    ImageButton mBtnSend_Chat;
+    ImageButton mBtnSend_Chat, mBack;
     EditText mText_Chat;
 
     ChatAdapter chatAdapter;
     List<Chat> mChat;
     RecyclerView recyclerViewChat;
-    ImageButton mBack;
 
     Intent intent;
 
@@ -76,14 +75,6 @@ public class ChatActivity extends AppCompatActivity implements OneSignal.Notific
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-
-        mBack.findViewById(R.id.back_chat);
-        mBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
         mAuth = FirebaseAuth.getInstance();
         mApiClient = ApiClient.getClient().create(IApiClient.class);
@@ -145,6 +136,15 @@ public class ChatActivity extends AppCompatActivity implements OneSignal.Notific
                 mText_Chat.setText("");
             }
         });
+
+        mBack = findViewById(R.id.back_chat);
+        mBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 
     private void setFeedData(){

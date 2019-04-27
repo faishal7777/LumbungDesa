@@ -54,8 +54,9 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
     private String szProductName;
     private String szProductAva;
     TextView mProductName, mProductPrice, mProductExp, mProductDesc, mSellerName, mSellerCity, mProductStok;
-    ImageView mProductAva, mSellerAva;
+    ImageView mProductAva, mSellerAva, chatBubs;
     Button mbtnOpenKeranjang;
+    LinearLayout mbtnHome;
 
     ViewLoad viewLoad;
 
@@ -75,6 +76,8 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_clicked);
+
+        chatBubs = findViewById(R.id.chat_bubs);
 
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
 
@@ -142,7 +145,7 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
             }
         });
 
-        LinearLayout mbtnHome = findViewById(R.id.productChat);
+        mbtnHome = findViewById(R.id.productChat);
         mbtnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -169,7 +172,7 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
                         mProductStok.setText(productDetails.getData().getProductStok()+" Pcs");
                         if(Integer.parseInt(productDetails.getData().getProductStok()) <= 0) {
                             mbtnOpenKeranjang.setEnabled(false);
-                            mbtnOpenKeranjang.setBackground(getDrawable(R.drawable.bg_btn_shimmer));
+                            mbtnOpenKeranjang.setBackground(getDrawable(R.drawable.btn_login_disabled));
                         }
 
                         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -199,7 +202,8 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
                     if(userInfo.getStatus()){
                         if(userInfo.getData().getId().equals(mAuth.getUid())) {
                             mbtnOpenKeranjang.setEnabled(false);
-                            mbtnOpenKeranjang.setBackground(getDrawable(R.drawable.bg_btn_shimmer));
+                            mbtnHome.setEnabled(false);
+                            mbtnOpenKeranjang.setBackground(getDrawable(R.drawable.btn_login_disabled));
                         }
                         mSellerName.setText(userInfo.getData().getName());
                         mSellerCity.setText(userInfo.getData().getAddress().getCity());

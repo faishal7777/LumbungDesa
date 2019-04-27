@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,6 +36,7 @@ public class ListChatActivity extends AppCompatActivity {
     RecyclerView mRVListChat;
     UserChatListAdapter adapter;
     List<User> userArrayList;
+    CardView mLnEmptyChat;
 
     private FirebaseAuth mAuth;
     IApiClient mApiClient;
@@ -41,9 +44,21 @@ public class ListChatActivity extends AppCompatActivity {
     private String idUser = null;
 
     @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_chat);
+
+        mLnEmptyChat = findViewById(R.id.card_Chat_Empty);
+
+        assert getSupportActionBar() != null;   //null check
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("List Chat");
 
         mAuth = FirebaseAuth.getInstance();
         mApiClient = ApiClient.getClient().create(IApiClient.class);
@@ -87,6 +102,8 @@ public class ListChatActivity extends AppCompatActivity {
                             userArrayList.add(new User(feedInfo.getData().get(i).getId(), feedInfo.getData().get(i).getDestinationName(), feedInfo.getData().get(i).getDestinationAva(), temp));
                         }
                         initRecyclerView();
+                        mRVListChat.setVisibility(View.VISIBLE);
+                        mLnEmptyChat.setVisibility(View.GONE);
                     } else {
                         Log.d("CHAT", ""+feedInfo.getMessage());
                     }
