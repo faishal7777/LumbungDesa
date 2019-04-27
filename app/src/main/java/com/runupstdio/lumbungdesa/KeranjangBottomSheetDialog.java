@@ -104,7 +104,10 @@ public class KeranjangBottomSheetDialog extends BottomSheetDialogFragment {
                         Intent a = new Intent(getContext(), KeranjangActivity.class);
                         startActivity(a);
                     } else {
-                        Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "Anda belum login", Toast.LENGTH_LONG).show();
+                        Intent a = new Intent(getContext(), NavigationBar.class);
+                        a.putExtra("direction", 4);
+                        startActivity(a);
                     }
                 } else if (response.errorBody() != null) {
                     // Get response errorBody

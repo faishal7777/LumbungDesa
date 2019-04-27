@@ -81,6 +81,7 @@ public class BerandaFragment extends Fragment {
             @Override
             public void onRefresh() {
                 //refreshData();
+                viewLoad.showDialog();
                 setFeedData();
                 refreshBeranda.setRefreshing(false);
 //

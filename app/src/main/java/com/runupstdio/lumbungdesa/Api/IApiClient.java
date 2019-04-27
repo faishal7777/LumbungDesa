@@ -60,7 +60,7 @@ public interface IApiClient {
     @GET("v1/user-info")
     Observable<Profile> user_info(@Header("Authorization") String token);
 
-    @GET("v1/user-info")
+    @GET("v1/user-info-product")
     Observable<Profile> user_info_prod(@Header("Authorization") String token,
                                        @Query("product_id") int prodid);
 

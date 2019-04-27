@@ -118,8 +118,10 @@ public class TemukanFragment extends Fragment {
                     }
                 });
 
-        mGreeting.setText("Selamat datang, "+settings.getString("ProfileName", "User"));
-        mCity.setText(settings.getString("ProfilCity", "Kota"));
+        if(isLoggedIn) {
+            mGreeting.setText("Selamat datang, " + settings.getString("ProfileName", "User"));
+            mCity.setText(settings.getString("ProfilCity", "Kota"));
+        }
         refreshBeranda.setRefreshing(false);
     }
 

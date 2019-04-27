@@ -40,6 +40,7 @@ public class NavigationBar extends AppCompatActivity
     private String idToken = null;
     SharedPreferences settings;
     SharedPreferences.Editor editor;
+    private int direction = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class NavigationBar extends AppCompatActivity
         mApiClient = ApiClient.getClient().create(IApiClient.class);
 
         settings = getSharedPreferences("RUNUP", getApplicationContext().MODE_PRIVATE);
+        direction = getIntent().getIntExtra("direction", 1);
 
         if(FirebaseAuth.getInstance().getCurrentUser() != null) {
             FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -71,7 +73,14 @@ public class NavigationBar extends AppCompatActivity
         BottomNavigationView navigation = findViewById(R.id.bottom_nav);
         navigation.setOnNavigationItemSelectedListener(this);
 
-        loadFragment(new BerandaFragment());
+        if(direction==1)
+            loadFragment(new BerandaFragment());
+        else if(direction==2)
+            loadFragment(new TemukanFragment());
+        else if(direction==3)
+            loadFragment(new TransaksiFragment());
+        else if(direction==4)
+            loadFragment(new AkunFragment());
     }
 
     private void setUserData()

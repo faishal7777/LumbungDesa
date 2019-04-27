@@ -98,6 +98,8 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
         mAuth = FirebaseAuth.getInstance();
         mApiClient = ApiClient.getClient().create(IApiClient.class);
 
+        viewLoad = new ViewLoad(ProductClickedActivity.this);
+        viewLoad.showDialog();
         if(FirebaseAuth.getInstance().getCurrentUser() != null) {
             FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
             mUser.getIdToken(true)
@@ -112,7 +114,7 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
                         }
                     });
         } else {
-
+            setProductData();
         }
 
         mScrollView = findViewById(R.id.scroll);
@@ -190,11 +192,10 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
                 });
 
         Observable<Profile> paris = mApiClient.user_info_prod("Bearer "+idToken, mProductID);
-
+        //viewLoad.showDialog();
         paris.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(userInfo -> {
-                    Log.e("Current Weather", idToken);
                     if(userInfo.getStatus()){
                         if(userInfo.getData().getId().equals(mAuth.getUid())) {
                             mbtnOpenKeranjang.setEnabled(false);
@@ -208,7 +209,7 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
                                 .into(mSellerAva);
                         szSellerAva = userInfo.getData().getAvaUrl();
                         szSellerId = userInfo.getData().getId();
-                        viewLoad.hideDialog();
+                        //viewLoad.hideDialog();
                     } else {
 
                     }
