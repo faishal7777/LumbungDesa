@@ -2,6 +2,7 @@ package com.runupstdio.lumbungdesa;
 
 import android.app.Application;
 import android.content.SharedPreferences;
+import android.os.StrictMode;
 import android.util.Log;
 
 import com.onesignal.OneSignal;
@@ -18,7 +19,10 @@ public class LumbungDesa extends Application {
         settings = getSharedPreferences("RUNUP", getApplicationContext().MODE_PRIVATE);
 
         // LumbungDesa Initialization
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
         OneSignal.startInit(this)
+                .autoPromptLocation(true)
+                .setNotificationReceivedHandler(new ChatActivity())
                 .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
                 .unsubscribeWhenNotificationsAreDisabled(true)
                 .init();

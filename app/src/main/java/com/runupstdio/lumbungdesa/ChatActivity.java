@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GetTokenResult;
+import com.google.gson.JsonObject;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.onesignal.OSNotification;
 import com.onesignal.OneSignal;
@@ -202,7 +203,8 @@ public class ChatActivity extends AppCompatActivity implements OneSignal.Notific
 
     @Override
     public void notificationReceived(OSNotification notification) {
-        JSONObject data = notification.payload.additionalData;
-        Log.i("OneSignalExample", "customkey set with value: " + data);
+        Log.w("OneSignalExample", "notificationReceived!!!!!!");
+        mChat.clear();
+        setFeedData();
     }
 }

@@ -61,6 +61,7 @@
                 android:fontFamily="@font/open_sans"
                 android:textSize="12sp"/>
             <TextView
+                android:id="@+id/transfer_exp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Jumat, 26 April 2019, 05:12 WIB"
@@ -80,6 +81,7 @@
                 android:fontFamily="@font/open_sans"
                 android:textSize="12sp"/>
             <TextView
+                android:id="@+id/transfer_nominal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rp 229.124"
@@ -99,6 +101,7 @@
                 android:fontFamily="@font/open_sans"
                 android:textSize="12sp"/>
             <TextView
+                android:id="@+id/transfer_invoice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ASVS234WJOE391"
@@ -120,7 +123,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="6282229241046"
+                android:text="082229241046"
                 android:fontFamily="@font/open_sans_bold"
                 android:textSize="16sp"
                 android:textColor="@color/textBlueDark"/>
