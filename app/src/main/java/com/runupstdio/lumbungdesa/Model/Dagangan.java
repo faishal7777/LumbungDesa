@@ -2,11 +2,21 @@ package com.runupstdio.lumbungdesa.Model;
 
 public class Dagangan {
     String imgProdukDagangan, namaProdukDagangan, hargaProdukDagangan;
+    private int prodid;
 
-    public Dagangan(String imgProdukDagangan, String namaProdukDagangan, String hargaProdukDagangan) {
+    public Dagangan(int prodid, String imgProdukDagangan, String namaProdukDagangan, String hargaProdukDagangan) {
         this.imgProdukDagangan = imgProdukDagangan;
         this.namaProdukDagangan = namaProdukDagangan;
         this.hargaProdukDagangan = hargaProdukDagangan;
+        this.prodid = prodid;
+    }
+
+    public int getProdid() {
+        return prodid;
+    }
+
+    public void setProdid(int prodid) {
+        this.prodid = prodid;
     }
 
     public String getImgProdukDagangan() {

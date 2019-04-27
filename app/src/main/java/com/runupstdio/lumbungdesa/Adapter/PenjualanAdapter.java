@@ -84,6 +84,12 @@ public class PenjualanAdapter extends RecyclerView.Adapter<PenjualanAdapter.View
                     mFragment.complateTrx(listTagihan.getIdTrx());
                 }
             });
+            holder.mBtnBatal.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mFragment.cencel(listTagihan.getIdTrx());
+                }
+            });
         } else {
             holder.ProductName.setText("");
             holder.ProductName.setBackgroundColor(mContext.getResources().getColor(R.color.shimmer));

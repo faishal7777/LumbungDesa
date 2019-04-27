@@ -3,6 +3,7 @@ package com.runupstdio.lumbungdesa.Api;
 import com.runupstdio.lumbungdesa.Model.AddCart;
 import com.runupstdio.lumbungdesa.Model.AddProduct;
 import com.runupstdio.lumbungdesa.Model.Address;
+import com.runupstdio.lumbungdesa.Model.Barangku;
 import com.runupstdio.lumbungdesa.Model.Cart;
 import com.runupstdio.lumbungdesa.Model.Chatting;
 import com.runupstdio.lumbungdesa.Model.Checkout;
@@ -114,6 +115,11 @@ public interface IApiClient {
     Call<Done> accept(@Header("Authorization") String token,
                     @Field("transaction_id") int trxId);
 
+    @FormUrlEncoded
+    @POST("v1/cencel")
+    Call<Done> cencel(@Header("Authorization") String token,
+                      @Field("transaction_id") int trxId);
+
     @Multipart
     @POST("v1/product")
     Call<AddProduct> add_product(@Header("Authorization") String token,
@@ -125,6 +131,9 @@ public interface IApiClient {
                                  @Part("expired_at") int expired_at,
                                  @Part MultipartBody.Part[] product_image);
 
+    @GET("v1/history")
+    Observable<Barangku> get_barangku(@Header("Authorization") String token,
+                                     @Query("status") String status);
 
     @GET("v1/history")
     Observable<History> get_history(@Header("Authorization") String token,

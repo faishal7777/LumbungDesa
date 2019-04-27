@@ -117,14 +117,17 @@ public class PenjualanFragment extends Fragment {
                     if(feedInfo.getStatus()){
                         for(int i=0; i<feedInfo.getData().size(); i++){
                             List<String> prodUrl = new ArrayList<>();
-                            String tempStatus = null;
-                            prodUrl.add(feedInfo.getData().get(i).getAvaProduct());
+                            String tempStatus = "";
+                            for(int j=0; j<feedInfo.getData().get(i).getProducts().size(); j++){
+                                if(j>2) break;
+                                prodUrl.add(feedInfo.getData().get(i).getProducts().get(j).getAvaProduct());
+                            }
                             if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("0") && feedInfo.getData().get(i).getShipped().equals("0") && feedInfo.getData().get(i).getDelivered().equals("0")) tempStatus = "Belum Bayar";
                             else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getShipped().equals("0") && feedInfo.getData().get(i).getDelivered().equals("0")) tempStatus = "Dibayar";
                             else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getShipped().equals("1") && feedInfo.getData().get(i).getDelivered().equals("0")) tempStatus = "Dikirim";
                             else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getShipped().equals("1") && feedInfo.getData().get(i).getDelivered().equals("1")) tempStatus = "Sukses";
                             Log.d("Pembelian", ""+tempStatus);
-                            mPenjualan.add(new Tagihan(Integer.parseInt(feedInfo.getData().get(i).getIdTransaction()), feedInfo.getData().get(i).getProductName(), "Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getPriceTotals()))), prodUrl, tempStatus, Integer.parseInt(feedInfo.getData().get(i).getIdPayment())));
+                            mPenjualan.add(new Tagihan(feedInfo.getData().get(i).getId(), feedInfo.getData().get(i).getProducts().get(0).getProductName(), "Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getPriceTotal()))), prodUrl, tempStatus, Integer.parseInt(feedInfo.getData().get(i).getIdPayment())));
                         }
                         initRecyclerView();
                         mShimmerPenjualan.stopShimmerAnimation();
@@ -142,6 +145,33 @@ public class PenjualanFragment extends Fragment {
     }
 
     public void complateTrx(int idtrx){
+        Call<Done> addrCall = mApiClient.accept("Bearer "+idToken, idtrx);
+        addrCall.enqueue(new Callback<Done>() {
+            @Override
+            public void onResponse(Call<Done> call, Response<Done> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus()) {
+                        Intent a = new Intent(getContext(), DetilActivity.class);
+                        a.putExtra("idTrx", idtrx);
+                        startActivity(a);
+                    } else {
+                        Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                } else if (response.errorBody() != null) {
+                    // Get response errorBody
+                    String errorBody = response.errorBody().toString();
+                    Toast.makeText(getContext(), errorBody, Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Done> call, Throwable t) {
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void cencel(int idtrx){
         Call<Done> addrCall = mApiClient.accept("Bearer "+idToken, idtrx);
         addrCall.enqueue(new Callback<Done>() {
             @Override
