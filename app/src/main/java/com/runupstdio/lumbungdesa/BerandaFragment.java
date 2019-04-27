@@ -2,6 +2,7 @@ package com.runupstdio.lumbungdesa;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
@@ -44,6 +45,7 @@ public class BerandaFragment extends Fragment {
 
     ConstraintLayout mbuahBiji;
     CarouselView carouselView;
+    ViewLoad viewLoad;
     int[] sampleImages = {R.drawable.banner_img, R.drawable.banner_img, R.drawable.banner_img, R.drawable.banner_img};
 
     RecyclerView barangHariIni;
@@ -85,14 +87,6 @@ public class BerandaFragment extends Fragment {
 //                barangHariIni.setVisibility(View.GONE);
 //                mShimmerPembelian.setVisibility(View.VISIBLE);
 //                mShimmerPembelian.startShimmerAnimation();
-            }
-        });
-
-        selamat = view.findViewById(R.id.selamat);
-        selamat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ShowDialog();
             }
         });
 
@@ -169,6 +163,8 @@ public class BerandaFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         mApiClient = ApiClient.getClient().create(IApiClient.class);
 
+        viewLoad = new ViewLoad(getActivity());
+        viewLoad.showDialog();
         if(FirebaseAuth.getInstance().getCurrentUser() != null) {
             FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
             mUser.getIdToken(true)
@@ -187,17 +183,24 @@ public class BerandaFragment extends Fragment {
             isLoggedIn = false;
             setFeedData();
         }
-
-//        testing = view.findViewById(R.id.testing);
-//        testing.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent gobuy = new Intent(v.getContext(), ProductClickedActivity.class);
-//                startActivity(gobuy);
-//            }
-//        });
-
         return view;
+    }
+
+    public void showCustomLoadingDialog() {
+        //..show gif
+        viewLoad.showDialog();
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //...here i'm waiting 5 seconds before hiding the custom dialog
+                //...you can do whenever you want or whenever your work is done
+                viewLoad.hideDialog();
+                if(barangHariIniArrayList != null){
+                    viewLoad.hideDialog();
+                }
+            }
+        }, 5000);
     }
 
     ImageListener imageListener = new ImageListener() {
@@ -221,15 +224,11 @@ public class BerandaFragment extends Fragment {
                             barangHariIniArrayList.add(new BarangHariIni(feedInfo.getData().get(i).getId(), feedInfo.getData().get(i).getProductName(), "Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getProductPrice()))), feedInfo.getData().get(i).getAvaProduct()));
                         }
                         initRecyclerView();
+                        viewLoad.hideDialog();
                     } else {
 
                     }
                 });
-    }
-
-    public void ShowDialog(){
-        LoaddActivity dialogue = new LoaddActivity();
-        dialogue.show(getFragmentManager(),"reserve dialog");
     }
 
     private void initRecyclerView(){

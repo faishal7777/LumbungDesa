@@ -33,7 +33,8 @@
                     android:id="@+id/product_ava"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/parallax_image_height"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="centerCrop"
+                    android:background=""/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
