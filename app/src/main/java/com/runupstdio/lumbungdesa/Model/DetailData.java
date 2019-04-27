@@ -24,6 +24,12 @@ public class DetailData {
     @SerializedName("paid")
     @Expose
     private String paid;
+    @SerializedName("cencelled")
+    @Expose
+    private String cencelled;
+    @SerializedName("shipped")
+    @Expose
+    private String shipped;
     @SerializedName("delivered")
     @Expose
     private String delivered;
@@ -83,6 +89,22 @@ public class DetailData {
 
     public void setPaid(String paid) {
         this.paid = paid;
+    }
+
+    public String getShipped() {
+        return shipped;
+    }
+
+    public void setShipped(String shipped) {
+        this.shipped = shipped;
+    }
+
+    public String getCencelled() {
+        return cencelled;
+    }
+
+    public void setCencelled(String cencelled) {
+        this.cencelled = cencelled;
     }
 
     public String getDelivered() {

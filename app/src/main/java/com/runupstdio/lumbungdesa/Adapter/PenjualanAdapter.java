@@ -67,6 +67,8 @@ public class PenjualanAdapter extends RecyclerView.Adapter<PenjualanAdapter.View
             }
             holder.ProductPrice.setText(listTagihan.getTotalPrice());
             holder.mTagihanStatus.setText(listTagihan.getProductStatus());
+            if(listTagihan.getProductStatus().equals("Dibatalkan"))
+                holder.mTagihanStatus.setTextColor(mContext.getColor(R.color.colorCencelled));
             if(listTagihan.getProductStatus().equals("Dibayar")){
                 holder.mLnBtnAction.setVisibility(View.VISIBLE);
             }

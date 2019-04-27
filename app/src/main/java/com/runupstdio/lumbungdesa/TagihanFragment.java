@@ -114,7 +114,8 @@ public class TagihanFragment extends Fragment {
                                 if(j>2) break;
                                 prodUrl.add(feedInfo.getData().get(i).getProducts().get(j).getAvaProduct());
                             }
-                            if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("0") && feedInfo.getData().get(i).getShipped().equals("0") && feedInfo.getData().get(i).getDelivered().equals("0")) tempStatus = "Belum Bayar";
+                            if(feedInfo.getData().get(i).getCencelled().equals("1")) tempStatus = "Dibatalkan";
+                            else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("0") && feedInfo.getData().get(i).getShipped().equals("0") && feedInfo.getData().get(i).getDelivered().equals("0")) tempStatus = "Belum Bayar";
                             else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getShipped().equals("0") && feedInfo.getData().get(i).getDelivered().equals("0")) tempStatus = "Dibayar";
                             else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getShipped().equals("1") && feedInfo.getData().get(i).getDelivered().equals("0")) tempStatus = "Dikirim";
                             else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getShipped().equals("1") && feedInfo.getData().get(i).getDelivered().equals("1")) tempStatus = "Sukses";
