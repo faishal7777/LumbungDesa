@@ -16,6 +16,8 @@ import com.runupstdio.lumbungdesa.DetilActivity;
 import com.runupstdio.lumbungdesa.Model.Tagihan;
 import com.runupstdio.lumbungdesa.NavigationBar;
 import com.runupstdio.lumbungdesa.R;
+import com.runupstdio.lumbungdesa.TransferActivity;
+
 import java.util.List;
 
 public class TagihanAdapter extends RecyclerView.Adapter<TagihanAdapter.ViewHolder>{
@@ -69,6 +71,12 @@ public class TagihanAdapter extends RecyclerView.Adapter<TagihanAdapter.ViewHold
                 @Override
                 public void onClick(View v) {
                     Intent a = new Intent(mContext, DetilActivity.class);
+
+                    if(listTagihan.getPaymentMethod() == 1)
+                        a = new Intent(mContext, TransferActivity.class);
+                    else if(listTagihan.getPaymentMethod() == 2)
+                        a = new Intent(mContext, DetilActivity.class);
+
                     a.putExtra("idTrx", listTagihan.getIdTrx());
                     mContext.startActivity(a);
                 }

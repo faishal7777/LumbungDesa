@@ -57,7 +57,7 @@ public class TagihanFragment extends Fragment {
 
         mTagihan = new ArrayList<>();
         for(int i=0; i<6; i++){
-            mTagihan.add(new Tagihan(1,"Unknown", "Rp 0", null, "Unknown"));
+            mTagihan.add(new Tagihan(1,"Unknown", "Rp 0", null, "Unknown", 1));
         }
         initRecyclerView();
         mShimmerTagihan.startShimmerAnimation();
@@ -118,7 +118,7 @@ public class TagihanFragment extends Fragment {
                             else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getShipped().equals("0") && feedInfo.getData().get(i).getDelivered().equals("0")) tempStatus = "Dibayar";
                             else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getShipped().equals("1") && feedInfo.getData().get(i).getDelivered().equals("0")) tempStatus = "Dikirim";
                             else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getShipped().equals("1") && feedInfo.getData().get(i).getDelivered().equals("1")) tempStatus = "Sukses";
-                            mTagihan.add(new Tagihan(feedInfo.getData().get(i).getId(), feedInfo.getData().get(i).getProducts().get(0).getProductName(), "Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getPriceTotal()))), prodUrl, tempStatus));
+                            mTagihan.add(new Tagihan(feedInfo.getData().get(i).getId(), feedInfo.getData().get(i).getProducts().get(0).getProductName(), "Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getPriceTotal()))), prodUrl, tempStatus, Integer.parseInt(feedInfo.getData().get(i).getIdPayment())));
                         }
                         initRecyclerView();
                         mShimmerTagihan.stopShimmerAnimation();

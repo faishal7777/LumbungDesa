@@ -13,6 +13,7 @@ public class PopupActivity extends DialogFragment {
 
     Button mOke;
     String szType = "COD";
+    int idTrx = 0;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -29,6 +30,7 @@ public class PopupActivity extends DialogFragment {
                     startActivity(a);
                 } else {
                     Intent a = new Intent(getActivity(), TransferActivity.class);
+                    a.putExtra("idTrx", idTrx);
                     startActivity(a);
                 }
             }
@@ -37,7 +39,8 @@ public class PopupActivity extends DialogFragment {
         return builder.create();
     }
 
-    public void setType(String type){
+    public void setType(String type, int idTrx){
         this.szType = type;
+        this.idTrx = idTrx;
     }
 }
