@@ -1,5 +1,7 @@
 package com.runupstdio.lumbungdesa.Model;
 
+import com.runupstdio.lumbungdesa.ViewLoad;
+
 public class Keranjang {
 
     String  nama_Produk_Keranjang,
@@ -7,6 +9,8 @@ public class Keranjang {
             kuantitas_produk_Keranjang,
             img_Url_Keranjang;
     int iProductId;
+
+    ViewLoad viewLoad;
 
     public Keranjang(int productId, String nama_Produk_Keranjang, String harga_Produk_Keranjang, String kuantitas_produk_Keranjang, String img_Url_Keranjang) {
         this.iProductId = productId;

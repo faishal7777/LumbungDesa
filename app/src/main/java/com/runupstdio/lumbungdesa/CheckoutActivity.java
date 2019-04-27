@@ -54,7 +54,7 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterView.O
     List<Keranjang> mCheckout;
     TextView mCheckoutAddress, mCheckoutTotalPrice;
     Button mBtnPay;
-
+    ViewLoad viewLoad;
 
     private FirebaseAuth mAuth;
     IApiClient mApiClient;
@@ -74,6 +74,8 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterView.O
         mAuth = FirebaseAuth.getInstance();
         mApiClient = ApiClient.getClient().create(IApiClient.class);
 
+        viewLoad = new ViewLoad(this);
+        viewLoad.showDialog();
         if(FirebaseAuth.getInstance().getCurrentUser() != null) {
             FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
             mUser.getIdToken(true)
@@ -187,6 +189,7 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterView.O
                         }
                         mCheckoutTotalPrice.setText("Rp "+String.format("%,.0f", tempPrice));
                         initRecycle();
+                        viewLoad.hideDialog();
                     } else {
 
                     }

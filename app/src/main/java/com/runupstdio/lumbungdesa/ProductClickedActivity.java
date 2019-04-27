@@ -3,6 +3,7 @@ package com.runupstdio.lumbungdesa;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -55,6 +56,8 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
     TextView mProductName, mProductPrice, mProductExp, mProductDesc, mSellerName, mSellerCity, mProductStok;
     ImageView mProductAva, mSellerAva;
     Button mbtnOpenKeranjang;
+
+    ViewLoad viewLoad;
 
     private FirebaseAuth mAuth;
     IApiClient mApiClient;
@@ -137,8 +140,6 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
             }
         });
 
-
-
         LinearLayout mbtnHome = findViewById(R.id.productChat);
         mbtnHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,6 +183,7 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
                                 .asBitmap()
                                 .load(productDetails.getData().getAvaProduct())
                                 .into(mProductAva);
+                        viewLoad.hideDialog();
                     } else {
 
                     }
@@ -206,10 +208,28 @@ public class ProductClickedActivity extends AppCompatActivity implements Observa
                                 .into(mSellerAva);
                         szSellerAva = userInfo.getData().getAvaUrl();
                         szSellerId = userInfo.getData().getId();
+                        viewLoad.hideDialog();
                     } else {
 
                     }
                 });
+    }
+
+    public void showCustomLoadingDialog() {
+        //..show gif
+        viewLoad.showDialog();
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //...here i'm waiting 5 seconds before hiding the custom dialog
+                //...you can do whenever you want or whenever your work is done
+                viewLoad.hideDialog();
+                if(szProductAva != null){
+                    viewLoad.hideDialog();
+                }
+            }
+        }, 5000);
     }
 
     @Override

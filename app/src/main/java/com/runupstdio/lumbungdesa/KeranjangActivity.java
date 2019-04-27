@@ -39,6 +39,8 @@ public class KeranjangActivity extends AppCompatActivity {
     Button mBeliSekarang, mBtnHapusKeranjang;
     TextView mCartSize, mTotalPrice;
 
+    ViewLoad viewLoad;
+
     private FirebaseAuth mAuth;
     IApiClient mApiClient;
     private String idToken = null;
@@ -55,6 +57,8 @@ public class KeranjangActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mApiClient = ApiClient.getClient().create(IApiClient.class);
 
+        viewLoad = new ViewLoad(this);
+        viewLoad.showDialog();
         if(FirebaseAuth.getInstance().getCurrentUser() != null) {
             FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
             mUser.getIdToken(true)
@@ -104,6 +108,7 @@ public class KeranjangActivity extends AppCompatActivity {
                         }
                         mTotalPrice.setText("Rp "+String.format("%,.0f", tempPrice));
                         initRecyler();
+                        viewLoad.hideDialog();
                     } else {
 
                     }

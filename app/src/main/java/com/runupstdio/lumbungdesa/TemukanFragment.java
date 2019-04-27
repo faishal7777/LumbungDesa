@@ -3,6 +3,7 @@ package com.runupstdio.lumbungdesa;
 import android.app.ActionBar;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -46,6 +47,7 @@ public class TemukanFragment extends Fragment {
     private String idToken = null;
     private Boolean isLoggedIn = false;
     SwipeRefreshLayout refreshBeranda;
+    ViewLoad viewLoad;
 
     @Nullable
     @Override
@@ -59,6 +61,8 @@ public class TemukanFragment extends Fragment {
         mGreeting = v.findViewById(R.id.temukan_greeting);
         mCity = v.findViewById(R.id.temukan_city);
 
+        viewLoad = new ViewLoad(getActivity());
+        viewLoad.showDialog();
         if(FirebaseAuth.getInstance().getCurrentUser() != null) {
             FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
             mUser.getIdToken(true)
@@ -108,6 +112,7 @@ public class TemukanFragment extends Fragment {
                             mTemukan.add(new BarangHariIni(feedInfo.getData().get(i).getId(), feedInfo.getData().get(i).getProductName(), "Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getProductPrice()))), feedInfo.getData().get(i).getAvaProduct()));
                         }
                         initRecyclerView();
+                        viewLoad.hideDialog();
                     } else {
 
                     }
@@ -116,6 +121,23 @@ public class TemukanFragment extends Fragment {
         mGreeting.setText("Selamat datang, "+settings.getString("ProfileName", "User"));
         mCity.setText(settings.getString("ProfilCity", "Kota"));
         refreshBeranda.setRefreshing(false);
+    }
+
+    public void showCustomLoadingDialog() {
+        //..show gif
+        viewLoad.showDialog();
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //...here i'm waiting 5 seconds before hiding the custom dialog
+                //...you can do whenever you want or whenever your work is done
+                viewLoad.hideDialog();
+                if(mTemukan != null){
+                    viewLoad.hideDialog();
+                }
+            }
+        }, 5000);
     }
 
     private void initRecyclerView(){
