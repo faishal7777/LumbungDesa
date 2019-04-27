@@ -228,8 +228,8 @@ public class BerandaFragment extends Fragment {
     }
 
     public void ShowDialog(){
-        PopupActivity popupDialog = new PopupActivity();
-        popupDialog.show(getFragmentManager(),"reserve dialog");
+        LoaddActivity dialogue = new LoaddActivity();
+        dialogue.show(getFragmentManager(),"reserve dialog");
     }
 
     private void initRecyclerView(){

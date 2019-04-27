@@ -1,11 +1,14 @@
 package com.runupstdio.lumbungdesa;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -20,6 +23,8 @@ import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GetTokenResult;
 import com.makeramen.roundedimageview.RoundedImageView;
+import com.onesignal.OSNotification;
+import com.onesignal.OneSignal;
 import com.runupstdio.lumbungdesa.Adapter.ChatAdapter;
 import com.runupstdio.lumbungdesa.Adapter.UserChatListAdapter;
 import com.runupstdio.lumbungdesa.Api.ApiClient;
@@ -30,6 +35,8 @@ import com.runupstdio.lumbungdesa.Model.Conversation;
 import com.runupstdio.lumbungdesa.Model.Done;
 import com.runupstdio.lumbungdesa.Model.SendChat;
 import com.runupstdio.lumbungdesa.Model.User;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,7 +49,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ChatActivity extends AppCompatActivity {
+public class ChatActivity extends AppCompatActivity implements OneSignal.NotificationReceivedHandler {
 
     ImageButton mBtnSend_Chat;
     EditText mText_Chat;
@@ -70,6 +77,7 @@ public class ChatActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mApiClient = ApiClient.getClient().create(IApiClient.class);
+        mChat = new ArrayList<>();
 
         RoundedImageView imgProfile = findViewById(R.id.img_User);
         TextView username = findViewById(R.id.nama_User);
@@ -130,7 +138,6 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void setFeedData(){
-        mChat = new ArrayList<>();
         Observable<Chatting> london = mApiClient.get_conversation_chat("Bearer "+idToken, conversationId);
 
         london.subscribeOn(Schedulers.newThread())
@@ -141,6 +148,8 @@ public class ChatActivity extends AppCompatActivity {
                             mChat.add(new Chat(destinationAva, feedInfo.getData().get(i).getMessage(), feedInfo.getData().get(i).getSenderId(), idUser));
                         }
                         initRecyclerView();
+                        chatAdapter.notifyDataSetChanged();
+                        recyclerViewChat.smoothScrollToPosition(mChat.size()-1);
                     } else {
 
                     }
@@ -155,7 +164,9 @@ public class ChatActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     if (response.body().getStatus()) {
                         conversationId = response.body().getData().getConversationId();
-                        setFeedData();
+                        mChat.add(new Chat(destinationAva, response.body().getData().getMessage(), response.body().getData().getSenderId(), idUser));
+                        chatAdapter.notifyDataSetChanged();
+                        recyclerViewChat.smoothScrollToPosition(mChat.size()-1);
                     } else {
                         Toast.makeText(ChatActivity.this, response.body().getMessage(), Toast.LENGTH_LONG).show();
                     }
@@ -180,28 +191,18 @@ public class ChatActivity extends AppCompatActivity {
         recyclerViewChat.setAdapter(chatAdapter);
     }
 
-    private void readMessage(final String myId, final String userId, final String imgUrl){
-        mChat = new ArrayList<>();
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mChat != null) {
+            mChat.clear();
+            setFeedData();
+        }
+    }
 
-//        reference = FirebaseDatabase.getInstance().getReference("Chats");
-//        reference.addValueEventListener(new ValueEventListener(){
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot datasnapshot){
-//                mChat.clear();
-//                for (DataSnapshot snapshot : datasnapshot.getChildren()){
-//                    Chat chat = snapshot.getValue(Chat.class);
-//                    if (chat.getReceiver().equals(userId)) && chat.getSender().equals(myId){
-//                        mChat.add(chat);
-//                    }
-//
-//                    chatAdapter = new ChatAdapter(ChatActivity.this, imgUrl);
-//                    recyclerViewChat.setAdapter(chatAdapter);
-//                }
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError){
-//
-//            }
-//        });
+    @Override
+    public void notificationReceived(OSNotification notification) {
+        JSONObject data = notification.payload.additionalData;
+        Log.i("OneSignalExample", "customkey set with value: " + data);
     }
 }
