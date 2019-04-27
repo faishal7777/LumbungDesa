@@ -27,10 +27,12 @@ public class PopupActivity extends DialogFragment {
             public void onClick(View v) {
                 if(szType.equals("COD")) {
                     Intent a = new Intent(getActivity(), NavigationBar.class);
+                    a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(a);
                 } else {
                     Intent a = new Intent(getActivity(), TransferActivity.class);
                     a.putExtra("idTrx", idTrx);
+                    a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(a);
                 }
             }

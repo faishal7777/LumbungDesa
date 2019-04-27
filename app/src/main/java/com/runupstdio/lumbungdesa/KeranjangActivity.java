@@ -110,7 +110,9 @@ public class KeranjangActivity extends AppCompatActivity {
                         initRecyler();
                         viewLoad.hideDialog();
                     } else {
-
+                        mBeliSekarang.setBackgroundColor(R.drawable.bg_btn_shimmer);
+                        mBeliSekarang.setEnabled(false);
+                        viewLoad.hideDialog();
                     }
                 });
     }

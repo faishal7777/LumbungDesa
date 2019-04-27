@@ -58,6 +58,7 @@ public class ChatActivity extends AppCompatActivity implements OneSignal.Notific
     ChatAdapter chatAdapter;
     List<Chat> mChat;
     RecyclerView recyclerViewChat;
+    ImageButton mBack;
 
     Intent intent;
 
@@ -75,6 +76,14 @@ public class ChatActivity extends AppCompatActivity implements OneSignal.Notific
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+
+        mBack.findViewById(R.id.back_chat);
+        mBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         mAuth = FirebaseAuth.getInstance();
         mApiClient = ApiClient.getClient().create(IApiClient.class);
