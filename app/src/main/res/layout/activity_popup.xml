@@ -10,10 +10,12 @@
     android:padding="40dp"
     android:orientation="vertical"
     android:gravity="center">
-        <ImageView
+        <com.airbnb.lottie.LottieAnimationView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/uang_checkout"/>
+            app:lottie_fileName="succes.json"
+            app:lottie_loop="false"
+            app:lottie_autoPlay="true"/>
         <TextView
             android:layout_marginTop="30dp"
             android:layout_width="wrap_content"
