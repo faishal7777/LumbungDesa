@@ -5,14 +5,15 @@ import java.util.List;
 public class Tagihan {
     private String productName, totalPrice, productStatus;
     private List<String> imageProductUrl;
-    private int idTrx;
+    private int idTrx, paymentMethod;
 
-    public Tagihan(int idtrx, String prodName, String productPrice, List<String> prodUrl, String stats){
+    public Tagihan(int idtrx, String prodName, String productPrice, List<String> prodUrl, String stats, int payment){
         this.idTrx = idtrx;
         this.productName = prodName;
         this.totalPrice = productPrice;
         this.imageProductUrl = prodUrl;
         this.productStatus = stats;
+        this.paymentMethod = payment;
     }
 
     public int getIdTrx() {
@@ -53,5 +54,13 @@ public class Tagihan {
 
     public void setProductStatus(String stats) {
         this.productStatus = stats;
+    }
+
+    public int getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(int payment) {
+        this.paymentMethod = payment;
     }
 }

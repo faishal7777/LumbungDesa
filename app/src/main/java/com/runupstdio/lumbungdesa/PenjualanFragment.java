@@ -65,7 +65,7 @@ public class PenjualanFragment extends Fragment {
 
         mPenjualan = new ArrayList<>();
         for(int i=0; i<6; i++){
-            mPenjualan.add(new Tagihan(1, "Unknown", "Rp 0", null, "Unknown"));
+            mPenjualan.add(new Tagihan(1, "Unknown", "Rp 0", null, "Unknown", 1));
         }
         initRecyclerView();
         mShimmerPenjualan.startShimmerAnimation();
@@ -124,7 +124,7 @@ public class PenjualanFragment extends Fragment {
                             else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getShipped().equals("1") && feedInfo.getData().get(i).getDelivered().equals("0")) tempStatus = "Dikirim";
                             else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getShipped().equals("1") && feedInfo.getData().get(i).getDelivered().equals("1")) tempStatus = "Sukses";
                             Log.d("Pembelian", ""+tempStatus);
-                            mPenjualan.add(new Tagihan(Integer.parseInt(feedInfo.getData().get(i).getIdTransaction()), feedInfo.getData().get(i).getProductName(), "Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getPriceTotals()))), prodUrl, tempStatus));
+                            mPenjualan.add(new Tagihan(Integer.parseInt(feedInfo.getData().get(i).getIdTransaction()), feedInfo.getData().get(i).getProductName(), "Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getPriceTotals()))), prodUrl, tempStatus, Integer.parseInt(feedInfo.getData().get(i).getIdPayment())));
                         }
                         initRecyclerView();
                         mShimmerPenjualan.stopShimmerAnimation();

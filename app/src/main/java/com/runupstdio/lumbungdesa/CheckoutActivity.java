@@ -61,6 +61,7 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterView.O
     private String idToken = null;
     double tempPrice = 0.0;
     private int idPayment;
+    private int idTrx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -180,6 +181,7 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterView.O
                 .subscribe(feedInfo -> {
                     if(feedInfo.getStatus()){
                         for(int i=0; i<feedInfo.getData().size(); i++){
+                            idTrx = Integer.parseInt(feedInfo.getData().get(0).getIdTransaction());
                             mCheckout.add(new Keranjang(feedInfo.getData().get(i).getId(), feedInfo.getData().get(i).getProductName(), "Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getPriceTotal()))), feedInfo.getData().get(i).getQuantity()+" Pcs",feedInfo.getData().get(i).getProductAva()));
                             tempPrice += Integer.parseInt(feedInfo.getData().get(i).getPriceTotal());
                         }
@@ -207,9 +209,9 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterView.O
     public void ShowDialog(){
         PopupActivity popupDialog = new PopupActivity();
         if(idPayment==1)
-            popupDialog.setType("OVO");
+            popupDialog.setType("OVO", idTrx);
         else if(idPayment==2)
-            popupDialog.setType("COD");
+            popupDialog.setType("COD", 0);
         popupDialog.show(getSupportFragmentManager(),"reserve dialog");
     }
 }

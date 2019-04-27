@@ -60,7 +60,7 @@ public class PembelianFragment extends Fragment {
 
         mPembelian = new ArrayList<>();
         for(int i=0; i<6; i++){
-            mPembelian.add(new Tagihan(1,"Unknown", "Rp 0", null, "Unknown"));
+            mPembelian.add(new Tagihan(1,"Unknown", "Rp 0", null, "Unknown", 1));
         }
         initRecyclerView();
         mShimmerPembelian.startShimmerAnimation();
@@ -122,7 +122,7 @@ public class PembelianFragment extends Fragment {
                             else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getShipped().equals("1") && feedInfo.getData().get(i).getDelivered().equals("0")) tempStatus = "Dikirim";
                             else if(feedInfo.getData().get(i).getCheckedOut().equals("1") && feedInfo.getData().get(i).getPaid().equals("1") && feedInfo.getData().get(i).getShipped().equals("1") && feedInfo.getData().get(i).getDelivered().equals("1")) tempStatus = "Sukses";
                             Log.d("Pembelian", ""+feedInfo.getData().get(i).getPaid());
-                            mPembelian.add(new Tagihan(feedInfo.getData().get(i).getId(), feedInfo.getData().get(i).getProducts().get(0).getProductName(), "Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getPriceTotal()))), prodUrl, tempStatus));
+                            mPembelian.add(new Tagihan(feedInfo.getData().get(i).getId(), feedInfo.getData().get(i).getProducts().get(0).getProductName(), "Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(feedInfo.getData().get(i).getPriceTotal()))), prodUrl, tempStatus, Integer.parseInt(feedInfo.getData().get(i).getIdPayment())));
                         }
                         initRecyclerView();
                         mShimmerPembelian.stopShimmerAnimation();
