@@ -18,6 +18,9 @@ public class LoaddActivity extends DialogFragment {
         View view = inflater.inflate(R.layout.activity_loadd, null);
         builder.setView(view);
 
-        return builder.create();
+        AlertDialog awok = builder.create();
+        awok.getWindow().setLayout(100, 100);
+
+        return awok;
     }
 }
