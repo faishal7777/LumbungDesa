@@ -35,6 +35,7 @@ public class KeranjangBottomSheetDialog extends BottomSheetDialogFragment {
 
     IApiClient mApiClient;
     private String idToken = null;
+    private int prodprice;
 
     @Nullable
     @Override
@@ -55,6 +56,8 @@ public class KeranjangBottomSheetDialog extends BottomSheetDialogFragment {
                 int oldValue = Integer.parseInt(mProductQty.getText().toString());
                 int newValue = oldValue+1;
                 mProductQty.setText(String.valueOf(newValue));
+                int subtotal = prodprice*newValue;
+                mProductSubtotal.setText("Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(subtotal))));
             }
         });
         mBtnCartDecrease.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +67,8 @@ public class KeranjangBottomSheetDialog extends BottomSheetDialogFragment {
                 if(oldValue != 1 || oldValue < 1) {
                     int newValue = oldValue - 1;
                     mProductQty.setText(String.valueOf(newValue));
+                    int subtotal = prodprice*newValue;
+                    mProductSubtotal.setText("Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(subtotal))));
                 }
             }
         });
@@ -79,6 +84,7 @@ public class KeranjangBottomSheetDialog extends BottomSheetDialogFragment {
                 .load(data.getString("productAva"))
                 .into(mProductAva);
 
+        prodprice = data.getInt("productPrice");
         int subtotal = data.getInt("productPrice")*Integer.parseInt(mProductQty.getText().toString());
         mProductSubtotal.setText("Rp "+String.format("%,.0f", Double.parseDouble(String.valueOf(subtotal))));
 

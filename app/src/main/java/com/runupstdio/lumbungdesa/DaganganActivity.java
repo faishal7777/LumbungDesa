@@ -88,7 +88,7 @@ public class DaganganActivity extends AppCompatActivity {
                         initRecyclerView();
                         viewLoad.hideDialog();
                     } else {
-
+                        viewLoad.hideDialog();
                     }
                 });
     }

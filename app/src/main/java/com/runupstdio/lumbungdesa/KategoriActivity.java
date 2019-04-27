@@ -39,6 +39,7 @@ public class KategoriActivity extends AppCompatActivity {
     ProdukKategoriAdapter adapter;
     List<BarangHariIni> mKategori;
     CardView mLnEmptykategori;
+    ViewLoad viewLoad;
 
     private FirebaseAuth mAuth;
     IApiClient mApiClient;
@@ -63,6 +64,8 @@ public class KategoriActivity extends AppCompatActivity {
         mLnEmptykategori = findViewById(R.id.card_Kategori_Empty);
         category_id = getIntent().getIntExtra("catid", 1);
 
+        viewLoad = new ViewLoad(KategoriActivity.this);
+        viewLoad.showDialog();
         if(FirebaseAuth.getInstance().getCurrentUser() != null) {
             FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
             mUser.getIdToken(true)
@@ -99,14 +102,15 @@ public class KategoriActivity extends AppCompatActivity {
                         initRecyclerView();
                         mRVKategori.setVisibility(View.VISIBLE);
                         mLnEmptykategori.setVisibility(View.GONE);
+                        viewLoad.hideDialog();
                     } else {
-
+                        viewLoad.hideDialog();
                     }
                 });
     }
 
     @Override
-    public boolean onNavigateUp() {
+    public boolean onSupportNavigateUp() {
         finish();
         return true;
     }

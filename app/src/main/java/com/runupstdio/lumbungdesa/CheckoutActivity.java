@@ -191,7 +191,7 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterView.O
                         initRecycle();
                         viewLoad.hideDialog();
                     } else {
-
+                        viewLoad.hideDialog();
                     }
                 });
     }
